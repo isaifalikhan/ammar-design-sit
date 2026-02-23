@@ -31,6 +31,115 @@ const SHARED_STYLES = `
   .team-card:hover .team-img { filter:grayscale(0); transform:scale(1.05); }
   .stat-item { border-right:1px solid rgba(255,255,255,.08); }
   .stat-item:last-child { border-right:none; }
+
+  .about-hero {
+    padding: 120px 48px 80px;
+  }
+
+  .about-hero-title {
+    font-size: 80px;
+  }
+
+  .about-stats-grid {
+    padding: 48px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+  }
+
+  .about-founder-section {
+    padding: 100px 48px;
+  }
+
+  .about-founder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .about-values-section {
+    padding: 100px 48px;
+  }
+
+  .about-values-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+  }
+
+  .about-team-section {
+    padding: 100px 48px;
+  }
+
+  .about-team-grid {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 20px;
+  }
+
+  .about-cta-section {
+    padding: 100px 48px;
+  }
+
+  @media (max-width: 1024px) {
+    .about-stats-grid {
+      grid-template-columns: repeat(2,1fr);
+      padding: 40px 32px !important;
+    }
+    .about-values-grid {
+      grid-template-columns: repeat(2,1fr);
+    }
+    .about-team-grid {
+      grid-template-columns: repeat(3,1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-hero {
+      padding: 96px 24px 64px !important;
+    }
+    .about-hero-title {
+      font-size: 52px !important;
+    }
+    .about-stats-grid {
+      grid-template-columns: repeat(2,1fr);
+      padding: 32px 20px !important;
+    }
+    .about-founder-section {
+      padding: 80px 24px !important;
+    }
+    .about-founder-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .about-values-section {
+      padding: 80px 24px !important;
+    }
+    .about-values-grid {
+      grid-template-columns: 1fr;
+    }
+    .about-team-section {
+      padding: 80px 24px !important;
+    }
+    .about-team-grid {
+      grid-template-columns: repeat(2,1fr);
+    }
+    .about-cta-section {
+      padding: 80px 24px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-hero-title {
+      font-size: 40px !important;
+    }
+    .about-stats-grid {
+      grid-template-columns: 1fr;
+      padding: 24px 16px !important;
+    }
+    .about-team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 
 const values = [
@@ -64,7 +173,7 @@ export default function About() {
       <div>
 
         {/* ── HERO ── */}
-        <section style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa 0%,#f4f9ec 60%,#fdfcfa 100%)", padding:"120px 48px 80px" }}>
+        <section className="about-hero" style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa 0%,#f4f9ec 60%,#fdfcfa 100%)", padding:"120px 48px 80px" }}>
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.08)", top:-80, right:-100 }} />
           <div className="orb" style={{ width:300, height:300, background:"rgba(127,191,47,.05)", bottom:-60, left:-60 }} />
           {/* Spinning ring */}
@@ -75,7 +184,7 @@ export default function About() {
               <span style={{ width:32, height:1, background:"#7fbf2f", display:"block" }} />
               <span style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f" }}>Our Story</span>
             </div>
-            <h1 className="serif afu d1" style={{ fontSize:80, fontWeight:700, lineHeight:.95, margin:"0 0 28px", color:"#111", maxWidth:700 }}>
+            <h1 className="serif afu d1 about-hero-title" style={{ fontSize:80, fontWeight:700, lineHeight:.95, margin:"0 0 28px", color:"#111", maxWidth:700 }}>
               Art Rooted<br />in <span className="gradient-text">Purpose</span>
             </h1>
             <p className="afu d2" style={{ fontSize:17, lineHeight:1.85, color:"#666", maxWidth:560, margin:"0 0 40px" }}>
@@ -94,7 +203,7 @@ export default function About() {
 
         {/* ── STATS BANNER ── */}
         <section style={{ background:"#0d0d0d" }}>
-          <div className="page-container" style={{ padding:"48px", display:"grid", gridTemplateColumns:"repeat(4,1fr)" }}>
+          <div className="page-container about-stats-grid" style={{ padding:"48px", display:"grid", gridTemplateColumns:"repeat(4,1fr)" }}>
             {[
               { val:"200+", label:"Projects Delivered" },
               { val:"150+", label:"Happy Clients" },
@@ -110,9 +219,9 @@ export default function About() {
         </section>
 
         {/* ── FOUNDER STORY ── */}
-        <section style={{ background:"#faf9f7", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
+        <section className="about-founder-section" style={{ background:"#faf9f7", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.05)", top:0, left:-150 }} />
-          <div className="page-container" style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center", position:"relative", zIndex:1 }}>
+          <div className="page-container about-founder-grid" style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center", position:"relative", zIndex:1 }}>
             <div style={{ position:"relative" }}>
               <div style={{ borderRadius:"40% 60% 55% 45% / 45% 40% 60% 55%", overflow:"hidden", boxShadow:"0 50px 100px rgba(0,0,0,.16)" }}>
                 <img src="/member.png" alt="Hafiz Muhammad Ammar" style={{ width:"100%", display:"block" }} />
@@ -144,14 +253,14 @@ export default function About() {
         </section>
 
         {/* ── VALUES ── */}
-        <section style={{ background:"#0d0d0d", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
+        <section className="about-values-section" style={{ background:"#0d0d0d", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.06)", top:-80, right:-80 }} />
           <div className="page-container" style={{ position:"relative", zIndex:1 }}>
             <div style={{ textAlign:"center", marginBottom:64 }}>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>What Drives Us</p>
               <h2 className="serif" style={{ fontSize:56, fontWeight:700, color:"#fff", margin:0 }}>Our <span className="gradient-text">Core Values</span></h2>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:20 }}>
+            <div className="about-values-grid" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:20 }}>
               {values.map((v,i) => (
                 <div key={i} className="val-card card-hover" style={{ background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.07)", borderRadius:28, padding:"36px 28px", transition:"all .35s", cursor:"default" }}>
                   <div className="val-icon" style={{ width:52, height:52, borderRadius:16, background:"rgba(127,191,47,.12)", border:"1px solid rgba(127,191,47,.2)", display:"grid", placeItems:"center", marginBottom:24, fontSize:22, color:"#7fbf2f", transition:"all .35s" }}>
@@ -207,14 +316,14 @@ export default function About() {
         </section>
 
         {/* ── TEAM ── */}
-        <section style={{ background:"#060606", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
+        <section className="about-team-section" style={{ background:"#060606", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.06)", top:-80, left:"50%", transform:"translateX(-50%)" }} />
           <div className="page-container" style={{ position:"relative", zIndex:1 }}>
             <div style={{ textAlign:"center", marginBottom:72 }}>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>The People</p>
               <h2 className="serif" style={{ fontSize:56, fontWeight:700, color:"#fff", margin:0 }}>Meet the <span className="gradient-text">Team</span></h2>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:20 }}>
+            <div className="about-team-grid" style={{ display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:20 }}>
               {team.map((m,i) => (
                 <div key={i} className="team-card card-hover" style={{ background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.07)", borderRadius:28, overflow:"hidden", cursor:"pointer" }}>
                   <div style={{ aspectRatio:"4/5", overflow:"hidden" }}>
@@ -232,7 +341,7 @@ export default function About() {
         </section>
 
         {/* ── CTA ── */}
-        <section style={{ background:"#faf9f7", padding:"100px 48px" }}>
+        <section className="about-cta-section" style={{ background:"#faf9f7", padding:"100px 48px" }}>
           <div style={{ maxWidth:900, margin:"0 auto", textAlign:"center" }}>
             <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>Ready to Begin?</p>
             <h2 className="serif" style={{ fontSize:64, fontWeight:700, color:"#111", margin:"0 0 24px", lineHeight:1.05 }}>

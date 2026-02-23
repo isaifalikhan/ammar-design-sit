@@ -138,6 +138,20 @@ export default function Navbar() {
         .nav-logo-accent { color: #7fbf2f; }
         .navbar-inner.at-top .nav-logo-text { color: #111; }
 
+        .navbar-logo-img {
+          height: 110px;
+          width: auto;
+          display: block;
+          object-fit: contain;
+        }
+
+        .mobile-logo-img {
+          height: 80px;
+          width: auto;
+          display: block;
+          object-fit: contain;
+        }
+
         /* ── Links container (position relative for indicator) ── */
         .nav-links-wrap {
           position: relative;
@@ -401,11 +415,17 @@ export default function Navbar() {
           .nav-links-wrap, .nav-quote { display: none; }
           .nav-burger { display: flex; }
         }
+        @media (max-width: 768px) {
+          .navbar-logo-img { height: 80px; }
+        }
         @media (max-width: 640px) {
           .navbar-wrap { padding: 0 16px; }
           .navbar-inner { padding: 8px 8px 8px 20px; }
           .nav-cta span:not(.nav-cta-arrow) { display: none; }
           .nav-cta { padding: 10px 14px; }
+        }
+        @media (max-width: 480px) {
+          .navbar-logo-img { height: 64px; }
         }
 
         /* ── Entry animation ── */
@@ -422,11 +442,11 @@ export default function Navbar() {
           <div className={`navbar-inner ${scrolled ? "scrolled" : "at-top"}`}>
 
             {/* Logo */}
-            <Link href="/" style={{ display:"flex", alignItems:"center", flexShrink:0, textDecoration:"none" }} onClick={() => setMenuOpen(false)}>
+            <Link href="/" className="nav-logo" style={{ textDecoration:"none" }} onClick={() => setMenuOpen(false)}>
               <img
                 src="/logo.png"
                 alt="Ammar Designz"
-                style={{ height:110, width:"auto", objectFit:"contain", display:"block" }}
+                className="navbar-logo-img"
               />
             </Link>
 
@@ -499,7 +519,7 @@ export default function Navbar() {
                 <img
                   src="/logo.png"
                   alt="Ammar Designz"
-                  style={{ height:80, width:"auto", objectFit:"contain", display:"block" }}
+                  className="mobile-logo-img"
                 />
               </Link>
               <button className="mobile-close" onClick={() => setMenuOpen(false)}>×</button>

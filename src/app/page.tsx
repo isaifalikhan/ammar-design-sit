@@ -130,6 +130,192 @@ export default function Home() {
 
         .team-card:hover img { filter: grayscale(0) !important; transform: scale(1.05); }
         .team-card img { transition: all .5s ease; filter: grayscale(1); }
+
+        .home-hero-section {
+          scroll-margin-top: 80px;
+        }
+
+        .home-hero-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 64px;
+          align-items: center;
+        }
+
+        .home-hero-title {
+          font-size: 76px;
+        }
+
+        .home-hero-image {
+          width: 480px;
+        }
+
+        .home-hero-stats {
+          flex-wrap: nowrap;
+        }
+
+        .home-services-header,
+        .home-courses-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          margin-bottom: 72px;
+        }
+
+        .home-services-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 16px;
+        }
+
+        .home-gallery-grid {
+          display: grid;
+          grid-template-columns: 1.2fr 0.8fr 1fr 0.9fr;
+          gap: 16px;
+          margin-top: 24px;
+        }
+
+        .home-ceo-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.8fr;
+          gap: 64px;
+        }
+
+        .home-team-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 24px;
+        }
+
+        .home-courses-carousel {
+          position: relative;
+          height: 540px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .home-course-card {
+          width: 380px;
+        }
+
+        .home-contact-grid {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 64px;
+        }
+
+        .home-contact-form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+
+        .home-services-section,
+        .home-about-section,
+        .home-courses-section,
+        .home-contact-section {
+          padding: 100px 48px;
+        }
+
+        @media (max-width: 1024px) {
+          .home-hero-grid {
+            padding: 80px 32px !important;
+            gap: 48px;
+          }
+          .home-services-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+          .home-gallery-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+          .home-ceo-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 40px;
+            padding: 48px 40px !important;
+          }
+          .home-team-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .home-contact-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 40px;
+          }
+          .home-services-header,
+          .home-courses-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .home-hero-section {
+            min-height: auto !important;
+          }
+          .home-hero-grid {
+            grid-template-columns: 1fr !important;
+            padding: 72px 20px 64px !important;
+            gap: 40px;
+          }
+          .home-hero-title {
+            font-size: 48px !important;
+          }
+          .home-hero-image {
+            width: 100% !important;
+            max-width: 360px;
+            margin: 0 auto;
+          }
+          .home-hero-stats {
+            flex-wrap: wrap;
+            row-gap: 16px;
+          }
+          .home-services-section,
+          .home-about-section,
+          .home-courses-section,
+          .home-contact-section {
+            padding: 80px 20px !important;
+          }
+          .home-services-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .home-gallery-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .home-ceo-grid {
+            grid-template-columns: 1fr !important;
+            padding: 32px 24px !important;
+          }
+          .home-team-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .home-courses-carousel {
+            height: auto !important;
+            padding-bottom: 32px;
+          }
+          .home-course-card {
+            width: 100% !important;
+            max-width: 360px;
+          }
+          .home-contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px;
+          }
+          .home-contact-form-row {
+            grid-template-columns: 1fr !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .home-hero-title {
+            font-size: 40px !important;
+          }
+          .home-services-grid,
+          .home-gallery-grid,
+          .home-team-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
       `}</style>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0px' }}>
@@ -137,7 +323,7 @@ export default function Home() {
         {/* ══════════════════════════════════════════
             HERO
         ══════════════════════════════════════════ */}
-        <section className="hero-grain" style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(160deg, #fdfcfa 0%, #f4f9ec 50%, #fdfcfa 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+        <section className="hero-grain home-hero-section" style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(160deg, #fdfcfa 0%, #f4f9ec 50%, #fdfcfa 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
           {/* Background orbs */}
           <div className="orb" style={{ width: 600, height: 600, background: 'rgba(127,191,47,.08)', top: -100, right: -150 }} />
           <div className="orb" style={{ width: 400, height: 400, background: 'rgba(127,191,47,.05)', bottom: -80, left: -80 }} />
@@ -146,7 +332,7 @@ export default function Home() {
           <div style={{ position: 'absolute', right: '5%', top: '50%', transform: 'translateY(-50%)', width: 520, height: 520, borderRadius: '50%', border: '1px dashed rgba(127,191,47,.2)', pointerEvents: 'none' }} />
           <div style={{ position: 'absolute', right: '6.5%', top: '50%', transform: 'translateY(-50%)', width: 480, height: 480, borderRadius: '50%', border: '1px solid rgba(127,191,47,.08)', pointerEvents: 'none' }} />
 
-          <div className="page-container" style={{ position: 'relative', zIndex: 2, width: '100%', padding: '80px 48px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+          <div className="page-container home-hero-grid" style={{ position: 'relative', zIndex: 2, width: '100%', padding: '80px 48px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
             {/* LEFT */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {/* Pill badge */}
@@ -157,7 +343,7 @@ export default function Home() {
 
               {/* Headline */}
               <div className="anim-fade-up delay-1">
-                <h1 className="serif" style={{ fontSize: 76, fontWeight: 700, lineHeight: 1, margin: 0, color: '#111' }}>
+                <h1 className="serif home-hero-title" style={{ fontSize: 76, fontWeight: 700, lineHeight: 1, margin: 0, color: '#111' }}>
                   We Speak<br />
                   <span className="gradient-text">Design.</span>
                 </h1>
@@ -192,7 +378,7 @@ export default function Home() {
               </div>
 
               {/* Stats */}
-              <div className="anim-fade-up delay-4" style={{ display: 'flex', gap: 48, marginTop: 24, paddingTop: 24, borderTop: '1px solid rgba(0,0,0,.08)' }}>
+              <div className="anim-fade-up delay-4 home-hero-stats" style={{ display: 'flex', gap: 48, marginTop: 24, paddingTop: 24, borderTop: '1px solid rgba(0,0,0,.08)' }}>
                 {[
                   { val: 200, suf: '+', label: 'Projects Done' },
                   { val: 5, suf: '+', label: 'Years of Craft' },
@@ -210,7 +396,7 @@ export default function Home() {
 
             {/* RIGHT — floating image */}
             <div className="anim-fade-in delay-2" style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
-              <div className="float" style={{ position: 'relative', width: 480 }}>
+              <div className="float home-hero-image" style={{ position: 'relative', width: 480 }}>
                 {/* Main image with elegant mask */}
                 <div style={{ borderRadius: '60% 40% 55% 45% / 50% 45% 55% 50%', overflow: 'hidden', boxShadow: '0 60px 120px rgba(0,0,0,.18), 0 0 0 1px rgba(127,191,47,.15)' }}>
                   <img src="/hero-home.png" alt="Ammar Designz Studio" style={{ width: '100%', display: 'block', objectFit: 'cover' }} />
@@ -251,13 +437,13 @@ export default function Home() {
         {/* ══════════════════════════════════════════
             SERVICES
         ══════════════════════════════════════════ */}
-        <section style={{ background: '#0d0d0d', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
+        <section className="home-services-section" style={{ background: '#0d0d0d', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
           <div className="orb" style={{ width: 500, height: 500, background: 'rgba(127,191,47,.07)', top: -100, right: -100 }} />
           <div className="orb" style={{ width: 400, height: 400, background: 'rgba(127,191,47,.05)', bottom: -80, left: -80 }} />
 
           <div className="page-container" style={{ position: 'relative', zIndex: 1 }}>
             {/* Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 72 }}>
+            <div className="home-services-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 72 }}>
               <div>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
                   <span style={{ width: 32, height: 1, background: '#7fbf2f', display: 'block' }} />
@@ -273,7 +459,7 @@ export default function Home() {
             </div>
 
             {/* Services grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
+            <div className="home-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
               {services.map((s, i) => (
                 <div key={i} className="service-card card-hover" style={{ background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.07)', borderRadius: 24, padding: '32px 24px', cursor: 'pointer', position: 'relative', overflow: 'hidden' }}>
                   <div style={{ position: 'absolute', top: 0, right: 0, width: 80, height: 80, borderRadius: '0 0 0 80px', background: 'rgba(127,191,47,.05)' }} />
@@ -288,7 +474,7 @@ export default function Home() {
             </div>
 
             {/* Gallery strip */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr 1fr 0.9fr', gap: 16, marginTop: 24 }}>
+            <div className="home-gallery-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr 1fr 0.9fr', gap: 16, marginTop: 24 }}>
               {['/Mask group.png', '/Mask group (1).png', '/Mask group (2).png', '/design_ (4) 1.png'].map((img, i) => (
                 <div key={i} style={{ borderRadius: 20, overflow: 'hidden', aspectRatio: i === 0 ? '4/3' : i === 2 ? '4/3' : '1', position: 'relative' }} className="card-hover">
                   <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
@@ -302,7 +488,7 @@ export default function Home() {
         {/* ══════════════════════════════════════════
             WHO WE ARE — CEO + Team
         ══════════════════════════════════════════ */}
-        <section style={{ background: '#faf9f7', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
+        <section className="home-about-section" style={{ background: '#faf9f7', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
           <div className="orb" style={{ width: 500, height: 500, background: 'rgba(127,191,47,.06)', top: 50, left: -150 }} />
 
           <div className="page-container" style={{ position: 'relative', zIndex: 1 }}>
@@ -319,7 +505,7 @@ export default function Home() {
             </div>
 
             {/* CEO */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.8fr', gap: 64, alignItems: 'center', marginBottom: 80, background: '#fff', borderRadius: 40, padding: '56px 64px', boxShadow: '0 4px 40px rgba(0,0,0,.06)', border: '1px solid rgba(0,0,0,.04)' }}>
+            <div className="home-ceo-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.8fr', gap: 64, alignItems: 'center', marginBottom: 80, background: '#fff', borderRadius: 40, padding: '56px 64px', boxShadow: '0 4px 40px rgba(0,0,0,.06)', border: '1px solid rgba(0,0,0,.04)' }}>
               <div style={{ position: 'relative' }}>
                 <div style={{ borderRadius: '50% 40% 50% 40% / 40% 50% 40% 50%', overflow: 'hidden', boxShadow: '0 40px 80px rgba(0,0,0,.15)' }}>
                   <img src="/member.png" alt="Hafiz Muhammad Ammar" style={{ width: '100%', display: 'block', filter: 'grayscale(30%)' }} />
@@ -343,7 +529,7 @@ export default function Home() {
             </div>
 
             {/* Team */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+            <div className="home-team-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
               {team.map((m, i) => (
                 <div key={i} className="team-card card-hover" style={{ background: '#fff', borderRadius: 28, overflow: 'hidden', border: '1px solid rgba(0,0,0,.05)', cursor: 'pointer' }}>
                   <div style={{ aspectRatio: '4/5', overflow: 'hidden', position: 'relative' }}>
@@ -363,12 +549,12 @@ export default function Home() {
         {/* ══════════════════════════════════════════
             COURSES
         ══════════════════════════════════════════ */}
-        <section style={{ background: '#060606', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
+        <section className="home-courses-section" style={{ background: '#060606', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
           <div className="orb" style={{ width: 600, height: 600, background: 'rgba(127,191,47,.06)', top: -100, left: '50%', transform: 'translateX(-50%)' }} />
 
           <div className="page-container" style={{ position: 'relative', zIndex: 1 }}>
             {/* Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 72 }}>
+            <div className="home-courses-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 72 }}>
               <div>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
                   <span style={{ width: 32, height: 1, background: '#7fbf2f', display: 'block' }} />
@@ -386,7 +572,7 @@ export default function Home() {
             </div>
 
             {/* Carousel */}
-            <div style={{ position: 'relative', height: 540, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="home-courses-carousel" style={{ position: 'relative', height: 540, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               {courses.map((c, idx) => {
                 const offset = idx - courseIndex;
                 const abs = Math.abs(offset);
@@ -394,6 +580,7 @@ export default function Home() {
                 const isActive = offset === 0;
                 return (
                   <button key={c.id} onClick={() => setCourseIndex(idx)}
+                    className="home-course-card"
                     style={{
                       position: 'absolute',
                       width: 380,
@@ -439,11 +626,11 @@ export default function Home() {
         {/* ══════════════════════════════════════════
             CONTACT / QUOTE
         ══════════════════════════════════════════ */}
-        <section style={{ background: '#faf9f7', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
+        <section className="home-contact-section" style={{ background: '#faf9f7', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
           <div className="orb" style={{ width: 500, height: 500, background: 'rgba(127,191,47,.07)', top: -50, right: -100 }} />
 
           <div className="page-container" style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 64, background: '#fff', borderRadius: 48, overflow: 'hidden', boxShadow: '0 8px 60px rgba(0,0,0,.08)', border: '1px solid rgba(0,0,0,.04)' }}>
+            <div className="home-contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 64, background: '#fff', borderRadius: 48, overflow: 'hidden', boxShadow: '0 8px 60px rgba(0,0,0,.08)', border: '1px solid rgba(0,0,0,.04)' }}>
               {/* Left — Form */}
               <div style={{ padding: '64px 56px' }}>
                 <div style={{ marginBottom: 48 }}>
@@ -458,7 +645,7 @@ export default function Home() {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                  <div className="home-contact-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                     {['Full name', 'Email address'].map(ph => (
                       <input key={ph} type={ph.includes('Email') ? 'email' : 'text'} placeholder={ph} style={{ height: 52, borderRadius: 14, border: '1.5px solid #e8e8e8', background: '#fafafa', padding: '0 18px', fontSize: 14, color: '#111', transition: 'all .25s' }} />
                     ))}
