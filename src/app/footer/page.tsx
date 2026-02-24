@@ -140,6 +140,81 @@ export default function Footer() {
           background: rgba(127,191,47,.15);
           color: #7fbf2f;
         }
+
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 1.6fr 1fr 1fr 1fr;
+          gap: 48px;
+        }
+
+        .footer-padding {
+          padding: 64px 48px 40px;
+        }
+
+        .cta-padding {
+          padding: 72px 48px;
+        }
+
+        .divider-padding {
+          padding: 0 48px;
+        }
+
+        .footer-bottom-padding {
+          padding: 24px 48px;
+        }
+
+        @media (max-width: 1024px) {
+          .footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+          }
+          .footer-padding {
+            padding: 56px 32px 32px;
+          }
+          .cta-padding {
+            padding: 56px 32px;
+          }
+          .divider-padding {
+            padding: 0 32px;
+          }
+          .footer-bottom-padding {
+            padding: 24px 32px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+          .footer-padding {
+            padding: 48px 24px 24px;
+          }
+          .cta-padding {
+            padding: 48px 24px;
+          }
+          .divider-padding {
+            padding: 0 24px;
+          }
+          .footer-bottom-padding {
+            padding: 24px 24px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .footer-padding {
+            padding: 40px 20px 20px;
+          }
+          .cta-padding {
+            padding: 40px 20px;
+          }
+          .divider-padding {
+            padding: 0 20px;
+          }
+          .footer-bottom-padding {
+            padding: 24px 20px;
+          }
+        }
       `}</style>
 
       <footer style={{ fontFamily: "'DM Sans', sans-serif", background: '#0a0a0a', color: '#fff', position: 'relative', overflow: 'hidden' }}>
@@ -149,7 +224,7 @@ export default function Footer() {
         <div style={{ position: 'absolute', bottom: 0, right: '10%', width: 320, height: 320, borderRadius: '50%', background: 'rgba(127,191,47,.04)', filter: 'blur(80px)', pointerEvents: 'none' }} />
 
         {/* ── CTA Banner ── */}
-        <div style={{ borderBottom: '1px solid rgba(255,255,255,.06)', padding: '72px 48px' }}>
+        <div className="cta-padding" style={{ borderBottom: '1px solid rgba(255,255,255,.06)' }}>
           <div className="page-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 40, flexWrap: 'wrap' }}>
             <div style={{ maxWidth: 560 }}>
               <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.28em', textTransform: 'uppercase', color: '#7fbf2f', margin: '0 0 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -174,8 +249,8 @@ export default function Footer() {
         </div>
 
         {/* ── Main Footer Body ── */}
-        <div className="page-container" style={{ padding: '64px 48px 40px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1fr', gap: 48 }}>
+        <div className="page-container footer-padding">
+          <div className="footer-grid">
 
             {/* Brand Column */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -228,12 +303,12 @@ export default function Footer() {
         </div>
 
         {/* ── Divider ── */}
-        <div className="page-container" style={{ padding: '0 48px' }}>
+        <div className="page-container divider-padding">
           <div style={{ height: 1, background: 'linear-gradient(to right, transparent, rgba(255,255,255,.08) 20%, rgba(255,255,255,.08) 80%, transparent)' }} />
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="page-container" style={{ padding: '24px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+        <div className="page-container footer-bottom-padding" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
           <p style={{ fontSize: 13, color: '#555', margin: 0 }}>
             © {new Date().getFullYear()} Ammar Designz Creative Studio. All rights reserved.
           </p>

@@ -30,6 +30,45 @@ const SHARED_STYLES = `
   .port-overlay { transition:opacity .4s ease; }
   .testimonial-card:hover { transform:translateY(-4px); box-shadow:0 24px 60px rgba(0,0,0,.1) !important; }
   .testimonial-card { transition:all .35s ease; }
+
+  .portfolio-masonry { column-count:3; column-gap:20px; }
+  .portfolio-stats-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+  .portfolio-testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .hero-title { font-size:88px; fontWeight:700; lineHeight:.9; margin:0 0 28px; color:#111; }
+  .section-padding { padding: 100px 48px; }
+  .hero-padding { padding: 120px 48px 80px; }
+  .cta-title { font-size:64px; fontWeight:700; color:#fff; margin:0 0 24px; lineHeight:1.05; }
+  .stats-card { text-align:center; padding:32px 24px; border-right:1px solid rgba(255,255,255,.06); }
+  .stats-card:last-child { border-right:none; }
+
+  @media (max-width: 1024px) {
+    .portfolio-masonry { column-count:2; }
+    .portfolio-stats-grid { grid-template-columns:repeat(2,1fr) !important; }
+    .portfolio-testimonials-grid { grid-template-columns:repeat(2,1fr) !important; }
+    .hero-title { font-size: 64px; }
+    .cta-title { font-size: 48px; }
+    .stats-card:nth-child(2n) { border-right:none; }
+    .stats-card { border-bottom:1px solid rgba(255,255,255,.06); }
+    .stats-card:nth-last-child(-n+2) { border-bottom:none; }
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-masonry { column-count:1; display: flex; flex-direction: column; gap: 24px; }
+    .port-card { margin-bottom: 0 !important; width: 100%; }
+    .portfolio-stats-grid { grid-template-columns:1fr !important; }
+    .portfolio-testimonials-grid { grid-template-columns:1fr !important; }
+    .section-padding { padding: 60px 24px !important; }
+    .hero-padding { padding: 80px 24px 60px !important; }
+    .hero-title { font-size: 48px; }
+    .cta-title { font-size: 40px; }
+    .stats-card { border-right:none !important; border-bottom:1px solid rgba(255,255,255,.06); }
+    .stats-card:last-child { border-bottom:none; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-title { font-size: 40px; }
+    .cta-title { font-size: 32px; }
+  }
 `;
 
 const categories = ["All", "Calligraphy", "Brand Identity", "Social Media", "Print", "Digital"];
@@ -62,7 +101,7 @@ export default function PortfolioPage() {
       <div>
 
         {/* ── HERO ── */}
-        <section style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa,#f4f9ec 60%,#fdfcfa)", padding:"120px 48px 80px" }}>
+        <section className="hero-padding" style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa,#f4f9ec 60%,#fdfcfa)" }}>
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.08)", top:-80, right:-80 }} />
           <div style={{ position:"absolute", right:"6%", top:"50%", transform:"translateY(-50%)", width:460, height:460, borderRadius:"50%", border:"1px dashed rgba(127,191,47,.18)", animation:"spin-slow 30s linear infinite", pointerEvents:"none" }} />
 
@@ -72,7 +111,7 @@ export default function PortfolioPage() {
               <span style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f" }}>Our Work</span>
               <span style={{ width:32, height:1, background:"#7fbf2f", display:"block" }} />
             </div>
-            <h1 className="serif afu d1" style={{ fontSize:88, fontWeight:700, lineHeight:.9, margin:"0 0 28px", color:"#111" }}>
+            <h1 className="serif afu d1 hero-title">
               200+ Projects.<br /><span className="gradient-text">One Standard.</span>
             </h1>
             <p className="afu d2" style={{ fontSize:17, lineHeight:1.85, color:"#666", maxWidth:540, margin:"0 auto 16px" }}>
@@ -82,7 +121,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* ── FILTER + GRID ── */}
-        <section style={{ background:"#faf9f7", padding:"60px 48px 100px" }}>
+        <section className="section-padding" style={{ background:"#faf9f7" }}>
           <div className="page-container">
             {/* Filter bar */}
             <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:52, justifyContent:"center" }}>
@@ -96,7 +135,7 @@ export default function PortfolioPage() {
             </div>
 
             {/* Masonry-style grid */}
-            <div style={{ columns:3, gap:20 }}>
+            <div className="portfolio-masonry" style={{ gap:20 }}>
               {filtered.map((p,i) => (
                 <div key={i} className="port-card" style={{ breakInside:"avoid", marginBottom:20, borderRadius:24, overflow:"hidden", position:"relative", background:"#e8e8e8" }}>
                   <div style={{ position:"relative", overflow:"hidden" }}>
@@ -120,15 +159,15 @@ export default function PortfolioPage() {
         </section>
 
         {/* ── STATS ── */}
-        <section style={{ background:"#0d0d0d", padding:"80px 48px" }}>
-          <div className="page-container" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:0 }}>
+        <section className="section-padding" style={{ background:"#0d0d0d" }}>
+          <div className="page-container portfolio-stats-grid" style={{ gap:0 }}>
             {[
               { val:"200+", label:"Projects Delivered", sub:"Across 5 disciplines" },
               { val:"150+", label:"Happy Clients", sub:"From 8 countries" },
               { val:"98%", label:"On-Time Delivery", sub:"Zero missed deadlines" },
               { val:"5★", label:"Average Rating", sub:"From verified clients" },
             ].map((s,i) => (
-              <div key={i} style={{ textAlign:"center", padding:"32px 24px", borderRight:i<3?"1px solid rgba(255,255,255,.06)":"none" }}>
+              <div key={i} className="stats-card">
                 <p className="serif gradient-text" style={{ fontSize:52, fontWeight:700, margin:0, lineHeight:1 }}>{s.val}</p>
                 <p style={{ fontSize:15, fontWeight:600, color:"#fff", margin:"12px 0 4px" }}>{s.label}</p>
                 <p style={{ fontSize:12, color:"#555", margin:0 }}>{s.sub}</p>
@@ -138,13 +177,13 @@ export default function PortfolioPage() {
         </section>
 
         {/* ── TESTIMONIALS ── */}
-        <section style={{ background:"#faf9f7", padding:"100px 48px" }}>
+        <section className="section-padding" style={{ background:"#faf9f7" }}>
           <div className="page-container">
             <div style={{ textAlign:"center", marginBottom:72 }}>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Client Voices</p>
               <h2 className="serif" style={{ fontSize:56, fontWeight:700, color:"#111", margin:0 }}>What Clients <span className="gradient-text">Say</span></h2>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:24 }}>
+            <div className="portfolio-testimonials-grid" style={{ gap:24 }}>
               {testimonials.map((t,i) => (
                 <div key={i} className="testimonial-card" style={{ background:"#fff", border:"1px solid rgba(0,0,0,.06)", borderRadius:28, padding:"36px 32px", boxShadow:"0 4px 24px rgba(0,0,0,.06)" }}>
                   <div style={{ display:"flex", gap:3, marginBottom:24 }}>
@@ -167,10 +206,10 @@ export default function PortfolioPage() {
         </section>
 
         {/* ── CTA ── */}
-        <section style={{ background:"#0a0a0a", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
+        <section className="section-padding" style={{ background:"#0a0a0a", position:"relative", overflow:"hidden" }}>
           <div className="orb" style={{ width:600, height:600, background:"rgba(127,191,47,.06)", top:"50%", left:"50%", transform:"translate(-50%,-50%)" }} />
           <div style={{ maxWidth:800, margin:"0 auto", textAlign:"center", position:"relative", zIndex:1 }}>
-            <h2 className="serif" style={{ fontSize:64, fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>
+            <h2 className="serif cta-title">
               Your Project<br /><span className="gradient-text">Could Be Next.</span>
             </h2>
             <p style={{ fontSize:16, color:"#888", lineHeight:1.8, margin:"0 0 40px" }}>Let's create something that earns its place in a portfolio like this.</p>

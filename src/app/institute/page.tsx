@@ -42,6 +42,47 @@ const SHARED_STYLES = `
   .stat-box { transition:transform .3s ease; }
   .feature-row:hover { background:rgba(127,191,47,.04) !important; }
   .feature-row { transition:background .25s; }
+
+  .inst-hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .inst-courses-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
+  .inst-why-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+  .inst-why-features { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .inst-steps-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:24px; position:relative; }
+  .inst-steps-line { position:absolute; top:28px; left:10%; right:10%; height:1px; background:linear-gradient(to right,rgba(127,191,47,.3),rgba(127,191,47,.1),rgba(127,191,47,.3)); z-index:0; }
+  .inst-mentors-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+
+  @media (max-width: 1024px) {
+    .inst-hero-grid { grid-template-columns:1fr; gap:48px; }
+    .inst-courses-grid { grid-template-columns:1fr; }
+    .inst-why-grid { grid-template-columns:1fr; gap:48px; }
+    .inst-mentors-grid { grid-template-columns:repeat(2,1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .inst-hero-grid { grid-template-columns:1fr !important; gap:40px !important; }
+    .inst-why-features { grid-template-columns:1fr !important; }
+    .inst-steps-grid { grid-template-columns:1fr !important; }
+    .inst-steps-line { display:none; }
+    .inst-mentors-grid { grid-template-columns:1fr !important; }
+    .inst-courses-grid { grid-template-columns:1fr !important; }
+    .inst-why-grid { grid-template-columns:1fr !important; }
+  }
+
+  @media (max-width: 1024px) {
+    .hero-title-responsive { font-size: 60px !important; }
+    .responsive-padding { padding-left: 32px !important; padding-right: 32px !important; }
+  }
+  @media (max-width: 768px) {
+    .hero-title-responsive { font-size: 40px !important; }
+    .responsive-padding { padding-left: 24px !important; padding-right: 24px !important; }
+    .section-padding-responsive { padding-top: 60px !important; padding-bottom: 60px !important; }
+  }
+  @media (max-width: 480px) {
+    .hero-title-responsive { font-size: 32px !important; }
+    .responsive-padding { padding-left: 20px !important; padding-right: 20px !important; }
+    .modal-padding { padding: 32px 24px !important; }
+  }
+  .modal-padding { padding: 52px 48px; }
 `;
 
 const courses = [
@@ -147,25 +188,25 @@ export default function InstitutePage() {
   const filtered = activeTab === "All" ? courses : courses.filter(c => c.tag === activeTab);
 
   return (
-    <>
+    <div style={{ overflowX: "hidden" }}>
       <style>{SHARED_STYLES}</style>
       <div>
 
         {/* ── HERO ── */}
-        <section style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa,#f4f9ec 55%,#fdfcfa)", padding:"120px 48px 80px", minHeight:"90vh", display:"flex", alignItems:"center" }}>
+        <section className="responsive-padding section-padding-responsive" style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa,#f4f9ec 55%,#fdfcfa)", padding:"120px 48px 80px", minHeight:"90vh", display:"flex", alignItems:"center" }}>
           <div className="orb" style={{ width:600, height:600, background:"rgba(127,191,47,.09)", top:-100, right:-100 }} />
           <div className="orb" style={{ width:400, height:400, background:"rgba(127,191,47,.05)", bottom:-60, left:-80 }} />
           <div style={{ position:"absolute", right:"4%", top:"50%", transform:"translateY(-50%)", width:500, height:500, borderRadius:"50%", border:"1px dashed rgba(127,191,47,.2)", animation:"spin-slow 30s linear infinite", pointerEvents:"none" }} />
           <div style={{ position:"absolute", right:"7%", top:"50%", transform:"translateY(-50%)", width:400, height:400, borderRadius:"50%", border:"1px solid rgba(127,191,47,.07)", pointerEvents:"none" }} />
 
-          <div className="page-container" style={{ position:"relative", zIndex:1, width:"100%", display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center" }}>
+          <div className="page-container inst-hero-grid" style={{ position:"relative", zIndex:1, width:"100%", display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center" }}>
             <div>
               {/* Badge */}
               <div className="afu" style={{ display:"inline-flex", alignItems:"center", gap:10, background:"rgba(127,191,47,.1)", border:"1px solid rgba(127,191,47,.25)", borderRadius:100, padding:"8px 18px", marginBottom:28 }}>
                 <span style={{ width:8, height:8, borderRadius:"50%", background:"#7fbf2f", boxShadow:"0 0 10px #7fbf2f" }} />
                 <span style={{ fontSize:11, fontWeight:600, letterSpacing:".22em", textTransform:"uppercase", color:"#5a9c1a" }}>Ammar Designz Institute</span>
               </div>
-              <h1 className="serif afu d1" style={{ fontSize:76, fontWeight:700, lineHeight:.95, margin:"0 0 24px", color:"#111" }}>
+              <h1 className="serif afu d1 hero-title-responsive" style={{ fontSize:76, fontWeight:700, lineHeight:.95, margin:"0 0 24px", color:"#111" }}>
                 Where Craft<br />Becomes <span className="gradient-text">Career.</span>
               </h1>
               <p className="afu d2" style={{ fontSize:17, lineHeight:1.9, color:"#666", maxWidth:500, margin:"0 0 40px" }}>
@@ -224,12 +265,12 @@ export default function InstitutePage() {
         </div>
 
         {/* ── COURSES ── */}
-        <section id="courses" style={{ background:"#faf9f7", padding:"100px 48px" }}>
-          <div className="page-container">
-            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:64 }}>
+        <section id="courses" className="responsive-padding section-padding-responsive" style={{ background:"#faf9f7", padding:"100px 48px" }}>
+            <div className="page-container">
+            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:64, flexWrap:"wrap", gap:20 }}>
               <div>
                 <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Our Programmes</p>
-                <h2 className="serif" style={{ fontSize:56, fontWeight:700, color:"#111", margin:0 }}>Current <span className="gradient-text">Courses</span></h2>
+                <h2 className="serif hero-title-responsive" style={{ fontSize:56, fontWeight:700, color:"#111", margin:0 }}>Current <span className="gradient-text">Courses</span></h2>
               </div>
               <div style={{ display:"flex", gap:10 }}>
                 {tabs.map(t => (
@@ -242,7 +283,7 @@ export default function InstitutePage() {
               </div>
             </div>
 
-            <div style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:28 }}>
+            <div className="inst-courses-grid">
               {filtered.map((c,i) => (
                 <div key={i} className="course-card" style={{ background:"#fff", border:"1px solid rgba(0,0,0,.06)", borderRadius:32, overflow:"hidden", boxShadow:"0 4px 24px rgba(0,0,0,.06)" }}>
                   <div style={{ position:"relative", height:240, overflow:"hidden" }}>
@@ -290,14 +331,14 @@ export default function InstitutePage() {
         </section>
 
         {/* ── WHY CHOOSE US ── */}
-        <section style={{ background:"#0d0d0d", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
+        <section className="responsive-padding section-padding-responsive" style={{ background:"#0d0d0d", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.07)", top:-80, right:-80 }} />
           <div className="orb" style={{ width:400, height:400, background:"rgba(127,191,47,.05)", bottom:-80, left:-60 }} />
-          <div className="page-container" style={{ position:"relative", zIndex:1 }}>
-            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"start" }}>
+          <div className="page-container inst-why-grid" style={{ position:"relative", zIndex:1 }}>
+            <div className="inst-why-grid">
               <div>
                 <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>The Difference</p>
-                <h2 className="serif" style={{ fontSize:56, fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Why the <span className="gradient-text">Institute?</span></h2>
+                <h2 className="serif hero-title-responsive" style={{ fontSize:56, fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Why the <span className="gradient-text">Institute?</span></h2>
                 <p style={{ fontSize:15, lineHeight:1.9, color:"#888", margin:"0 0 40px" }}>
                   Most design courses teach software. We teach design thinking — grounded in real studio experience, cultural depth, and the kind of feedback that actually makes you better.
                 </p>
@@ -308,7 +349,7 @@ export default function InstitutePage() {
                   <p style={{ fontSize:13, color:"#7fbf2f", margin:"16px 0 0", fontWeight:600 }}>— Hafiz Muhammad Ammar, Founder</p>
                 </div>
               </div>
-              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }}>
+              <div className="inst-why-features">
                 {whyUs.map((w,i) => (
                   <div key={i} className="feature-row" style={{ background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.06)", borderRadius:20, padding:"22px 20px" }}>
                     <span style={{ fontSize:26, display:"block", marginBottom:12 }}>{w.icon}</span>
@@ -322,15 +363,14 @@ export default function InstitutePage() {
         </section>
 
         {/* ── HOW IT WORKS ── */}
-        <section style={{ background:"#faf9f7", padding:"100px 48px" }}>
+        <section className="responsive-padding section-padding-responsive" style={{ background:"#faf9f7", padding:"100px 48px" }}>
           <div className="page-container">
             <div style={{ textAlign:"center", marginBottom:72 }}>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>The Journey</p>
-              <h2 className="serif" style={{ fontSize:56, fontWeight:700, color:"#111", margin:0 }}>How It <span className="gradient-text">Works</span></h2>
+              <h2 className="serif hero-title-responsive" style={{ fontSize:56, fontWeight:700, color:"#111", margin:0 }}>How It <span className="gradient-text">Works</span></h2>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:24, position:"relative" }}>
-              {/* connecting line */}
-              <div style={{ position:"absolute", top:28, left:"10%", right:"10%", height:1, background:"linear-gradient(to right,rgba(127,191,47,.3),rgba(127,191,47,.1),rgba(127,191,47,.3))", zIndex:0 }} />
+            <div className="inst-steps-grid">
+              <div className="inst-steps-line" style={{ position:"absolute", top:28, left:"10%", right:"10%", height:1, background:"linear-gradient(to right,rgba(127,191,47,.3),rgba(127,191,47,.1),rgba(127,191,47,.3))", zIndex:0 }} />
               {steps.map((s,i) => (
                 <div key={i} style={{ textAlign:"center", position:"relative", zIndex:1 }}>
                   <div style={{ width:56, height:56, borderRadius:"50%", background:"#7fbf2f", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 24px", boxShadow:"0 10px 30px rgba(127,191,47,.3)" }}>
@@ -345,14 +385,14 @@ export default function InstitutePage() {
         </section>
 
         {/* ── MENTORS ── */}
-        <section style={{ background:"#060606", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
+        <section className="responsive-padding section-padding-responsive" style={{ background:"#060606", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.06)", top:-80, left:"50%", transform:"translateX(-50%)" }} />
           <div className="page-container" style={{ position:"relative", zIndex:1 }}>
             <div style={{ textAlign:"center", marginBottom:72 }}>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Learn From the Best</p>
-              <h2 className="serif" style={{ fontSize:56, fontWeight:700, color:"#fff", margin:0 }}>Your <span className="gradient-text">Mentors</span></h2>
+              <h2 className="serif hero-title-responsive" style={{ fontSize:56, fontWeight:700, color:"#fff", margin:0 }}>Your <span className="gradient-text">Mentors</span></h2>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:24 }}>
+            <div className="inst-mentors-grid">
               {mentors.map((m,i) => (
                 <div key={i} className="mentor-card" style={{ background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.07)", borderRadius:32, overflow:"hidden", boxShadow:"0 4px 20px rgba(0,0,0,.2)", cursor:"pointer" }}>
                   <div style={{ aspectRatio:"4/5", overflow:"hidden" }}>
@@ -371,7 +411,7 @@ export default function InstitutePage() {
         </section>
 
         {/* ── FAQ ── */}
-        <section style={{ background:"#faf9f7", padding:"100px 48px" }}>
+        <section className="responsive-padding section-padding-responsive" style={{ background:"#faf9f7", padding:"100px 48px" }}>
           <div style={{ maxWidth:800, margin:"0 auto" }}>
             <div style={{ textAlign:"center", marginBottom:64 }}>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Have Questions?</p>
@@ -395,7 +435,7 @@ export default function InstitutePage() {
         {/* ── ENROL FORM MODAL ── */}
         {enrollForm && (
           <div style={{ position:"fixed", inset:0, background:"rgba(0,0,0,.7)", zIndex:1000, display:"flex", alignItems:"center", justifyContent:"center", padding:24 }} onClick={() => { setEnrollForm(false); setSubmitted(false); }}>
-            <div style={{ background:"#fff", borderRadius:36, padding:"52px 48px", maxWidth:560, width:"100%", maxHeight:"90vh", overflowY:"auto", position:"relative" }} onClick={e => e.stopPropagation()}>
+            <div className="modal-padding" style={{ background:"#fff", borderRadius:36, maxWidth:560, width:"100%", maxHeight:"90vh", overflowY:"auto", position:"relative" }} onClick={e => e.stopPropagation()}>
               <button onClick={() => { setEnrollForm(false); setSubmitted(false); }} style={{ position:"absolute", top:20, right:24, background:"rgba(0,0,0,.06)", border:"none", borderRadius:"50%", width:36, height:36, cursor:"pointer", fontSize:18, display:"grid", placeItems:"center" }}>×</button>
               {submitted ? (
                 <div style={{ textAlign:"center", padding:"32px 0" }}>
@@ -436,7 +476,7 @@ export default function InstitutePage() {
         )}
 
         {/* ── BOTTOM CTA ── */}
-        <section style={{ background:"#060606", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
+        <section className="responsive-padding section-padding-responsive" style={{ background:"#060606", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
           <div className="orb" style={{ width:600, height:600, background:"rgba(127,191,47,.06)", top:"50%", left:"50%", transform:"translate(-50%,-50%)" }} />
           <div style={{ maxWidth:900, margin:"0 auto", textAlign:"center", position:"relative", zIndex:1 }}>
             <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>Begin Your Journey</p>
@@ -459,6 +499,6 @@ export default function InstitutePage() {
         </section>
 
       </div>
-    </>
+    </div>
   );
 }

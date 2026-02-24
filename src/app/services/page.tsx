@@ -50,7 +50,50 @@ const STYLES = `
   .btn-green:hover { background:#5a9c1a; transform:translateY(-2px); box-shadow:0 20px 50px rgba(127,191,47,.5); }
   .btn-outline-white { display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.16); color:#fff; border-radius:100px; padding:14px 28px; font-size:14px; font-weight:500; text-decoration:none; transition:all .3s; font-family:'DM Sans',sans-serif; }
   .btn-outline-white:hover { border-color:#7fbf2f; color:#7fbf2f; }
-`;
+
+  .services-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+  .services-process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; position:relative; }
+  .services-process-line { position:absolute; top:27px; left:12.5%; right:12.5%; height:1px; background:linear-gradient(to right,rgba(127,191,47,.35),rgba(127,191,47,.1),rgba(127,191,47,.35)); z-index:0; }
+  .services-overview-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+  .services-overview-gallery { display:grid; grid-template-columns:1.3fr 0.85fr 1fr 0.85fr; gap:16px; margin-top:24px; }
+  .services-packages-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .services-detail-gallery { display:grid; grid-template-columns:1.3fr 1fr; gap:12px; margin-top:4px; }
+
+  @media (max-width: 1024px) {
+    .services-detail-grid { grid-template-columns:1fr; gap:48px; }
+    .services-overview-grid { grid-template-columns:repeat(3,1fr); }
+    .services-overview-gallery { grid-template-columns:repeat(2,1fr); }
+    .services-packages-grid { grid-template-columns:repeat(2,1fr); }
+    .services-process-grid { grid-template-columns:repeat(2,1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .services-detail-grid { grid-template-columns:1fr !important; gap:40px !important; }
+    .services-process-grid { grid-template-columns:1fr !important; gap:32px !important; }
+    .services-process-line { display:none; }
+    .services-overview-grid { grid-template-columns:1fr !important; gap:24px !important; }
+    .services-overview-gallery { grid-template-columns:1fr !important; gap:16px !important; }
+    .services-packages-grid { grid-template-columns:1fr !important; gap:24px !important; }
+    .services-detail-gallery { grid-template-columns:1fr !important; gap:16px !important; }
+  }
+
+      @media (max-width: 1024px) {
+        .hero-title-responsive { font-size: 64px !important; }
+        .responsive-padding { padding-left: 32px !important; padding-right: 32px !important; }
+      }
+      @media (max-width: 768px) {
+        .hero-title-responsive { font-size: 42px !important; }
+        .responsive-padding { padding-left: 24px !important; padding-right: 24px !important; }
+        .section-padding-responsive { padding-top: 60px !important; padding-bottom: 60px !important; }
+      }
+      @media (max-width: 480px) {
+        .hero-title-responsive { font-size: 32px !important; }
+        .responsive-padding { padding-left: 20px !important; padding-right: 20px !important; }
+        .pkg-card { padding: 24px 20px !important; }
+      }
+      .pkg-card { padding: 44px 38px; }
+      .page-container { width: 100%; max-width: 1400px; margin: 0 auto; }
+    `;
 
 const services = [
   {
@@ -113,24 +156,24 @@ export default function ServicesPage() {
   const svc = services.find(s => s.id === active)!;
 
   return (
-    <>
-      <style>{STYLES}</style>
+    <div style={{ overflowX: "hidden" }}>
+          <style>{STYLES}</style>
 
-      {/* ══ 1. HERO ══════════════════════════════════════ */}
-      <section style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg, #fdfcfa 0%, #f4f9ec 50%, #fdfcfa 100%)", paddingTop:160, paddingBottom:100 }}>
-        <div className="orb" style={{ width:700, height:700, background:"rgba(127,191,47,.07)", top:-160, right:-160 }} />
-        <div className="orb" style={{ width:450, height:450, background:"rgba(127,191,47,.04)", bottom:-100, left:-100 }} />
-        <div style={{ position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", width:750, height:750, borderRadius:"50%", border:"1px dashed rgba(127,191,47,.07)", animation:"spin 50s linear infinite", pointerEvents:"none" }} />
+          {/* ══ 1. HERO ══════════════════════════════════════ */}
+          <section style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg, #fdfcfa 0%, #f4f9ec 50%, #fdfcfa 100%)", paddingTop:160, paddingBottom:100 }}>
+            <div className="orb" style={{ width:700, height:700, background:"rgba(127,191,47,.07)", top:-160, right:-160 }} />
+            <div className="orb" style={{ width:450, height:450, background:"rgba(127,191,47,.04)", bottom:-100, left:-100 }} />
+            <div style={{ position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", width:750, height:750, borderRadius:"50%", border:"1px dashed rgba(127,191,47,.07)", animation:"spin 50s linear infinite", pointerEvents:"none" }} />
 
-        <div className="page-container" style={{ padding:"0 48px", position:"relative", zIndex:1, textAlign:"center" }}>
-          <div className="afu" style={{ display:"inline-flex", alignItems:"center", gap:10, marginBottom:28 }}>
-            <span style={{ width:32, height:1, background:"#7fbf2f", display:"block" }} />
-            <span style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#5a9c1a" }}>What We Offer</span>
-            <span style={{ width:32, height:1, background:"#7fbf2f", display:"block" }} />
-          </div>
-          <h1 className="serif afu d1" style={{ fontSize:88, fontWeight:700, lineHeight:.92, color:"#111", marginBottom:28 }}>
-            Services That<br /><span className="gradient-text">Speak Volumes.</span>
-          </h1>
+            <div className="page-container responsive-padding" style={{ padding:"0 48px", position:"relative", zIndex:1, textAlign:"center" }}>
+              <div className="afu" style={{ display:"inline-flex", alignItems:"center", gap:10, marginBottom:28 }}>
+                <span style={{ width:32, height:1, background:"#7fbf2f", display:"block" }} />
+                <span style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#5a9c1a" }}>What We Offer</span>
+                <span style={{ width:32, height:1, background:"#7fbf2f", display:"block" }} />
+              </div>
+              <h1 className="serif afu d1 hero-title-responsive" style={{ fontSize:88, fontWeight:700, lineHeight:.92, color:"#111", marginBottom:28 }}>
+                Services That<br /><span className="gradient-text">Speak Volumes.</span>
+              </h1>
           <p className="afu d2" style={{ fontSize:17, lineHeight:1.9, color:"#666", maxWidth:540, margin:"0 auto 52px" }}>
             From a single calligraphy mark to a complete brand overhaul — every service is delivered with the same obsessive attention to craft.
           </p>
@@ -156,9 +199,9 @@ export default function ServicesPage() {
       </div>
 
       {/* ══ 3. SERVICE DETAIL ═══════════════════════════ */}
-      <section style={{ background:"#060606", padding:"96px 48px" }}>
+      <section className="responsive-padding section-padding-responsive" style={{ background:"#060606", padding:"96px 48px" }}>
         <div className="page-container">
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"start" }}>
+          <div className="services-detail-grid" style={{ display:"grid", gap:80, alignItems:"start" }}>
 
             {/* LEFT */}
             <div style={{ display:"flex", flexDirection:"column", gap:32 }}>
@@ -193,7 +236,7 @@ export default function ServicesPage() {
                 ))}
               </div>
               {/* Gallery strip */}
-              <div style={{ display:"grid", gridTemplateColumns:"1.3fr 1fr", gap:12, marginTop:4 }}>
+              <div className="services-detail-gallery">
                 <div className="gal-item" style={{ aspectRatio:"4/3" }}>
                   <img src={svc.gallery[0]} alt="" />
                   <div className="gal-overlay" />
@@ -209,14 +252,14 @@ export default function ServicesPage() {
       </section>
 
       {/* ══ 4. PROCESS ══════════════════════════════════ */}
-      <section style={{ background:"#faf9f7", padding:"100px 48px" }}>
+      <section className="responsive-padding section-padding-responsive" style={{ background:"#faf9f7", padding:"100px 48px" }}>
         <div className="page-container">
           <div style={{ textAlign:"center", marginBottom:72 }}>
             <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Our Approach</p>
             <h2 className="serif" style={{ fontSize:60, fontWeight:700, color:"#111", lineHeight:1 }}>A Process Built for <span className="gradient-text">Great Work.</span></h2>
           </div>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:32, position:"relative" }}>
-            <div style={{ position:"absolute", top:27, left:"12.5%", right:"12.5%", height:1, background:"linear-gradient(to right,rgba(127,191,47,.35),rgba(127,191,47,.1),rgba(127,191,47,.35))", zIndex:0 }} />
+          <div className="services-process-grid" style={{ display:"grid", gap:32, position:"relative" }}>
+            <div className="services-process-line" style={{ position:"absolute", top:27, left:"12.5%", right:"12.5%", height:1, background:"linear-gradient(to right,rgba(127,191,47,.35),rgba(127,191,47,.1),rgba(127,191,47,.35))", zIndex:0 }} />
             {process.map((p,i) => (
               <div key={i} style={{ textAlign:"center", position:"relative", zIndex:1 }}>
                 <div style={{ width:56, height:56, borderRadius:"50%", background:"#7fbf2f", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 24px", boxShadow:"0 10px 32px rgba(127,191,47,.35)" }}>
@@ -231,15 +274,15 @@ export default function ServicesPage() {
       </section>
 
       {/* ══ 5. ALL SERVICES OVERVIEW ════════════════════ */}
-      <section style={{ background:"#0d0d0d", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
+      <section className="responsive-padding section-padding-responsive" style={{ background:"#0d0d0d", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
         <div className="orb" style={{ width:600, height:600, background:"rgba(127,191,47,.06)", top:-120, right:-120 }} />
         <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.04)", bottom:-100, left:-100 }} />
         <div className="page-container" style={{ position:"relative", zIndex:1 }}>
           <div style={{ textAlign:"center", marginBottom:64 }}>
             <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Everything We Do</p>
-            <h2 className="serif" style={{ fontSize:60, fontWeight:700, color:"#fff", lineHeight:1 }}>The Full <span className="gradient-text">Service Range.</span></h2>
+            <h2 className="serif hero-title-responsive" style={{ fontSize:60, fontWeight:700, color:"#fff", lineHeight:1 }}>The Full <span className="gradient-text">Service Range.</span></h2>
           </div>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:16 }}>
+          <div className="services-overview-grid" style={{ display:"grid", gap:16 }}>
             {services.map((s,i) => (
               <button key={i} className="svc-overview-card"
                 onClick={() => { setActive(s.id); window.scrollTo({ top:0, behavior:"smooth" }); }}>
@@ -251,7 +294,7 @@ export default function ServicesPage() {
             ))}
           </div>
           {/* Gallery row */}
-          <div style={{ display:"grid", gridTemplateColumns:"1.3fr 0.85fr 1fr 0.85fr", gap:16, marginTop:24 }}>
+          <div className="services-overview-gallery" style={{ display:"grid", gap:16, marginTop:24 }}>
             {["/Mask group.png", "/Mask group (1).png", "/Mask group (2).png", "/design_ (4) 1.png"].map((img,i) => (
               <div key={i} className="gal-item" style={{ aspectRatio: i===0||i===2 ? "4/3" : "1" }}>
                 <img src={img} alt="" /><div className="gal-overlay" />
@@ -262,17 +305,17 @@ export default function ServicesPage() {
       </section>
 
       {/* ══ 6. PACKAGES ════════════════════════════════ */}
-      <section style={{ background:"#faf9f7", padding:"100px 48px" }}>
+      <section className="responsive-padding section-padding-responsive" style={{ background:"#faf9f7", padding:"100px 48px" }}>
         <div className="page-container">
           <div style={{ textAlign:"center", marginBottom:72 }}>
             <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Transparent Pricing</p>
-            <h2 className="serif" style={{ fontSize:60, fontWeight:700, color:"#111", lineHeight:1 }}>Simple, Honest <span className="gradient-text">Packages.</span></h2>
+            <h2 className="serif hero-title-responsive" style={{ fontSize:60, fontWeight:700, color:"#111", lineHeight:1 }}>Simple, Honest <span className="gradient-text">Packages.</span></h2>
             <p style={{ fontSize:15, color:"#666", margin:"16px auto 0", maxWidth:480, lineHeight:1.8 }}>Every package is a starting point. Complex or custom projects are quoted individually — reach out and we'll build the right scope together.</p>
           </div>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:24 }}>
+          <div className="services-packages-grid" style={{ display:"grid", gap:24 }}>
             {packages.map((pkg,i) => (
-              <div key={i} className={`pkg${pkg.featured?" featured":""}`}
-                style={{ background:pkg.featured?"linear-gradient(160deg,#1a2a08,#0d1a04)":"#fff", border:"1px solid", borderColor:pkg.featured?"rgba(127,191,47,.45)":"rgba(0,0,0,.07)", borderRadius:36, padding:"44px 38px", boxShadow:pkg.featured?"0 16px 60px rgba(127,191,47,.18)":"0 4px 28px rgba(0,0,0,.06)", position:"relative" }}>
+              <div key={i} className={`pkg pkg-card${pkg.featured?" featured":""}`}
+                style={{ background:pkg.featured?"linear-gradient(160deg,#1a2a08,#0d1a04)":"#fff", border:"1px solid", borderColor:pkg.featured?"rgba(127,191,47,.45)":"rgba(0,0,0,.07)", borderRadius:36, boxShadow:pkg.featured?"0 16px 60px rgba(127,191,47,.18)":"0 4px 28px rgba(0,0,0,.06)", position:"relative" }}>
                 {pkg.featured && (
                   <div style={{ position:"absolute", top:22, right:22, background:"#7fbf2f", borderRadius:100, padding:"5px 16px", fontSize:10, fontWeight:800, color:"#000", letterSpacing:".16em", textTransform:"uppercase" }}>Most Popular</div>
                 )}
@@ -297,11 +340,11 @@ export default function ServicesPage() {
       </section>
 
       {/* ══ 7. BOTTOM CTA ═══════════════════════════════ */}
-      <section style={{ background:"#060606", padding:"110px 48px", position:"relative", overflow:"hidden" }}>
+      <section className="responsive-padding section-padding-responsive" style={{ background:"#060606", padding:"110px 48px", position:"relative", overflow:"hidden" }}>
         <div className="orb" style={{ width:700, height:700, background:"rgba(127,191,47,.06)", top:"50%", left:"50%", transform:"translate(-50%,-50%)" }} />
         <div style={{ maxWidth:820, margin:"0 auto", textAlign:"center", position:"relative", zIndex:1 }}>
           <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>Ready to Begin?</p>
-          <h2 className="serif" style={{ fontSize:72, fontWeight:700, color:"#fff", lineHeight:.95, margin:"0 0 24px" }}>
+          <h2 className="serif hero-title-responsive" style={{ fontSize:72, fontWeight:700, color:"#fff", lineHeight:.95, margin:"0 0 24px" }}>
             Not Sure What<br />You Need?<br /><span className="gradient-text">Let's Talk.</span>
           </h2>
           <p style={{ fontSize:16, color:"#888", lineHeight:1.85, margin:"0 auto 44px", maxWidth:480 }}>
@@ -317,6 +360,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

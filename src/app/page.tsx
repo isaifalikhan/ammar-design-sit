@@ -277,17 +277,17 @@ export default function Home() {
             padding: 80px 20px !important;
           }
           .home-services-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-columns: 1fr !important;
           }
           .home-gallery-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-columns: 1fr !important;
           }
           .home-ceo-grid {
             grid-template-columns: 1fr !important;
             padding: 32px 24px !important;
           }
           .home-team-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-columns: 1fr !important;
           }
           .home-courses-carousel {
             height: auto !important;
@@ -310,11 +310,6 @@ export default function Home() {
           .home-hero-title {
             font-size: 40px !important;
           }
-          .home-services-grid,
-          .home-gallery-grid,
-          .home-team-grid {
-            grid-template-columns: 1fr !important;
-          }
         }
       `}</style>
 
@@ -332,7 +327,7 @@ export default function Home() {
           <div style={{ position: 'absolute', right: '5%', top: '50%', transform: 'translateY(-50%)', width: 520, height: 520, borderRadius: '50%', border: '1px dashed rgba(127,191,47,.2)', pointerEvents: 'none' }} />
           <div style={{ position: 'absolute', right: '6.5%', top: '50%', transform: 'translateY(-50%)', width: 480, height: 480, borderRadius: '50%', border: '1px solid rgba(127,191,47,.08)', pointerEvents: 'none' }} />
 
-          <div className="page-container home-hero-grid" style={{ position: 'relative', zIndex: 2, width: '100%', padding: '80px 48px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+         <div className="page-container home-hero-grid" style={{ position: 'relative', zIndex: 2, width: '100%', padding: '80px 48px', display: 'grid', gap: 64, alignItems: 'center' }}>
             {/* LEFT */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {/* Pill badge */}
@@ -459,7 +454,7 @@ export default function Home() {
             </div>
 
             {/* Services grid */}
-            <div className="home-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
+            <div className="home-services-grid" style={{ display: 'grid', gap: 16 }}>
               {services.map((s, i) => (
                 <div key={i} className="service-card card-hover" style={{ background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.07)', borderRadius: 24, padding: '32px 24px', cursor: 'pointer', position: 'relative', overflow: 'hidden' }}>
                   <div style={{ position: 'absolute', top: 0, right: 0, width: 80, height: 80, borderRadius: '0 0 0 80px', background: 'rgba(127,191,47,.05)' }} />
@@ -474,7 +469,7 @@ export default function Home() {
             </div>
 
             {/* Gallery strip */}
-            <div className="home-gallery-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr 1fr 0.9fr', gap: 16, marginTop: 24 }}>
+            <div className="home-gallery-grid" style={{ display: 'grid', gap: 16, marginTop: 24 }}>
               {['/Mask group.png', '/Mask group (1).png', '/Mask group (2).png', '/design_ (4) 1.png'].map((img, i) => (
                 <div key={i} style={{ borderRadius: 20, overflow: 'hidden', aspectRatio: i === 0 ? '4/3' : i === 2 ? '4/3' : '1', position: 'relative' }} className="card-hover">
                   <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
@@ -505,7 +500,7 @@ export default function Home() {
             </div>
 
             {/* CEO */}
-            <div className="home-ceo-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.8fr', gap: 64, alignItems: 'center', marginBottom: 80, background: '#fff', borderRadius: 40, padding: '56px 64px', boxShadow: '0 4px 40px rgba(0,0,0,.06)', border: '1px solid rgba(0,0,0,.04)' }}>
+            <div className="home-ceo-grid" style={{ display: 'grid', gap: 64, alignItems: 'center', marginBottom: 80, background: '#fff', borderRadius: 40, padding: '56px 64px', boxShadow: '0 4px 40px rgba(0,0,0,.06)', border: '1px solid rgba(0,0,0,.04)' }}>
               <div style={{ position: 'relative' }}>
                 <div style={{ borderRadius: '50% 40% 50% 40% / 40% 50% 40% 50%', overflow: 'hidden', boxShadow: '0 40px 80px rgba(0,0,0,.15)' }}>
                   <img src="/member.png" alt="Hafiz Muhammad Ammar" style={{ width: '100%', display: 'block', filter: 'grayscale(30%)' }} />
@@ -529,7 +524,7 @@ export default function Home() {
             </div>
 
             {/* Team */}
-            <div className="home-team-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+            <div className="home-team-grid">
               {team.map((m, i) => (
                 <div key={i} className="team-card card-hover" style={{ background: '#fff', borderRadius: 28, overflow: 'hidden', border: '1px solid rgba(0,0,0,.05)', cursor: 'pointer' }}>
                   <div style={{ aspectRatio: '4/5', overflow: 'hidden', position: 'relative' }}>
@@ -645,7 +640,7 @@ export default function Home() {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <div className="home-contact-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                  <div className="home-contact-form-row" style={{ display: 'grid', gap: 16 }}>
                     {['Full name', 'Email address'].map(ph => (
                       <input key={ph} type={ph.includes('Email') ? 'email' : 'text'} placeholder={ph} style={{ height: 52, borderRadius: 14, border: '1.5px solid #e8e8e8', background: '#fafafa', padding: '0 18px', fontSize: 14, color: '#111', transition: 'all .25s' }} />
                     ))}

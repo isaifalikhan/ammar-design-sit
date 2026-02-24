@@ -146,7 +146,7 @@ export default function Navbar() {
         }
 
         .mobile-logo-img {
-          height: 80px;
+          height: 96px;
           width: auto;
           display: block;
           object-fit: contain;
@@ -294,7 +294,7 @@ export default function Navbar() {
         .mobile-menu {
           position: fixed;
           inset: 0;
-          z-index: 9998;
+          z-index: 10000;
           display: flex;
           flex-direction: column;
           pointer-events: none;
@@ -414,18 +414,24 @@ export default function Navbar() {
         @media (max-width: 1024px) {
           .nav-links-wrap, .nav-quote { display: none; }
           .nav-burger { display: flex; }
-        }
-        @media (max-width: 768px) {
           .navbar-logo-img { height: 80px; }
         }
+        @media (max-width: 768px) {
+          .navbar-logo-img { height: 64px; }
+          .mobile-logo-img { height: 72px; }
+          .navbar-wrap { padding: 0 20px; }
+        }
         @media (max-width: 640px) {
-          .navbar-wrap { padding: 0 16px; }
-          .navbar-inner { padding: 8px 8px 8px 20px; }
+          .navbar-wrap { padding: 0 12px; }
+          .navbar-inner { padding: 8px 12px; }
           .nav-cta span:not(.nav-cta-arrow) { display: none; }
-          .nav-cta { padding: 10px 14px; }
+          .nav-cta { padding: 0; width: 40px; height: 40px; border-radius: 50%; justify-content: center; }
+          .nav-cta-arrow { background: transparent; width: auto; height: auto; font-size: 18px; }
+          .nav-cta:hover .nav-cta-arrow { transform: none; }
         }
         @media (max-width: 480px) {
-          .navbar-logo-img { height: 64px; }
+          .navbar-logo-img { height: 52px; }
+          .mobile-logo-img { height: 60px; }
         }
 
         /* ── Entry animation ── */

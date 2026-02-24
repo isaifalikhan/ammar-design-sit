@@ -34,6 +34,63 @@ const SHARED_STYLES = `
   .service-opt:hover { border-color:#7fbf2f !important; background:rgba(127,191,47,.05) !important; }
   .service-opt.selected { border-color:#7fbf2f !important; background:rgba(127,191,47,.1) !important; }
   .service-opt { transition:all .25s ease; cursor:pointer; }
+
+  .contact-hero { padding:120px 48px 80px; }
+  .contact-hero-title { font-size:88px; }
+  .contact-section-cards { padding:60px 48px 0; }
+  .contact-section-main { padding:60px 48px 100px; }
+  .contact-section-faq { padding:80px 48px; }
+  .contact-form-card { padding:56px 52px; border-radius:40px; }
+
+  .contact-info-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .contact-main-grid { display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; }
+  .contact-form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .contact-faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+
+  @media (max-width: 1024px) {
+    .contact-hero { padding:100px 32px 64px; }
+    .contact-hero-title { font-size:64px; }
+    .contact-section-cards,
+    .contact-section-main,
+    .contact-section-faq { padding:60px 32px 80px; }
+    .contact-info-grid { grid-template-columns:repeat(2,1fr); }
+    .contact-main-grid { grid-template-columns:1fr; gap:32px; }
+    .contact-faq-grid { grid-template-columns:1fr; gap:40px; }
+  }
+
+  @media (max-width: 768px) {
+    .contact-hero { padding:96px 24px 56px; }
+    .contact-hero-title { font-size:48px; }
+    .contact-section-cards,
+    .contact-section-main,
+    .contact-section-faq { padding:48px 24px 64px; }
+    .contact-info-grid { grid-template-columns:1fr; }
+    .contact-form-row { grid-template-columns:1fr; }
+    .contact-form-card { padding:40px 24px; border-radius:28px; }
+  }
+
+  @media (max-width: 480px) {
+    .contact-hero { padding:80px 20px 48px; }
+    .contact-hero-title { font-size:36px; }
+    .contact-section-cards,
+    .contact-section-main,
+    .contact-section-faq { padding:40px 20px 56px; }
+    .contact-form-card { padding:32px 20px; border-radius:24px; }
+  }
+
+  .contact-h2-responsive { font-size: 44px; }
+  .contact-h2-faq { font-size: 52px; }
+  .page-container { width: 100%; max-width: 1400px; margin: 0 auto; }
+
+  @media (max-width: 768px) {
+    .contact-h2-responsive { font-size: 36px !important; }
+    .contact-h2-faq { font-size: 40px !important; }
+  }
+
+  @media (max-width: 480px) {
+    .contact-h2-responsive { font-size: 32px !important; }
+    .contact-h2-faq { font-size: 32px !important; }
+  }
 `;
 
 const contactInfo = [
@@ -59,10 +116,10 @@ export default function ContactPage() {
   return (
     <>
       <style>{SHARED_STYLES}</style>
-      <div>
+      <div style={{ overflowX: "hidden" }}>
 
         {/* ── HERO ── */}
-        <section style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa,#f4f9ec 60%,#fdfcfa)", padding:"120px 48px 80px" }}>
+        <section className="contact-hero" style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa,#f4f9ec 60%,#fdfcfa)" }}>
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.08)", top:-80, right:-80 }} />
           <div style={{ position:"absolute", right:"5%", top:"50%", transform:"translateY(-50%)", width:440, height:440, borderRadius:"50%", border:"1px dashed rgba(127,191,47,.18)", animation:"spin-slow 30s linear infinite", pointerEvents:"none" }} />
 
@@ -71,7 +128,7 @@ export default function ContactPage() {
               <span style={{ width:32, height:1, background:"#7fbf2f", display:"block" }} />
               <span style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f" }}>Get In Touch</span>
             </div>
-            <h1 className="serif afu d1" style={{ fontSize:88, fontWeight:700, lineHeight:.9, margin:"0 0 28px", color:"#111", maxWidth:700 }}>
+            <h1 className="serif afu d1 contact-hero-title" style={{ fontSize:88, fontWeight:700, lineHeight:.9, margin:"0 0 28px", color:"#111", maxWidth:700 }}>
               Let's Make<br />Something <span className="gradient-text">Great.</span>
             </h1>
             <p className="afu d2" style={{ fontSize:17, lineHeight:1.85, color:"#666", maxWidth:520, margin:0 }}>
@@ -81,8 +138,8 @@ export default function ContactPage() {
         </section>
 
         {/* ── CONTACT CARDS ── */}
-        <section style={{ background:"#faf9f7", padding:"60px 48px 0" }}>
-          <div className="page-container" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:20 }}>
+        <section className="contact-section-cards" style={{ background:"#faf9f7" }}>
+          <div className="page-container contact-info-grid">
             {contactInfo.map((c,i) => (
               <div key={i} className="info-card" style={{ background:"#fff", border:"1px solid rgba(0,0,0,.06)", borderRadius:24, padding:"28px 24px", boxShadow:"0 4px 20px rgba(0,0,0,.05)", cursor:"default" }}>
                 <span style={{ fontSize:28, display:"block", marginBottom:16 }}>{c.icon}</span>
@@ -95,11 +152,11 @@ export default function ContactPage() {
         </section>
 
         {/* ── MAIN FORM + MAP ── */}
-        <section style={{ background:"#faf9f7", padding:"60px 48px 100px" }}>
-          <div className="page-container" style={{ display:"grid", gridTemplateColumns:"1.1fr 0.9fr", gap:40 }}>
+        <section className="contact-section-main" style={{ background:"#faf9f7" }}>
+          <div className="page-container contact-main-grid">
 
             {/* FORM */}
-            <div style={{ background:"#fff", borderRadius:40, padding:"56px 52px", border:"1px solid rgba(0,0,0,.05)", boxShadow:"0 8px 50px rgba(0,0,0,.07)" }}>
+            <div className="contact-form-card" style={{ background:"#fff", borderRadius:40, padding:"56px 52px", border:"1px solid rgba(0,0,0,.05)", boxShadow:"0 8px 50px rgba(0,0,0,.07)" }}>
               {submitted ? (
                 <div style={{ display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", minHeight:400, textAlign:"center", gap:24 }}>
                   <div style={{ width:80, height:80, borderRadius:"50%", background:"rgba(127,191,47,.1)", border:"2px solid #7fbf2f", display:"grid", placeItems:"center", fontSize:36, animation:"pulse 2s ease-in-out infinite" }}>✓</div>
@@ -111,12 +168,12 @@ export default function ContactPage() {
                 <>
                   <div style={{ marginBottom:40 }}>
                     <p style={{ fontSize:11, fontWeight:600, letterSpacing:".25em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 10px" }}>Project Brief</p>
-                    <h2 className="serif" style={{ fontSize:44, fontWeight:700, color:"#111", margin:0, lineHeight:1.1 }}>Tell Us About<br />Your Project</h2>
+                    <h2 className="serif contact-h2-responsive" style={{ fontWeight:700, color:"#111", margin:0, lineHeight:1.1 }}>Tell Us About<br />Your Project</h2>
                   </div>
 
                   <div style={{ display:"flex", flexDirection:"column", gap:20 }}>
                     {/* Name + Email */}
-                    <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }}>
+                    <div className="contact-form-row">
                       <div>
                         <label style={{ fontSize:12, fontWeight:600, color:"#888", letterSpacing:".08em", textTransform:"uppercase", display:"block", marginBottom:8 }}>Full Name *</label>
                         <input type="text" placeholder="Your name" style={{ width:"100%", height:52, borderRadius:14, border:"1.5px solid #e5e5e5", background:"#fafafa", padding:"0 18px", fontSize:14, color:"#111", transition:"all .25s" }} />
@@ -128,7 +185,7 @@ export default function ContactPage() {
                     </div>
 
                     {/* Phone + Company */}
-                    <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }}>
+                    <div className="contact-form-row">
                       <div>
                         <label style={{ fontSize:12, fontWeight:600, color:"#888", letterSpacing:".08em", textTransform:"uppercase", display:"block", marginBottom:8 }}>Phone / WhatsApp</label>
                         <input type="tel" placeholder="+92 300 0000000" style={{ width:"100%", height:52, borderRadius:14, border:"1.5px solid #e5e5e5", background:"#fafafa", padding:"0 18px", fontSize:14, color:"#111", transition:"all .25s" }} />
@@ -252,12 +309,12 @@ export default function ContactPage() {
         </section>
 
         {/* ── QUICK FAQ ── */}
-        <section style={{ background:"#0a0a0a", padding:"80px 48px", position:"relative", overflow:"hidden" }}>
+        <section className="contact-section-faq" style={{ background:"#0a0a0a", position:"relative", overflow:"hidden" }}>
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.05)", top:"50%", left:"50%", transform:"translate(-50%,-50%)" }} />
-          <div className="page-container" style={{ position:"relative", zIndex:1, display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center" }}>
+          <div className="page-container contact-faq-grid" style={{ position:"relative", zIndex:1 }}>
             <div>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Quick Answers</p>
-              <h2 className="serif" style={{ fontSize:52, fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Before You<br /><span className="gradient-text">Reach Out</span></h2>
+              <h2 className="serif contact-h2-faq" style={{ fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Before You<br /><span className="gradient-text">Reach Out</span></h2>
               <p style={{ fontSize:15, lineHeight:1.85, color:"#888", margin:0 }}>A few things clients often want to know before getting in touch. Still have questions? The form is right above.</p>
             </div>
             <div style={{ display:"flex", flexDirection:"column", gap:20 }}>
