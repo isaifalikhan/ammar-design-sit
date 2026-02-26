@@ -31,57 +31,219 @@ const SHARED_STYLES = `
   .faq-q { cursor:pointer; }
   .benefit-icon { transition:transform .3s; }
   .benefit-card:hover .benefit-icon { transform:scale(1.15) rotate(-8deg); }
+  .pricing-card { background:#faf9f7; border-radius:20px; padding:24px; transition:all .3s ease; border:1px solid rgba(0,0,0,.06); height:100%; display:flex; flexDirection:column; }
+  .pricing-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,.08); border-color:#7fbf2f; }
 `;
 
 const courses = [
   {
     id: 1,
-    title: "Digital Arabic Calligraphy",
-    tag: "Recorded",
-    tagColor: "#7fbf2f",
-    level: "Beginner – Intermediate",
-    duration: "6 Weeks",
-    lessons: "24 Video Lessons",
-    fee: "Rs. 5,000",
-    img: "/course1.png",
-    desc: "Master the foundational scripts of Arabic calligraphy — Naskh, Thuluth, and Diwani — using professional digital tools. Build confidence with the pen, then translate that mastery to screen.",
-    curriculum: ["History & philosophy of Arabic scripts", "Naskh script from fundamentals", "Thuluth letterforms & compositions", "Diwani & Diwani Jali", "Digital tools: iPad + Procreate", "Creating logos & brand marks", "Final project & critique"],
-    outcomes: ["Design calligraphy-based logos", "Create compositions for print & digital", "Build a professional calligraphy portfolio"],
-    instructor: "Hafiz Muhammad Ammar",
-    students: "340+",
+    title: "Digital Arabic Calligraphy Course (Beginner)",
+    desc: "A complete, hands-on program designed to help you master Arabic calligraphy in the digital space, blending classical scripts with modern graphic design.",
+    learnTitle: "What You’ll Master",
+    learn: [
+      "Graphic Design fundamentals",
+      "Adobe Illustrator essentials",
+      "Arabic alphabet construction principles",
+      "Al-Wisam script foundations",
+      "Kufic script basics",
+      "Logo design & branding using Arabic typography",
+      "Islamic & Quranic artwork composition"
+    ],
+    pricing: [
+      {
+        title: "Recorded Course",
+        price: "7,000 Rs",
+        features: [
+          "30+ in-depth video lectures",
+          "Downloadable assets & practice sheets",
+          "Al-Wisam & Kufic scripts included",
+          "Graphic Design basics included",
+          "Learn at your own pace",
+          "Certificate on completion"
+        ]
+      },
+      {
+        title: "Live Course",
+        price: "7,000 Rs / Month",
+        duration: "(2 Months)",
+        features: [
+          "Live interactive sessions",
+          "Real-time corrections",
+          "Personalized feedback",
+          "Weekly practice assignments",
+          "Portfolio-oriented projects",
+          "Illustrator workflow guidance",
+          "Layout techniques for logos & artwork",
+          "Class recordings",
+          "Certificate"
+        ]
+      }
+    ],
+    whoFor: [
+      "Freshers in Arabic calligraphy",
+      "Graphic designers wanting Arabic typography skills",
+      "Artists interested in Islamic & Quranic art",
+      "Logo designers & brand creators"
+    ],
+    cta: "Enroll Now"
   },
   {
     id: 2,
-    title: "Graphic Designing",
-    tag: "Recorded",
-    tagColor: "#7fbf2f",
-    level: "Beginner – Advanced",
-    duration: "8 Weeks",
-    lessons: "32 Video Lessons",
-    fee: "Rs. 5,000",
-    img: "/course2.png",
-    desc: "A comprehensive graphic design programme covering visual thinking, typography, colour theory, layout design, and the tools of the trade. Gain real skills that get you hired or build your freelance career.",
-    curriculum: ["Design principles & visual hierarchy", "Typography masterclass", "Colour theory & psychology", "Adobe Illustrator essentials", "Adobe Photoshop workflows", "Layout & print design", "Social media design", "Portfolio-ready projects"],
-    outcomes: ["Design professional print & digital assets", "Use Adobe Creative Suite confidently", "Launch a freelance design career"],
-    instructor: "Abu Bakar",
-    students: "280+",
+    title: "Digital Arabic Calligraphy Face Art Course (Advanced)",
+    desc: "A 1-month intensive course to create Arabic calligraphy face art in vector format using Adobe Illustrator, perfect for portfolio-ready professional artworks.",
+    learnTitle: "What You’ll Learn",
+    learn: [
+      "Vector calligraphy fundamentals",
+      "Al-Wisam & Kufic in Illustrator",
+      "Face art composition",
+      "Typography on portraits",
+      "Gradient blending techniques",
+      "Path precision drawing",
+      "Photo-to-vector integration",
+      "Export for web & print"
+    ],
+    pricing: [
+      {
+        title: "Live Course",
+        price: "8,000 Rs",
+        duration: "(1 Month)",
+        features: [
+          "Live interactive sessions",
+          "Real-time feedback",
+          "Portfolio-focused projects",
+          "Gradient & blending mastery",
+          "Professional vector workflow",
+          "Downloadable assets",
+          "Certificate"
+        ]
+      }
+    ],
+    whoFor: [
+      "Digital calligraphy beginners",
+      "Portrait & face art creators",
+      "Freelancers & content creators",
+      "Designers building vector portfolios"
+    ],
+    cta: "Join Advanced Course"
   },
   {
     id: 3,
-    title: "Bilingual Brand Identity",
-    tag: "Live",
-    tagColor: "#f59e0b",
-    level: "Intermediate – Advanced",
-    duration: "10 Weeks",
-    lessons: "Live Sessions + Recordings",
-    fee: "Rs. 5,000",
-    img: "/course3.png",
-    desc: "The only course in Pakistan teaching brand identity specifically through the lens of Arabic and Latin bilingual design. Learn to build brand systems that work seamlessly in both scripts.",
-    curriculum: ["Brand strategy fundamentals", "Logo design for bilingual brands", "Arabic + Latin type pairing", "Colour & pattern systems", "Brand guidelines documentation", "Applications: print, digital, signage", "Live critique sessions", "Capstone brand project"],
-    outcomes: ["Design bilingual brand identities", "Create complete brand manuals", "Work with high-value branding clients"],
-    instructor: "Hafiz Muhammad Ammar",
-    students: "120+",
+    title: "Graphic Design Diploma (Beginner)",
+    desc: "A comprehensive diploma program designed to take you from fundamentals to professional-level work using modern AI-powered workflows.",
+    learnTitle: "What You’ll Learn",
+    learn: [
+      "Photoshop & Illustrator",
+      "Design principles & color theory",
+      "Typography & layout",
+      "Social media designs",
+      "Logo & branding",
+      "AI-powered tools",
+      "Portfolio building"
+    ],
+    pricing: [
+      {
+        title: "Recorded",
+        price: "15,000 Rs",
+        duration: "(Full 6-Month Access)",
+        features: [
+          "Structured recorded lectures",
+          "Lifetime access",
+          "Practice files & templates"
+        ]
+      },
+      {
+        title: "Live",
+        price: "5,000 Rs / Month",
+        duration: "(6 Months)",
+        features: [
+          "Live classes",
+          "Design critiques",
+          "Real client projects",
+          "Freelancing guidance",
+          "Monthly portfolio review",
+          "Class recordings",
+          "Certificate"
+        ]
+      }
+    ],
+    whoFor: [
+      "Complete beginners",
+      "Freelancers",
+      "Content creators",
+      "Business owners",
+      "Anyone targeting design jobs"
+    ],
+    cta: "Start Your Design Career"
   },
+  {
+    id: 4,
+    title: "Brand Identity Masterclass (Advanced)",
+    desc: "A live, hands-on course to master logo design, branding strategy, stylescaping, and professional brand guidelines.",
+    learnTitle: "What You’ll Learn",
+    learn: [
+      "Advanced logo creation",
+      "Branding strategy",
+      "Stylescaping",
+      "Brand storytelling",
+      "Brand guideline development",
+      "Real-world application"
+    ],
+    pricing: [
+      {
+        title: "Live Course",
+        price: "6,000 Rs / Month",
+        duration: "(3 Months)",
+        features: [
+          "Interactive sessions",
+          "Real-time feedback",
+          "Portfolio-ready brand projects",
+          "Professional client presentation guidance",
+          "Class recordings"
+        ]
+      }
+    ],
+    whoFor: [
+      "Designers upgrading to branding",
+      "Freelancers",
+      "Creative professionals"
+    ],
+    cta: "Master Brand Identity"
+  },
+  {
+    id: 5,
+    title: "Social Media Designs Course",
+    desc: "A practical, job-focused course to master high-impact social media visuals using Photoshop.",
+    learnTitle: "What You’ll Learn",
+    learn: [
+      "Photoshop workflows",
+      "Social media layout design",
+      "Posters & flyers",
+      "Image manipulation",
+      "Export optimization"
+    ],
+    pricing: [
+      {
+        title: "Live Course",
+        price: "5,000 Rs / Month",
+        duration: "(2 Months)",
+        features: [
+          "Live design demonstrations",
+          "Real-time corrections",
+          "Portfolio projects",
+          "Campaign & brand consistency training",
+          "Certificate"
+        ]
+      }
+    ],
+    whoFor: [
+      "Beginners",
+      "Content creators",
+      "Freelancers",
+      "Business owners"
+    ],
+    cta: "Join Social Media Course"
+  }
 ];
 
 const benefits = [
@@ -103,7 +265,6 @@ const faqs = [
 
 export default function CoursesPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
     <>
@@ -141,7 +302,7 @@ export default function CoursesPage() {
             <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }}>
               {[
                 { val:"740+", label:"Students Enrolled", icon:"🎓" },
-                { val:"3", label:"Active Courses", icon:"📚" },
+                { val:"5", label:"Active Courses", icon:"📚" },
                 { val:"4.9★", label:"Average Rating", icon:"⭐" },
                 { val:"100%", label:"Online & Flexible", icon:"💻" },
               ].map((s,i) => (
@@ -162,53 +323,57 @@ export default function CoursesPage() {
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Current Programmes</p>
               <h2 className="serif" style={{ fontSize:56, fontWeight:700, color:"#111", margin:0 }}>Pick Your <span className="gradient-text">Course</span></h2>
             </div>
-            <div style={{ display:"flex", flexDirection:"column", gap:32 }}>
+            <div style={{ display:"flex", flexDirection:"column", gap:64 }}>
               {courses.map((c,i) => (
-                <div key={i} className="course-card" style={{ background:"#fff", border:"1px solid rgba(0,0,0,.06)", borderRadius:36, overflow:"hidden", boxShadow:"0 4px 30px rgba(0,0,0,.06)", display:"grid", gridTemplateColumns:"380px 1fr" }}>
-                  <div style={{ position:"relative", overflow:"hidden" }}>
-                    <img src={c.img} alt={c.title} className="course-img" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} />
-                    <div style={{ position:"absolute", inset:0, background:"linear-gradient(to right,transparent 70%,rgba(255,255,255,.3))" }} />
-                    <div style={{ position:"absolute", top:20, left:20, background:c.tagColor, borderRadius:100, padding:"6px 16px", fontSize:10, fontWeight:800, color:"#000", letterSpacing:".18em", textTransform:"uppercase" }}>{c.tag}</div>
-                  </div>
-                  <div style={{ padding:"40px 48px", display:"flex", flexDirection:"column", gap:20 }}>
-                    <div>
-                      <div style={{ display:"flex", gap:16, marginBottom:16, flexWrap:"wrap" }}>
-                        {[c.level, c.duration, c.lessons].map((meta,mi) => (
-                          <span key={mi} style={{ fontSize:11, fontWeight:600, color:"#888", background:"rgba(0,0,0,.04)", borderRadius:100, padding:"5px 14px", letterSpacing:".05em" }}>{meta}</span>
+                <div key={i} className="course-section" style={{ background:"#fff", border:"1px solid rgba(0,0,0,.06)", borderRadius:36, padding:"48px", boxShadow:"0 4px 30px rgba(0,0,0,.04)" }}>
+                  <div style={{ maxWidth:"800px", margin:"0 auto" }}>
+                    <h3 className="serif" style={{ fontSize:42, fontWeight:700, color:"#111", margin:"0 0 16px" }}>{c.title}</h3>
+                    <p style={{ fontSize:16, lineHeight:1.8, color:"#666", margin:"0 0 40px" }}>{c.desc}</p>
+
+                    <div style={{ marginBottom:40 }}>
+                      <h4 style={{ fontSize:13, fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>{c.learnTitle}</h4>
+                      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
+                        {c.learn.map((item,idx) => (
+                          <div key={idx} style={{ display:"flex", gap:10, alignItems:"start" }}>
+                            <span style={{ color:"#7fbf2f", marginTop:4 }}>✓</span>
+                            <span style={{ fontSize:15, color:"#444" }}>{item}</span>
+                          </div>
                         ))}
                       </div>
-                      <h3 className="serif" style={{ fontSize:36, fontWeight:700, color:"#111", margin:"0 0 12px", lineHeight:1.1 }}>{c.title}</h3>
-                      <p style={{ fontSize:15, lineHeight:1.85, color:"#666", margin:0 }}>{c.desc}</p>
                     </div>
 
-                    {/* Expandable curriculum */}
-                    {expanded === i && (
-                      <div style={{ background:"#f8f8f6", borderRadius:16, padding:"20px 24px" }}>
-                        <p style={{ fontSize:11, fontWeight:700, letterSpacing:".18em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 14px" }}>Curriculum</p>
-                        <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
-                          {c.curriculum.map((item,ci) => (
-                            <div key={ci} style={{ display:"flex", gap:12, alignItems:"flex-start" }}>
-                              <span style={{ color:"#7fbf2f", fontSize:13, marginTop:2 }}>→</span>
-                              <span style={{ fontSize:14, color:"#555" }}>{item}</span>
-                            </div>
-                          ))}
+                    <div style={{ display:"grid", gridTemplateColumns: c.pricing.length > 1 ? "1fr 1fr" : "1fr", gap:24, marginBottom:40 }}>
+                      {c.pricing.map((p,idx) => (
+                        <div key={idx} className="pricing-card">
+                          <h5 style={{ fontSize:18, fontWeight:700, margin:"0 0 8px" }}>{p.title}</h5>
+                          <div style={{ display:"flex", alignItems:"baseline", gap:6, marginBottom:16 }}>
+                            <span style={{ fontSize:28, fontWeight:700, color:"#7fbf2f" }}>{p.price}</span>
+                            {p.duration && <span style={{ fontSize:13, color:"#888" }}>{p.duration}</span>}
+                          </div>
+                          <ul style={{ listStyle:"none", padding:0, margin:0, display:"flex", flexDirection:"column", gap:10 }}>
+                            {p.features.map((f,fidx) => (
+                              <li key={fidx} style={{ fontSize:14, color:"#555", display:"flex", gap:8 }}>
+                                <span style={{ color:"#ccc", fontSize:10 }}>●</span> {f}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                      </div>
-                    )}
+                      ))}
+                    </div>
 
-                    <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", paddingTop:8, borderTop:"1px solid rgba(0,0,0,.06)", marginTop:"auto" }}>
-                      <div style={{ display:"flex", alignItems:"baseline", gap:8 }}>
-                        <span className="serif" style={{ fontSize:36, fontWeight:700, color:"#7fbf2f" }}>{c.fee}</span>
-                        <span style={{ fontSize:12, color:"#999" }}>/ one-time</span>
+                    <div style={{ background:"#f8f8f6", padding:"24px", borderRadius:16, marginBottom:40 }}>
+                      <h4 style={{ fontSize:13, fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color:"#888", margin:"0 0 16px" }}>Who This Is For</h4>
+                      <div style={{ display:"flex", flexWrap:"wrap", gap:12 }}>
+                        {c.whoFor.map((w,idx) => (
+                          <span key={idx} style={{ background:"#fff", border:"1px solid rgba(0,0,0,.05)", padding:"8px 16px", borderRadius:100, fontSize:13, color:"#555" }}>{w}</span>
+                        ))}
                       </div>
-                      <div style={{ display:"flex", gap:12 }}>
-                        <button onClick={() => setExpanded(expanded===i?null:i)} style={{ borderRadius:100, padding:"12px 22px", fontSize:13, fontWeight:600, color:"#555", background:"rgba(0,0,0,.04)", border:"1.5px solid rgba(0,0,0,.08)", cursor:"pointer" }}>
-                          {expanded===i?"Hide":"View"} Curriculum
-                        </button>
-                        <Link href="/contact" className="enroll-btn" style={{ display:"inline-flex", alignItems:"center", gap:10, background:"#7fbf2f", color:"#000", borderRadius:100, padding:"12px 24px", fontSize:13, fontWeight:700, textDecoration:"none", boxShadow:"0 10px 28px rgba(127,191,47,.3)" }}>
-                          Enrol Now →
-                        </Link>
-                      </div>
+                    </div>
+
+                    <div style={{ textAlign:"center" }}>
+                      <Link href="/contact" className="enroll-btn" style={{ display:"inline-flex", alignItems:"center", gap:10, background:"#7fbf2f", color:"#000", borderRadius:100, padding:"16px 36px", fontSize:15, fontWeight:700, textDecoration:"none", boxShadow:"0 10px 28px rgba(127,191,47,.3)" }}>
+                        {c.cta} <span style={{ fontSize:18 }}>→</span>
+                      </Link>
                     </div>
                   </div>
                 </div>

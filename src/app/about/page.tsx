@@ -34,6 +34,7 @@ const SHARED_STYLES = `
 
   .about-hero {
     padding: 120px 48px 80px;
+    text-align: center;
   }
 
   .about-hero-title {

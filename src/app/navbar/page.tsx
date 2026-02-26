@@ -9,9 +9,9 @@ const NAV_LINKS = [
   { label: "About",     href: "/about" },
   { label: "Services",  href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Career",    href: "/career" },
-  { label: "Contact",   href: "/contact" },
-  { label: "Institute", href: "/institute", highlight: true },
+    { label: "Courses",   href: "/courses" },
+    { label: "Career",    href: "/career" },
+    { label: "Contact",   href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -90,7 +90,7 @@ export default function Navbar() {
           align-items: center;
           justify-content: space-between;
           border-radius: 100px;
-        //   padding: 4px 10px 4px 20px;
+          padding: 8px 24px;
           transition: all .45s cubic-bezier(.23,1,.32,1);
           position: relative;
         }
@@ -139,10 +139,17 @@ export default function Navbar() {
         .navbar-inner.at-top .nav-logo-text { color: #111; }
 
         .navbar-logo-img {
-          height: 110px;
+          height: 60px;
           width: auto;
           display: block;
           object-fit: contain;
+          margin-top: 8px;
+          transition: height 0.3s ease;
+        }
+
+        .navbar-inner.scrolled .navbar-logo-img {
+          height: 40px;
+          margin-top: 4px;
         }
 
         .mobile-logo-img {
@@ -491,10 +498,10 @@ export default function Navbar() {
                 Free Quote
               </Link>
               <Link
-                href="/institute"
+                href="/courses"
                 className="nav-cta"
               >
-                <span>Institute</span>
+                <span>Enrol Now</span>
                 <span className="nav-cta-arrow">→</span>
               </Link>
 
@@ -535,11 +542,11 @@ export default function Navbar() {
             <nav className="mobile-links">
               {/* Institute CTA first on mobile */}
               <Link
-                href="/institute"
+                href="/courses"
                 className="mobile-link mobile-link-cta"
                 onClick={() => setMenuOpen(false)}
               >
-                <span>🎓 Institute — Enrol Now</span>
+                <span>🎓 Enrol Now</span>
                 <span className="mobile-link-arrow">→</span>
               </Link>
 

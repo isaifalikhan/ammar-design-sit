@@ -162,11 +162,11 @@ const whyUs = [
 ];
 
 const steps = [
-  { n: "01", title: "Choose Your Course", desc: "Browse the institute's programmes and select the one that fits your goals and skill level." },
+  { n: "01", title: "Choose Your Course", desc: "Browse our programmes and select the one that fits your goals and skill level." },
   { n: "02", title: "Enrol & Pay", desc: "Complete the simple enrolment form and make payment. Receive your login within 24 hours." },
   { n: "03", title: "Start Learning", desc: "Access your course dashboard, download resources, and begin at your own pace." },
   { n: "04", title: "Submit Projects", desc: "Complete assignments and submit for personal instructor feedback and critique." },
-  { n: "05", title: "Get Certified", desc: "Pass the final project review and receive your Ammar Designz Institute certificate." },
+  { n: "05", title: "Get Certified", desc: "Pass the final project review and receive your Ammar Designz certificate." },
 ];
 
 const faqs = [
@@ -177,7 +177,7 @@ const faqs = [
   { q: "Is the certificate recognised?", a: "Our certificate is studio-verified and recognised by design employers and freelance clients across Pakistan. It carries genuine industry credibility." },
 ];
 
-export default function InstitutePage() {
+export default function CoursesPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState("All");
   const [enrollForm, setEnrollForm] = useState(false);
@@ -199,20 +199,20 @@ export default function InstitutePage() {
           <div style={{ position:"absolute", right:"4%", top:"50%", transform:"translateY(-50%)", width:500, height:500, borderRadius:"50%", border:"1px dashed rgba(127,191,47,.2)", animation:"spin-slow 30s linear infinite", pointerEvents:"none" }} />
           <div style={{ position:"absolute", right:"7%", top:"50%", transform:"translateY(-50%)", width:400, height:400, borderRadius:"50%", border:"1px solid rgba(127,191,47,.07)", pointerEvents:"none" }} />
 
-          <div className="page-container inst-hero-grid" style={{ position:"relative", zIndex:1, width:"100%", display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center" }}>
-            <div>
+          <div className="page-container inst-hero-grid" style={{ position:"relative", zIndex:1, width:"100%", display:"grid", gridTemplateColumns:"1fr", gap:60, alignItems:"center", textAlign:"center", justifyItems:"center" }}>
+            <div style={{ maxWidth: 800, margin: "0 auto" }}>
               {/* Badge */}
               <div className="afu" style={{ display:"inline-flex", alignItems:"center", gap:10, background:"rgba(127,191,47,.1)", border:"1px solid rgba(127,191,47,.25)", borderRadius:100, padding:"8px 18px", marginBottom:28 }}>
                 <span style={{ width:8, height:8, borderRadius:"50%", background:"#7fbf2f", boxShadow:"0 0 10px #7fbf2f" }} />
-                <span style={{ fontSize:11, fontWeight:600, letterSpacing:".22em", textTransform:"uppercase", color:"#5a9c1a" }}>Ammar Designz Institute</span>
+                <span style={{ fontSize:11, fontWeight:600, letterSpacing:".22em", textTransform:"uppercase", color:"#5a9c1a" }}>Ammar Designz Courses</span>
               </div>
               <h1 className="serif afu d1 hero-title-responsive" style={{ fontSize:76, fontWeight:700, lineHeight:.95, margin:"0 0 24px", color:"#111" }}>
                 Where Craft<br />Becomes <span className="gradient-text">Career.</span>
               </h1>
-              <p className="afu d2" style={{ fontSize:17, lineHeight:1.9, color:"#666", maxWidth:500, margin:"0 0 40px" }}>
-                Pakistan's premier design education institute — offering hands-on courses in Arabic calligraphy, graphic design, and brand identity, taught by working professionals.
+              <p className="afu d2" style={{ fontSize:17, lineHeight:1.9, color:"#666", maxWidth:600, margin:"0 auto 40px" }}>
+                Pakistan's premier design education platform — offering hands-on courses in Arabic calligraphy, graphic design, and brand identity, taught by working professionals.
               </p>
-              <div className="afu d3" style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
+              <div className="afu d3" style={{ display:"flex", gap:16, flexWrap:"wrap", justifyContent:"center" }}>
                 <a href="#courses" style={{ display:"inline-flex", alignItems:"center", gap:12, background:"#1a1a1a", color:"#fff", borderRadius:100, padding:"14px 28px", fontSize:14, fontWeight:700, textDecoration:"none", boxShadow:"0 20px 50px rgba(0,0,0,.2)" }}>
                   Explore Courses <span style={{ width:30, height:30, borderRadius:"50%", background:"#7fbf2f", display:"grid", placeItems:"center" }}>↓</span>
                 </a>
@@ -222,7 +222,7 @@ export default function InstitutePage() {
               </div>
 
               {/* Micro-stats */}
-              <div className="afu d4" style={{ display:"flex", gap:40, marginTop:48, paddingTop:32, borderTop:"1px solid rgba(0,0,0,.08)" }}>
+              <div className="afu d4" style={{ display:"flex", gap:40, marginTop:48, paddingTop:32, borderTop:"1px solid rgba(0,0,0,.08)", justifyContent:"center" }}>
                 {[
                   { val:"740+", label:"Students Enrolled" },
                   { val:"4.9★", label:"Average Rating" },
@@ -237,10 +237,10 @@ export default function InstitutePage() {
             </div>
 
             {/* Hero image panel */}
-            <div className="afu d2" style={{ position:"relative" }}>
+            <div className="afu d2" style={{ position:"relative", width: "100%", maxWidth: 600 }}>
               <div className="float" style={{ position:"relative" }}>
                 <div style={{ borderRadius:"55% 45% 50% 50% / 45% 50% 50% 55%", overflow:"hidden", boxShadow:"0 60px 120px rgba(0,0,0,.18)" }}>
-                  <img src="/course1.png" alt="Institute" style={{ width:"100%", display:"block", objectFit:"cover" }} />
+                  <img src="/course1.png" alt="Courses" style={{ width:"100%", display:"block", objectFit:"cover" }} />
                 </div>
                 {/* Floating badge */}
                 <div style={{ position:"absolute", bottom:20, left:-40, background:"#fff", borderRadius:20, padding:"14px 20px", boxShadow:"0 20px 50px rgba(0,0,0,.14)", display:"flex", alignItems:"center", gap:12 }}>
@@ -334,11 +334,11 @@ export default function InstitutePage() {
         <section className="responsive-padding section-padding-responsive" style={{ background:"#0d0d0d", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.07)", top:-80, right:-80 }} />
           <div className="orb" style={{ width:400, height:400, background:"rgba(127,191,47,.05)", bottom:-80, left:-60 }} />
-          <div className="page-container inst-why-grid" style={{ position:"relative", zIndex:1 }}>
+          <div className="page-container" style={{ position:"relative", zIndex:1, maxWidth: 1200, margin: "0 auto" }}>
             <div className="inst-why-grid">
               <div>
                 <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>The Difference</p>
-                <h2 className="serif hero-title-responsive" style={{ fontSize:56, fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Why the <span className="gradient-text">Institute?</span></h2>
+                <h2 className="serif hero-title-responsive" style={{ fontSize:56, fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Why Choose <span className="gradient-text">Us?</span></h2>
                 <p style={{ fontSize:15, lineHeight:1.9, color:"#888", margin:"0 0 40px" }}>
                   Most design courses teach software. We teach design thinking — grounded in real studio experience, cultural depth, and the kind of feedback that actually makes you better.
                 </p>
@@ -446,7 +446,7 @@ export default function InstitutePage() {
               ) : (
                 <>
                   <p style={{ fontSize:11, fontWeight:600, letterSpacing:".25em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 10px" }}>Course Enrolment</p>
-                  <h3 className="serif" style={{ fontSize:38, fontWeight:700, color:"#111", margin:"0 0 32px", lineHeight:1.1 }}>Join the<br /><span className="gradient-text">Institute.</span></h3>
+                  <h3 className="serif" style={{ fontSize:38, fontWeight:700, color:"#111", margin:"0 0 32px", lineHeight:1.1 }}>Join Our<br /><span className="gradient-text">Courses.</span></h3>
                   <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
                     <input type="text" placeholder="Full Name *" style={{ height:52, borderRadius:14, border:"1.5px solid #e5e5e5", background:"#fafafa", padding:"0 18px", fontSize:14, color:"#111", transition:"all .25s" }} />
                     <input type="email" placeholder="Email Address *" style={{ height:52, borderRadius:14, border:"1.5px solid #e5e5e5", background:"#fafafa", padding:"0 18px", fontSize:14, color:"#111", transition:"all .25s" }} />
@@ -484,7 +484,7 @@ export default function InstitutePage() {
               Your Creative<br /><span className="gradient-text">Future Starts Here.</span>
             </h2>
             <p style={{ fontSize:16, color:"#888", lineHeight:1.8, margin:"0 auto 40px", maxWidth:520 }}>
-              Join 740+ students who've chosen to invest in their design career with the Ammar Designz Institute.
+              Join 740+ students who've chosen to invest in their design career with Ammar Designz.
             </p>
             <div style={{ display:"flex", justifyContent:"center", gap:16, flexWrap:"wrap" }}>
               <button onClick={() => setEnrollForm(true)} className="enroll-btn"

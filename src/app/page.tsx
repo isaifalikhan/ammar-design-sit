@@ -41,6 +41,7 @@ const courses = [
 ];
 
 const team = [
+  { name: "Hafiz Muhammad Ammar", role: "Founder & CEO" },
   { name: "Muhammad Ahmed", role: "Studio Manager" },
   { name: "Abu Bakar", role: "Graphic Designer" },
   { name: "Umar Farooq", role: "Video Editor" },
@@ -183,7 +184,7 @@ export default function Home() {
 
         .home-team-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(5, 1fr);
           gap: 24px;
         }
 
@@ -481,17 +482,17 @@ export default function Home() {
         </section>
 
         {/* ══════════════════════════════════════════
-            WHO WE ARE — CEO + Team
+            WHO WE ARE — Brief Intro
         ══════════════════════════════════════════ */}
         <section className="home-about-section" style={{ background: '#faf9f7', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
           <div className="orb" style={{ width: 500, height: 500, background: 'rgba(127,191,47,.06)', top: 50, left: -150 }} />
 
-          <div className="page-container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="page-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
             {/* Header */}
-            <div style={{ textAlign: 'center', marginBottom: 80 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 16, justifyContent: 'center' }}>
                 <span style={{ width: 24, height: 1, background: '#7fbf2f', display: 'block' }} />
-                <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.28em', textTransform: 'uppercase', color: '#7fbf2f' }}>The Minds Behind The Magic</span>
+                <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.28em', textTransform: 'uppercase', color: '#7fbf2f' }}>The Studio</span>
                 <span style={{ width: 24, height: 1, background: '#7fbf2f', display: 'block' }} />
               </div>
               <h2 className="serif" style={{ fontSize: 56, fontWeight: 700, color: '#111', margin: 0, lineHeight: 1.1 }}>
@@ -499,45 +500,14 @@ export default function Home() {
               </h2>
             </div>
 
-            {/* CEO */}
-            <div className="home-ceo-grid" style={{ display: 'grid', gap: 64, alignItems: 'center', marginBottom: 80, background: '#fff', borderRadius: 40, padding: '56px 64px', boxShadow: '0 4px 40px rgba(0,0,0,.06)', border: '1px solid rgba(0,0,0,.04)' }}>
-              <div style={{ position: 'relative' }}>
-                <div style={{ borderRadius: '50% 40% 50% 40% / 40% 50% 40% 50%', overflow: 'hidden', boxShadow: '0 40px 80px rgba(0,0,0,.15)' }}>
-                  <img src="/member.png" alt="Hafiz Muhammad Ammar" style={{ width: '100%', display: 'block', filter: 'grayscale(30%)' }} />
-                </div>
-                <div style={{ position: 'absolute', bottom: -16, right: -24, background: '#7fbf2f', borderRadius: 16, padding: '14px 20px' }}>
-                  <p style={{ margin: 0, fontSize: 12, fontWeight: 700, color: '#fff', textTransform: 'uppercase', letterSpacing: '.12em' }}>Founder & CEO</p>
-                </div>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-                <div>
-                  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.25em', textTransform: 'uppercase', color: '#7fbf2f', margin: '0 0 12px' }}>Creative Director</p>
-                  <h3 className="serif" style={{ fontSize: 44, fontWeight: 700, color: '#111', margin: 0, lineHeight: 1.1 }}>Hafiz Muhammad Ammar</h3>
-                </div>
-                <p style={{ fontSize: 15, lineHeight: 1.9, color: '#666', margin: 0 }}>
-                  Leading the creative direction of Ammar Designz with a deep passion for Arabic calligraphy and brand storytelling. Every project is treated as an opportunity to translate vision into visual artistry — precise, purposeful, and memorable.
-                </p>
-                <blockquote className="serif" style={{ fontSize: 22, fontStyle: 'italic', color: '#444', margin: 0, paddingLeft: 24, borderLeft: '3px solid #7fbf2f', lineHeight: 1.5 }}>
-                  "Design is the silent ambassador of your brand."
-                </blockquote>
-              </div>
-            </div>
+            <p style={{ fontSize: 18, lineHeight: 1.8, color: '#555', marginBottom: 48 }}>
+              Led by Hafiz Muhammad Ammar, our team combines traditional artistry with modern design thinking. We believe every pixel and every letterform should have a soul and a purpose.
+            </p>
 
-            {/* Team */}
-            <div className="home-team-grid">
-              {team.map((m, i) => (
-                <div key={i} className="team-card card-hover" style={{ background: '#fff', borderRadius: 28, overflow: 'hidden', border: '1px solid rgba(0,0,0,.05)', cursor: 'pointer' }}>
-                  <div style={{ aspectRatio: '4/5', overflow: 'hidden', position: 'relative' }}>
-                    <img src="/member.png" alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 50%)', opacity: 0, transition: 'opacity .4s' }} className="overlay" />
-                  </div>
-                  <div style={{ padding: '20px 24px' }}>
-                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '.2em', textTransform: 'uppercase', color: '#7fbf2f', margin: '0 0 6px' }}>{m.role}</p>
-                    <h4 style={{ fontSize: 17, fontWeight: 600, color: '#111', margin: 0 }}>{m.name}</h4>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <Link href="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: 14, background: '#1a1a1a', color: '#fff', borderRadius: 100, padding: '16px 32px', fontSize: 14, fontWeight: 600, textDecoration: 'none', letterSpacing: '.02em', boxShadow: '0 20px 50px rgba(0,0,0,.15)', transition: 'all .3s' }}>
+              Meet The Team
+              <span style={{ width: 34, height: 34, borderRadius: '50%', background: '#7fbf2f', display: 'grid', placeItems: 'center', fontSize: 16 }}>→</span>
+            </Link>
           </div>
         </section>
 
@@ -560,6 +530,9 @@ export default function Home() {
                 </h2>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <Link href="/courses" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, border: '1px solid rgba(255,255,255,.15)', color: '#fff', borderRadius: 100, padding: '12px 24px', fontSize: 13, fontWeight: 500, textDecoration: 'none', transition: 'all .3s', marginRight: 16 }}>
+                  View All <span style={{ color: '#7fbf2f' }}>→</span>
+                </Link>
                 <button onClick={() => setCourseIndex(p => (p - 1 + courses.length) % courses.length)} style={{ width: 44, height: 44, borderRadius: '50%', border: '1px solid rgba(255,255,255,.15)', background: 'transparent', color: '#fff', cursor: 'pointer', fontSize: 18, display: 'grid', placeItems: 'center' }}>←</button>
                 <span style={{ fontSize: 13, color: '#666', fontWeight: 500 }}>{courseIndex + 1} / {courses.length}</span>
                 <button onClick={() => setCourseIndex(p => (p + 1) % courses.length)} style={{ width: 44, height: 44, borderRadius: '50%', background: '#7fbf2f', border: 'none', color: '#000', cursor: 'pointer', fontSize: 18, display: 'grid', placeItems: 'center', fontWeight: 700 }}>→</button>
@@ -569,7 +542,10 @@ export default function Home() {
             {/* Carousel */}
             <div className="home-courses-carousel" style={{ position: 'relative', height: 540, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               {courses.map((c, idx) => {
-                const offset = idx - courseIndex;
+                let offset = idx - courseIndex;
+                if (offset > courses.length / 2) offset -= courses.length;
+                else if (offset < -courses.length / 2) offset += courses.length;
+
                 const abs = Math.abs(offset);
                 if (abs > 1) return null;
                 const isActive = offset === 0;
