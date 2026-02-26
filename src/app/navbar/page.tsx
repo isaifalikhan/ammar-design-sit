@@ -4,14 +4,14 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
-const NAV_LINKS = [
+const NAV_LINKS: { label: string; href: string; highlight?: boolean }[] = [
   { label: "Home",      href: "/" },
   { label: "About",     href: "/about" },
   { label: "Services",  href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
-    { label: "Courses",   href: "/courses" },
-    { label: "Career",    href: "/career" },
-    { label: "Contact",   href: "/contact" },
+  { label: "Courses",   href: "/courses" },
+  { label: "Career",    href: "/career" },
+  { label: "Contact",   href: "/contact" },
 ];
 
 export default function Navbar() {
