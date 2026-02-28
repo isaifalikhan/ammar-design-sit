@@ -2,27 +2,9 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import PageHero from "@/components/PageHero";
 
-const SHARED_STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
-  * { box-sizing:border-box; }
-  body { font-family:'DM Sans',sans-serif; background:#faf9f7; color:#1a1a1a; margin:0; }
-  .serif { font-family:'Cormorant Garamond',Georgia,serif; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;} }
-  @keyframes shimmer { 0%{background-position:-200% center;}100%{background-position:200% center;} }
-  @keyframes spin-slow { to{transform:rotate(360deg);} }
-  @keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
-  @keyframes marquee { from{transform:translateX(0);}to{transform:translateX(-50%);} }
-  .afu{animation:fadeUp .9s cubic-bezier(.23,1,.32,1) both;}
-  .d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}
-  .gradient-text {
-    background:linear-gradient(135deg,#7fbf2f 0%,#a8e04a 50%,#5a9c1a 100%);
-    background-size:200% auto;
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    background-clip:text;animation:shimmer 4s linear infinite;
-  }
-  .orb{border-radius:50%;filter:blur(70px);position:absolute;pointer-events:none;}
-  .marquee-track { display:flex; animation:marquee 30s linear infinite; width:max-content; }
+const LOCAL_STYLES = `
   .course-card { transition:all .45s cubic-bezier(.23,1,.32,1); }
   .course-card:hover { transform:translateY(-10px); box-shadow:0 40px 80px rgba(0,0,0,.18) !important; }
   .course-card:hover .course-thumb { transform:scale(1.06); }
@@ -35,9 +17,9 @@ const SHARED_STYLES = `
   .enroll-btn:hover { background:#5a9c1a !important; transform:translateY(-2px); box-shadow:0 20px 50px rgba(127,191,47,.5) !important; }
   .enroll-btn { transition:all .3s ease; }
   input:focus, textarea:focus, select:focus { border-color:#7fbf2f !important; box-shadow:0 0 0 3px rgba(127,191,47,.12) !important; outline:none; }
-  input, textarea, select { outline:none; font-family:'DM Sans',sans-serif; }
+  input, textarea, select { outline:none; font-family:var(--font-dm-sans),sans-serif; }
   .tab-btn.active { background:#7fbf2f !important; color:#000 !important; border-color:#7fbf2f !important; }
-  .tab-btn { transition:all .25s; cursor:pointer; border:none; font-family:'DM Sans',sans-serif; }
+  .tab-btn { transition:all .25s; cursor:pointer; border:none; font-family:var(--font-dm-sans),sans-serif; }
   .stat-box:hover { transform:scale(1.03); }
   .stat-box { transition:transform .3s ease; }
   .feature-row:hover { background:rgba(127,191,47,.04) !important; }
@@ -69,16 +51,13 @@ const SHARED_STYLES = `
   }
 
   @media (max-width: 1024px) {
-    .hero-title-responsive { font-size: 60px !important; }
     .responsive-padding { padding-left: 32px !important; padding-right: 32px !important; }
   }
   @media (max-width: 768px) {
-    .hero-title-responsive { font-size: 40px !important; }
     .responsive-padding { padding-left: 24px !important; padding-right: 24px !important; }
     .section-padding-responsive { padding-top: 60px !important; padding-bottom: 60px !important; }
   }
   @media (max-width: 480px) {
-    .hero-title-responsive { font-size: 32px !important; }
     .responsive-padding { padding-left: 20px !important; padding-right: 20px !important; }
     .modal-padding { padding: 32px 24px !important; }
   }
@@ -96,7 +75,7 @@ const courses = [
     students: "340+",
     rating: "4.9",
     fee: "Rs. 5,000",
-    img: "/course1.png",
+    img: "/images/DSC02365.JPG",
     desc: "Learn classical Arabic scripts — Naskh, Thuluth & Diwani — using iPad and Procreate. Create calligraphy logos, compositions, and brand marks.",
     skills: ["Naskh & Thuluth scripts", "Digital tools mastery", "Logo calligraphy", "Brand compositions"],
   },
@@ -110,7 +89,7 @@ const courses = [
     students: "280+",
     rating: "4.8",
     fee: "Rs. 5,000",
-    img: "/course2.png",
+    img: "/images/DSC02366.JPG",
     desc: "A complete graphic design programme covering visual thinking, Adobe Illustrator, Photoshop, typography, colour theory, and portfolio-ready projects.",
     skills: ["Adobe Illustrator", "Typography", "Colour theory", "Print & digital design"],
   },
@@ -124,7 +103,7 @@ const courses = [
     students: "120+",
     rating: "5.0",
     fee: "Rs. 5,000",
-    img: "/course3.png",
+    img: "/images/DSC02367.JPG",
     desc: "The only Pakistani course teaching brand identity specifically through Arabic and Latin bilingual design. Build complete brand systems for both scripts.",
     skills: ["Bilingual brand systems", "Brand guidelines", "Arabic + Latin pairing", "Client presentation"],
   },
@@ -138,16 +117,16 @@ const courses = [
     students: "Enrolling soon",
     rating: "New",
     fee: "Rs. 5,000",
-    img: "/course3.png",
+    img: "/images/DSC02368.JPG",
     desc: "Design scroll-stopping content for Instagram, Facebook, and YouTube. Templates, reels thumbnails, campaign kits and more.",
     skills: ["Canva & Illustrator", "Instagram design", "Reel thumbnails", "Brand templates"],
   },
 ];
 
 const mentors = [
-  { name: "Hafiz Muhammad Ammar", role: "CEO & Lead Instructor", specialty: "Arabic Calligraphy & Brand Identity", courses: "2 Courses", img: "/member.png" },
-  { name: "Abu Bakar", role: "Senior Instructor", specialty: "Graphic Design & Print Media", courses: "1 Course", img: "/member.png" },
-  { name: "Umar Farooq", role: "Guest Instructor", specialty: "Video & Motion Design", courses: "Workshops", img: "/member.png" },
+  { name: "Hafiz Muhammad Ammar", role: "CEO & Lead Instructor", specialty: "Arabic Calligraphy & Brand Identity", courses: "2 Courses", img: "/Team/Hafiz Muhammad Ammar Khan.png" },
+  { name: "Imran Khan", role: "Creative Design Head", specialty: "Graphic Design & Strategy", courses: "1 Course", img: "/Team/Imran Khan.png" },
+  { name: "Ahtisham Arshad", role: "Brand Identity Designer", specialty: "Logo Design & Typography", courses: "Workshops", img: "/Team/Ahtisham Arshad.png" },
 ];
 
 const whyUs = [
@@ -189,71 +168,23 @@ export default function CoursesPage() {
 
   return (
     <div style={{ overflowX: "hidden" }}>
-      <style>{SHARED_STYLES}</style>
+      <style>{LOCAL_STYLES}</style>
       <div>
 
         {/* ── HERO ── */}
-        <section className="responsive-padding section-padding-responsive" style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa,#f4f9ec 55%,#fdfcfa)", padding:"120px 48px 80px", minHeight:"90vh", display:"flex", alignItems:"center" }}>
-          <div className="orb" style={{ width:600, height:600, background:"rgba(127,191,47,.09)", top:-100, right:-100 }} />
-          <div className="orb" style={{ width:400, height:400, background:"rgba(127,191,47,.05)", bottom:-60, left:-80 }} />
-          <div style={{ position:"absolute", right:"4%", top:"50%", transform:"translateY(-50%)", width:500, height:500, borderRadius:"50%", border:"1px dashed rgba(127,191,47,.2)", animation:"spin-slow 30s linear infinite", pointerEvents:"none" }} />
-          <div style={{ position:"absolute", right:"7%", top:"50%", transform:"translateY(-50%)", width:400, height:400, borderRadius:"50%", border:"1px solid rgba(127,191,47,.07)", pointerEvents:"none" }} />
-
-          <div className="page-container inst-hero-grid" style={{ position:"relative", zIndex:1, width:"100%", display:"grid", gridTemplateColumns:"1fr", gap:60, alignItems:"center", textAlign:"center", justifyItems:"center" }}>
-            <div style={{ maxWidth: 800, margin: "0 auto" }}>
-              {/* Badge */}
-              <div className="afu" style={{ display:"inline-flex", alignItems:"center", gap:10, background:"rgba(127,191,47,.1)", border:"1px solid rgba(127,191,47,.25)", borderRadius:100, padding:"8px 18px", marginBottom:28 }}>
-                <span style={{ width:8, height:8, borderRadius:"50%", background:"#7fbf2f", boxShadow:"0 0 10px #7fbf2f" }} />
-                <span style={{ fontSize:11, fontWeight:600, letterSpacing:".22em", textTransform:"uppercase", color:"#5a9c1a" }}>Ammar Designz Courses</span>
-              </div>
-              <h1 className="serif afu d1 hero-title-responsive" style={{ fontSize:76, fontWeight:700, lineHeight:.95, margin:"0 0 24px", color:"#111" }}>
-                Where Craft<br />Becomes <span className="gradient-text">Career.</span>
-              </h1>
-              <p className="afu d2" style={{ fontSize:17, lineHeight:1.9, color:"#666", maxWidth:600, margin:"0 auto 40px" }}>
-                Pakistan's premier design education platform — offering hands-on courses in Arabic calligraphy, graphic design, and brand identity, taught by working professionals.
-              </p>
-              <div className="afu d3" style={{ display:"flex", gap:16, flexWrap:"wrap", justifyContent:"center" }}>
-                <a href="#courses" style={{ display:"inline-flex", alignItems:"center", gap:12, background:"#1a1a1a", color:"#fff", borderRadius:100, padding:"14px 28px", fontSize:14, fontWeight:700, textDecoration:"none", boxShadow:"0 20px 50px rgba(0,0,0,.2)" }}>
-                  Explore Courses <span style={{ width:30, height:30, borderRadius:"50%", background:"#7fbf2f", display:"grid", placeItems:"center" }}>↓</span>
-                </a>
-                <button onClick={() => setEnrollForm(true)} style={{ display:"inline-flex", alignItems:"center", gap:10, border:"1.5px solid rgba(0,0,0,.15)", color:"#444", background:"transparent", borderRadius:100, padding:"14px 28px", fontSize:14, fontWeight:600, cursor:"pointer" }}>
-                  Enrol Now
-                </button>
-              </div>
-
-              {/* Micro-stats */}
-              <div className="afu d4" style={{ display:"flex", gap:40, marginTop:48, paddingTop:32, borderTop:"1px solid rgba(0,0,0,.08)", justifyContent:"center" }}>
-                {[
-                  { val:"740+", label:"Students Enrolled" },
-                  { val:"4.9★", label:"Average Rating" },
-                  { val:"4", label:"Courses Available" },
-                ].map((s,i) => (
-                  <div key={i}>
-                    <p className="serif" style={{ fontSize:40, fontWeight:700, margin:0, lineHeight:1, color:"#111" }}><span className="gradient-text">{s.val}</span></p>
-                    <p style={{ fontSize:12, color:"#999", margin:"4px 0 0", letterSpacing:".06em", textTransform:"uppercase" }}>{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Hero image panel */}
-            <div className="afu d2" style={{ position:"relative", width: "100%", maxWidth: 600 }}>
-              <div className="float" style={{ position:"relative" }}>
-                <div style={{ borderRadius:"55% 45% 50% 50% / 45% 50% 50% 55%", overflow:"hidden", boxShadow:"0 60px 120px rgba(0,0,0,.18)" }}>
-                  <img src="/course1.png" alt="Courses" style={{ width:"100%", display:"block", objectFit:"cover" }} />
-                </div>
-                {/* Floating badge */}
-                <div style={{ position:"absolute", bottom:20, left:-40, background:"#fff", borderRadius:20, padding:"14px 20px", boxShadow:"0 20px 50px rgba(0,0,0,.14)", display:"flex", alignItems:"center", gap:12 }}>
-                  <div style={{ width:40, height:40, borderRadius:12, background:"linear-gradient(135deg,#7fbf2f,#a8e04a)", display:"grid", placeItems:"center", fontSize:20 }}>🎓</div>
-                  <div>
-                    <p style={{ margin:0, fontSize:13, fontWeight:700, color:"#111" }}>Certified Studio</p>
-                    <p style={{ margin:0, fontSize:11, color:"#888" }}>Industry recognised</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          pillText="Ammar Designz Courses"
+          title={<>Where Craft<br />Becomes <span className="gradient-text">Career.</span></>}
+          description="Pakistan's premier design education platform — offering hands-on courses in Arabic calligraphy, graphic design, and brand identity, taught by working professionals."
+          imageSrc="/images/DSC02369.JPG"
+          stats={[
+            { val: 740, suf: "+", label: "Students Enrolled" },
+            { val: 4.9, suf: "★", label: "Average Rating" },
+            { val: 4, suf: "", label: "Courses Available" }
+          ]}
+          ctaPrimary={{ text: "Explore Courses", href: "#courses" }}
+          ctaSecondary={{ text: "Enrol Now", onClick: () => setEnrollForm(true) }}
+        />
 
         {/* ── MARQUEE ── */}
         <div style={{ background:"#7fbf2f", overflow:"hidden", padding:"14px 0" }}>
@@ -270,7 +201,7 @@ export default function CoursesPage() {
             <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:64, flexWrap:"wrap", gap:20 }}>
               <div>
                 <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Our Programmes</p>
-                <h2 className="serif hero-title-responsive" style={{ fontSize:56, fontWeight:700, color:"#111", margin:0 }}>Current <span className="gradient-text">Courses</span></h2>
+                <h2 style={{ fontWeight:700, color:"#111", margin:0 }}>Current <span className="gradient-text">Courses</span></h2>
               </div>
               <div style={{ display:"flex", gap:10 }}>
                 {tabs.map(t => (
@@ -304,7 +235,7 @@ export default function CoursesPage() {
                         <span key={mi} style={{ fontSize:11, fontWeight:600, color:"#888", background:"rgba(0,0,0,.04)", borderRadius:100, padding:"5px 14px" }}>{m}</span>
                       ))}
                     </div>
-                    <h3 className="serif" style={{ fontSize:30, fontWeight:700, color:"#111", margin:"0 0 12px", lineHeight:1.15 }}>{c.title}</h3>
+                    <h3 style={{ fontWeight:700, color:"#111", margin:"0 0 12px", lineHeight:1.15 }}>{c.title}</h3>
                     <p style={{ fontSize:14, lineHeight:1.8, color:"#666", margin:"0 0 20px" }}>{c.desc}</p>
 
                     <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:24 }}>
@@ -316,7 +247,7 @@ export default function CoursesPage() {
                     <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", paddingTop:20, borderTop:"1px solid rgba(0,0,0,.06)" }}>
                       <div>
                         <span style={{ fontSize:11, color:"#aaa", display:"block", marginBottom:2 }}>Course Fee</span>
-                        <span className="serif" style={{ fontSize:32, fontWeight:700, color:"#7fbf2f" }}>{c.fee}</span>
+                        <span style={{ fontSize:32, fontWeight:700, color:"#7fbf2f" }}>{c.fee}</span>
                       </div>
                       <button onClick={() => { setSelectedCourse(c.title); setEnrollForm(true); }} className="enroll-btn"
                         style={{ display:"inline-flex", alignItems:"center", gap:10, background:"#7fbf2f", color:"#000", borderRadius:100, padding:"12px 24px", fontSize:13, fontWeight:700, border:"none", cursor:"pointer", boxShadow:"0 10px 28px rgba(127,191,47,.3)" }}>
@@ -338,12 +269,12 @@ export default function CoursesPage() {
             <div className="inst-why-grid">
               <div>
                 <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>The Difference</p>
-                <h2 className="serif hero-title-responsive" style={{ fontSize:56, fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Why Choose <span className="gradient-text">Us?</span></h2>
-                <p style={{ fontSize:15, lineHeight:1.9, color:"#888", margin:"0 0 40px" }}>
+                <h2 style={{ fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Why Choose <span className="gradient-text">Us?</span></h2>
+                <p style={{ fontSize:16, lineHeight:1.9, color:"#888", margin:"0 0 40px" }}>
                   Most design courses teach software. We teach design thinking — grounded in real studio experience, cultural depth, and the kind of feedback that actually makes you better.
                 </p>
                 <div style={{ background:"rgba(127,191,47,.06)", border:"1px solid rgba(127,191,47,.15)", borderRadius:24, padding:"28px 32px" }}>
-                  <p className="serif" style={{ fontSize:24, fontStyle:"italic", color:"#ccc", lineHeight:1.6, margin:0 }}>
+                  <p style={{ fontSize:24, fontStyle:"italic", color:"#ccc", lineHeight:1.6, margin:0 }}>
                     "Talent is everywhere. What's rare is guidance — a mentor who's walked the exact path you want to walk."
                   </p>
                   <p style={{ fontSize:13, color:"#7fbf2f", margin:"16px 0 0", fontWeight:600 }}>— Hafiz Muhammad Ammar, Founder</p>
@@ -353,7 +284,7 @@ export default function CoursesPage() {
                 {whyUs.map((w,i) => (
                   <div key={i} className="feature-row" style={{ background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.06)", borderRadius:20, padding:"22px 20px" }}>
                     <span style={{ fontSize:26, display:"block", marginBottom:12 }}>{w.icon}</span>
-                    <h4 style={{ fontSize:14, fontWeight:700, color:"#fff", margin:"0 0 6px" }}>{w.title}</h4>
+                    <h6 style={{ fontWeight:700, color:"#fff", margin:"0 0 6px" }}>{w.title}</h6>
                     <p style={{ fontSize:12, color:"#666", lineHeight:1.65, margin:0 }}>{w.desc}</p>
                   </div>
                 ))}
@@ -367,7 +298,7 @@ export default function CoursesPage() {
           <div className="page-container">
             <div style={{ textAlign:"center", marginBottom:72 }}>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>The Journey</p>
-              <h2 className="serif hero-title-responsive" style={{ fontSize:56, fontWeight:700, color:"#111", margin:0 }}>How It <span className="gradient-text">Works</span></h2>
+              <h2 style={{ fontWeight:700, color:"#111", margin:0 }}>How It <span className="gradient-text">Works</span></h2>
             </div>
             <div className="inst-steps-grid">
               <div className="inst-steps-line" style={{ position:"absolute", top:28, left:"10%", right:"10%", height:1, background:"linear-gradient(to right,rgba(127,191,47,.3),rgba(127,191,47,.1),rgba(127,191,47,.3))", zIndex:0 }} />
@@ -376,7 +307,7 @@ export default function CoursesPage() {
                   <div style={{ width:56, height:56, borderRadius:"50%", background:"#7fbf2f", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 24px", boxShadow:"0 10px 30px rgba(127,191,47,.3)" }}>
                     <span style={{ fontSize:13, fontWeight:800, color:"#000" }}>{s.n}</span>
                   </div>
-                  <h3 style={{ fontSize:16, fontWeight:700, color:"#111", margin:"0 0 10px" }}>{s.title}</h3>
+                  <h6 style={{ fontWeight:700, color:"#111", margin:"0 0 10px" }}>{s.title}</h6>
                   <p style={{ fontSize:13, lineHeight:1.7, color:"#777", margin:0 }}>{s.desc}</p>
                 </div>
               ))}
@@ -390,7 +321,7 @@ export default function CoursesPage() {
           <div className="page-container" style={{ position:"relative", zIndex:1 }}>
             <div style={{ textAlign:"center", marginBottom:72 }}>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Learn From the Best</p>
-              <h2 className="serif hero-title-responsive" style={{ fontSize:56, fontWeight:700, color:"#fff", margin:0 }}>Your <span className="gradient-text">Mentors</span></h2>
+              <h2 style={{ fontWeight:700, color:"#fff", margin:0 }}>Your <span className="gradient-text">Mentors</span></h2>
             </div>
             <div className="inst-mentors-grid">
               {mentors.map((m,i) => (
@@ -400,7 +331,7 @@ export default function CoursesPage() {
                   </div>
                   <div style={{ padding:"24px 28px" }}>
                     <p style={{ fontSize:10, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 6px" }}>{m.role}</p>
-                    <h4 style={{ fontSize:20, fontWeight:700, color:"#fff", margin:"0 0 8px", lineHeight:1.2 }}>{m.name}</h4>
+                    <h4 style={{ fontWeight:700, color:"#fff", margin:"0 0 8px", lineHeight:1.2 }}>{m.name}</h4>
                     <p style={{ fontSize:13, color:"#888", margin:"0 0 16px" }}>{m.specialty}</p>
                     <span style={{ fontSize:11, fontWeight:600, color:"#5a9c1a", background:"rgba(127,191,47,.1)", border:"1px solid rgba(127,191,47,.2)", borderRadius:100, padding:"5px 14px" }}>{m.courses}</span>
                   </div>
@@ -415,7 +346,7 @@ export default function CoursesPage() {
           <div style={{ maxWidth:800, margin:"0 auto" }}>
             <div style={{ textAlign:"center", marginBottom:64 }}>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Have Questions?</p>
-              <h2 className="serif" style={{ fontSize:56, fontWeight:700, color:"#111", margin:0 }}>FAQ</h2>
+              <h2 style={{ fontWeight:700, color:"#111", margin:0 }}>FAQ</h2>
             </div>
             <div>
               {faqs.map((f,i) => (
@@ -440,13 +371,13 @@ export default function CoursesPage() {
               {submitted ? (
                 <div style={{ textAlign:"center", padding:"32px 0" }}>
                   <div style={{ width:72, height:72, borderRadius:"50%", background:"rgba(127,191,47,.1)", border:"2px solid #7fbf2f", display:"grid", placeItems:"center", fontSize:32, margin:"0 auto 20px" }}>✓</div>
-                  <h3 className="serif" style={{ fontSize:36, fontWeight:700, color:"#111", margin:"0 0 14px" }}>You're Enrolled!</h3>
+                  <h3 style={{ fontWeight:700, color:"#111", margin:"0 0 14px" }}>You're Enrolled!</h3>
                   <p style={{ fontSize:15, color:"#666", lineHeight:1.8 }}>We'll send your course access details to your email within 24 hours.</p>
                 </div>
               ) : (
                 <>
                   <p style={{ fontSize:11, fontWeight:600, letterSpacing:".25em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 10px" }}>Course Enrolment</p>
-                  <h3 className="serif" style={{ fontSize:38, fontWeight:700, color:"#111", margin:"0 0 32px", lineHeight:1.1 }}>Join Our<br /><span className="gradient-text">Courses.</span></h3>
+                  <h3 style={{ fontWeight:700, color:"#111", margin:"0 0 32px", lineHeight:1.1 }}>Join Our<br /><span className="gradient-text">Courses.</span></h3>
                   <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
                     <input type="text" placeholder="Full Name *" style={{ height:52, borderRadius:14, border:"1.5px solid #e5e5e5", background:"#fafafa", padding:"0 18px", fontSize:14, color:"#111", transition:"all .25s" }} />
                     <input type="email" placeholder="Email Address *" style={{ height:52, borderRadius:14, border:"1.5px solid #e5e5e5", background:"#fafafa", padding:"0 18px", fontSize:14, color:"#111", transition:"all .25s" }} />
@@ -480,7 +411,7 @@ export default function CoursesPage() {
           <div className="orb" style={{ width:600, height:600, background:"rgba(127,191,47,.06)", top:"50%", left:"50%", transform:"translate(-50%,-50%)" }} />
           <div style={{ maxWidth:900, margin:"0 auto", textAlign:"center", position:"relative", zIndex:1 }}>
             <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>Begin Your Journey</p>
-            <h2 className="serif" style={{ fontSize:64, fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>
+            <h2 style={{ fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>
               Your Creative<br /><span className="gradient-text">Future Starts Here.</span>
             </h2>
             <p style={{ fontSize:16, color:"#888", lineHeight:1.8, margin:"0 auto 40px", maxWidth:520 }}>

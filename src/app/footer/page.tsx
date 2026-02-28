@@ -70,11 +70,10 @@ export default function Footer() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
-
         .footer-link {
           position: relative;
           color: #888;
+          font-family: var(--font-dm-sans), sans-serif;
           font-size: 14px;
           text-decoration: none;
           transition: color .25s;
@@ -217,7 +216,7 @@ export default function Footer() {
         }
       `}</style>
 
-      <footer style={{ fontFamily: "'DM Sans', sans-serif", background: '#0a0a0a', color: '#fff', position: 'relative', overflow: 'hidden' }}>
+      <footer style={{ background: '#0a0a0a', color: '#fff', position: 'relative', overflow: 'hidden' }}>
 
         {/* ── Top glow orbs ── */}
         <div style={{ position: 'absolute', top: -80, left: '20%', width: 400, height: 400, borderRadius: '50%', background: 'rgba(127,191,47,.05)', filter: 'blur(80px)', pointerEvents: 'none' }} />
@@ -231,10 +230,10 @@ export default function Footer() {
                 <span style={{ width: 28, height: 1, background: '#7fbf2f', display: 'inline-block' }} />
                 Ready to Start?
               </p>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 52, fontWeight: 700, margin: 0, lineHeight: 1.05, color: '#fff' }}>
-                Let's Create Something<br />
-                <span className="gradient-text-footer">Truly Unforgettable.</span>
-              </h2>
+              <h2 className="h2" style={{ fontWeight: 700, margin: 0, lineHeight: 1.05, color: '#fff' }}>
+                  Let's Create Something<br />
+                  <span className="gradient-text-footer">Truly Unforgettable.</span>
+                </h2>
             </div>
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: '#7fbf2f', color: '#000', borderRadius: 100, padding: '14px 28px', fontSize: 14, fontWeight: 700, textDecoration: 'none', letterSpacing: '.02em', boxShadow: '0 14px 40px rgba(127,191,47,.35)', transition: 'all .3s' }}>
@@ -256,20 +255,20 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {/* Logo / Name */}
               <div>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, margin: 0, color: '#fff', letterSpacing: '.02em' }}>
+                <h3 style={{ color: '#fff', letterSpacing: '.02em' }}>
                   Ammar <span className="gradient-text-footer">Designz</span>
-                </p>
+                </h3>
                 <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', color: '#555', margin: '4px 0 0' }}>Creative Studio</p>
               </div>
 
               <p style={{ fontSize: 14, lineHeight: 1.85, color: '#666', margin: 0, maxWidth: 300 }}>
-                A Rawalpindi-based creative studio specialising in Arabic calligraphy, brand identity, graphic design, print production, and hands-on design education.
+                A creative studio specialising in Arabic calligraphy, brand identity, graphic design, print production, and hands-on design education.
               </p>
 
               {/* Contact details */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {[
-                  { icon: '📍', text: 'Rawalpindi, Punjab, Pakistan' },
+                  { icon: '📍', text: 'The Studio, Creative Hub' },
                   { icon: '✉️', text: 'hello@ammardesignz.com' },
                   { icon: '📱', text: '+92 300 0000000' },
                 ].map((c, i) => (
@@ -329,7 +328,7 @@ export default function Footer() {
 
         {/* ── Large Watermark Text ── */}
         <div style={{ textAlign: 'center', paddingBottom: 0, overflow: 'hidden', lineHeight: 0.85 }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(60px, 10vw, 140px)', fontWeight: 700, color: 'rgba(255,255,255,.025)', margin: 0, letterSpacing: '-.02em', userSelect: 'none', pointerEvents: 'none' }}>
+          <p style={{ fontFamily: "var(--font-cormorant), serif", fontSize: 'clamp(60px, 10vw, 140px)', fontWeight: 700, color: 'rgba(255,255,255,.025)', margin: 0, letterSpacing: '-.02em', userSelect: 'none', pointerEvents: 'none' }}>
             AMMAR DESIGNZ
           </p>
         </div>

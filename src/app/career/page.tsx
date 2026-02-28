@@ -2,25 +2,9 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import PageHero from "@/components/PageHero";
 
-const SHARED_STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
-  * { box-sizing:border-box; }
-  body { font-family:'DM Sans',sans-serif; background:#faf9f7; color:#1a1a1a; margin:0; }
-  .serif { font-family:'Cormorant Garamond',Georgia,serif; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;} }
-  @keyframes shimmer { 0%{background-position:-200% center;}100%{background-position:200% center;} }
-  @keyframes spin-slow { to{transform:rotate(360deg);} }
-  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.6;transform:scale(1.4);} }
-  .afu{animation:fadeUp .9s cubic-bezier(.23,1,.32,1) both;}
-  .d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}
-  .gradient-text {
-    background:linear-gradient(135deg,#7fbf2f 0%,#a8e04a 50%,#5a9c1a 100%);
-    background-size:200% auto;
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    background-clip:text;animation:shimmer 4s linear infinite;
-  }
-  .orb{border-radius:50%;filter:blur(70px);position:absolute;pointer-events:none;}
+const LOCAL_STYLES = `
   .job-card { transition:all .4s cubic-bezier(.23,1,.32,1); cursor:pointer; }
   .job-card:hover { transform:translateY(-6px); box-shadow:0 30px 70px rgba(0,0,0,.12) !important; }
   .job-card.expanded { border-color:rgba(127,191,47,.4) !important; }
@@ -33,18 +17,16 @@ const SHARED_STYLES = `
     box-shadow:0 0 0 3px rgba(127,191,47,.12) !important;
     outline:none;
   }
-  input, textarea, select { outline:none; font-family:'DM Sans',sans-serif; }
+  input, textarea, select { outline:none; font-family:var(--font-dm-sans),sans-serif; }
   .submit-btn:hover { background:#5a9c1a !important; transform:translateY(-2px); box-shadow:0 20px 50px rgba(127,191,47,.5) !important; }
   .submit-btn { transition:all .3s ease; }
   .filter-btn.active { background:#7fbf2f !important; color:#000 !important; border-color:#7fbf2f !important; }
-  .filter-btn { transition:all .25s; cursor:pointer; border:none; font-family:'DM Sans',sans-serif; }
+  .filter-btn { transition:all .25s; cursor:pointer; border:none; font-family:var(--font-dm-sans),sans-serif; }
   .value-item:hover { background:#fff !important; box-shadow: 0 10px 30px rgba(0,0,0,.05); }
   .value-item { transition:all .3s; }
 
   .career-hero { padding:120px 48px 100px; }
-  .career-hero-title { font-size:80px; }
   .section-padding { padding:100px 48px; }
-  .section-title { font-size:56px; }
 
   .career-hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
   .career-values-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -66,8 +48,6 @@ const SHARED_STYLES = `
   @media (max-width: 768px) {
     .career-hero { padding:96px 24px 56px; }
     .section-padding { padding:60px 24px; }
-    .career-hero-title { font-size:48px !important; }
-    .section-title { font-size:40px !important; }
     .career-hero-grid { grid-template-columns:1fr !important; gap:40px !important; }
     .career-values-grid { grid-template-columns:1fr !important; gap:24px !important; }
     .career-perks-grid { grid-template-columns:1fr !important; gap:24px !important; }
@@ -81,8 +61,6 @@ const SHARED_STYLES = `
   @media (max-width: 480px) {
     .career-hero { padding:80px 20px 48px; }
     .section-padding { padding:48px 20px; }
-    .career-hero-title { font-size:40px !important; }
-    .section-title { font-size:36px !important; }
     .form-card { padding:32px 20px !important; border-radius:24px !important; }
   }
 `;
@@ -91,7 +69,7 @@ const openings = [
   {
     title: "Senior Graphic Designer",
     type: "Full-Time",
-    location: "Rawalpindi Studio",
+    location: "The Studio",
     department: "Design",
     salary: "Rs. 40,000 – 60,000/mo",
     posted: "2 days ago",
@@ -113,7 +91,7 @@ const openings = [
   {
     title: "Arabic Calligraphy Artist",
     type: "Full-Time",
-    location: "Rawalpindi Studio",
+    location: "The Studio",
     department: "Calligraphy",
     salary: "Rs. 35,000 – 55,000/mo",
     posted: "5 days ago",
@@ -135,7 +113,7 @@ const openings = [
   {
     title: "Social Media & Content Designer",
     type: "Full-Time",
-    location: "Rawalpindi Studio",
+    location: "The Studio",
     department: "Design",
     salary: "Rs. 28,000 – 42,000/mo",
     posted: "1 week ago",
@@ -155,9 +133,29 @@ const openings = [
     ],
   },
   {
+    title: "Social Media Designer Junior",
+    type: "Full-Time",
+    location: "The Studio",
+    department: "Design",
+    salary: "Rs. 20,000 – 30,000/mo",
+    posted: "Just now",
+    urgent: true,
+    desc: "Kickstart your career by creating engaging social media content. Perfect for fresh graduates with a strong eye for design and trends.",
+    requirements: [
+      "Strong portfolio of social media graphics",
+      "Proficiency in Adobe Photoshop & Illustrator",
+      "Understanding of visual hierarchy and typography",
+      "Ability to work in a fast-paced environment",
+    ],
+    niceToHave: [
+      "Video editing skills (CapCut/Premiere)",
+      "Basic animation knowledge",
+    ],
+  },
+  {
     title: "Design Intern",
     type: "Internship",
-    location: "Rawalpindi Studio",
+    location: "The Studio",
     department: "Design",
     salary: "Paid – Rs. 10,000 – 15,000/mo",
     posted: "3 days ago",
@@ -205,43 +203,27 @@ export default function CareerPage() {
 
   return (
     <>
-      <style>{SHARED_STYLES}</style>
+      <style>{LOCAL_STYLES}</style>
       <div>
 
         {/* ── HERO ── */}
-        <section className="career-hero" style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa,#f4f9ec 60%,#fdfcfa)" }}>
-          <div className="orb" style={{ width:600, height:600, background:"rgba(127,191,47,.08)", top:-100, right:-80 }} />
-          <div className="orb" style={{ width:400, height:400, background:"rgba(127,191,47,.05)", bottom:-80, left:-60 }} />
-          <div style={{ position:"absolute", right:"6%", top:"50%", transform:"translateY(-50%)", width:500, height:500, borderRadius:"50%", border:"1px dashed rgba(127,191,47,.2)", animation:"spin-slow 35s linear infinite", pointerEvents:"none" }} />
+        <PageHero
+          pillText={`${openings.length} Positions Open`}
+          title={<>Build Your<br />Career at <span className="gradient-text">Ammar Designz.</span></>}
+          description="Join a studio where craft is taken seriously, creativity is celebrated, and every team member grows. We're building something special — come be part of it."
+          imageSrc="/images/DSC02344.JPG"
+          ctaPrimary={{ text: "See Open Roles", href: "#openings" }}
+          ctaSecondary={{ text: "General Application", href: "#apply" }}
+        />
 
-          <div className="page-container career-hero-grid" style={{ position:"relative", zIndex:1, gap:80, alignItems:"center" }}>
-            <div>
-              <div className="afu" style={{ display:"inline-flex", alignItems:"center", gap:10, marginBottom:24 }}>
-                <span style={{ width:8, height:8, borderRadius:"50%", background:"#7fbf2f", display:"inline-block", animation:"pulse-dot 2s ease-in-out infinite" }} />
-                <span style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f" }}>{openings.length} Positions Open</span>
-              </div>
-              <h1 className="serif afu d1 career-hero-title" style={{ fontWeight:700, lineHeight:.93, margin:"0 0 28px", color:"#111" }}>
-                Build Your<br />Career at <span className="gradient-text">Ammar Designz.</span>
-              </h1>
-              <p className="afu d2" style={{ fontSize:16, lineHeight:1.9, color:"#666", margin:"0 0 40px", maxWidth:480 }}>
-                Join a studio where craft is taken seriously, creativity is celebrated, and every team member grows. We're building something special — come be part of it.
-              </p>
-              <div className="afu d3" style={{ display:"flex", gap:16 }}>
-                <a href="#openings" style={{ display:"inline-flex", alignItems:"center", gap:12, background:"#7fbf2f", color:"#000", borderRadius:100, padding:"14px 28px", fontSize:14, fontWeight:700, textDecoration:"none", boxShadow:"0 14px 40px rgba(127,191,47,.3)" }}>
-                  See Open Roles <span style={{ fontSize:16 }}>↓</span>
-                </a>
-                <a href="#apply" style={{ display:"inline-flex", alignItems:"center", gap:10, border:"1px solid rgba(0,0,0,.14)", color:"#111", borderRadius:100, padding:"14px 28px", fontSize:14, fontWeight:500, textDecoration:"none" }}>
-                  General Application
-                </a>
-              </div>
-            </div>
-
-            {/* Studio culture snippet */}
+        {/* ── VALUES ── */}
+        <section className="section-padding" style={{ background:"#fff", borderBottom:"1px solid rgba(0,0,0,.06)" }}>
+          <div className="page-container">
             <div className="career-values-grid" style={{ gap:16 }}>
               {values.map((v,i) => (
                 <div key={i} className="value-item" style={{ background:"rgba(255,255,255,.6)", border:"1px solid rgba(0,0,0,.06)", borderRadius:22, padding:"24px 22px", cursor:"default" }}>
                   <span style={{ fontSize:22, color:"#7fbf2f", display:"block", marginBottom:12 }}>{v.icon}</span>
-                  <h4 style={{ fontSize:15, fontWeight:700, color:"#111", margin:"0 0 8px" }}>{v.title}</h4>
+                  <h4 style={{ fontWeight:700, color:"#111", margin:"0 0 8px" }}>{v.title}</h4>
                   <p style={{ fontSize:13, color:"#666", lineHeight:1.65, margin:0 }}>{v.desc}</p>
                 </div>
               ))}
@@ -254,7 +236,7 @@ export default function CareerPage() {
           <div className="page-container">
             <div style={{ textAlign:"center", marginBottom:72 }}>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Why Join Us</p>
-              <h2 className="serif section-title" style={{ fontWeight:700, color:"#111", margin:0 }}>
+              <h2 style={{ fontWeight:700, color:"#111", margin:0 }}>
                 More Than a <span className="gradient-text">Job.</span>
               </h2>
             </div>
@@ -262,7 +244,7 @@ export default function CareerPage() {
               {perks.map((p,i) => (
                 <div key={i} className="perk-card" style={{ background:"#fff", border:"1px solid rgba(0,0,0,.06)", borderRadius:28, padding:"36px 32px", boxShadow:"0 4px 24px rgba(0,0,0,.05)", cursor:"default" }}>
                   <span className="perk-icon" style={{ fontSize:36, display:"block", marginBottom:20 }}>{p.icon}</span>
-                  <h3 style={{ fontSize:19, fontWeight:700, color:"#111", margin:"0 0 10px" }}>{p.title}</h3>
+                  <h4 style={{ fontWeight:700, color:"#111", margin:"0 0 10px" }}>{p.title}</h4>
                   <p style={{ fontSize:14, color:"#666", lineHeight:1.75, margin:0 }}>{p.desc}</p>
                 </div>
               ))}
@@ -277,7 +259,7 @@ export default function CareerPage() {
             <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:56, flexWrap:"wrap", gap:24 }}>
               <div>
                 <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Now Hiring</p>
-                <h2 className="serif section-title" style={{ fontWeight:700, color:"#fff", margin:0 }}>
+                <h2 style={{ fontWeight:700, color:"#fff", margin:0 }}>
                   Open <span className="gradient-text">Positions</span>
                 </h2>
               </div>
@@ -308,7 +290,7 @@ export default function CareerPage() {
                         <span style={{ fontSize:9, fontWeight:700, letterSpacing:".18em", textTransform:"uppercase", background:"rgba(127,191,47,.1)", color:"#7fbf2f", borderRadius:100, padding:"4px 12px", border:"1px solid rgba(127,191,47,.2)" }}>{job.type}</span>
                         <span style={{ fontSize:12, color:"#555" }}>{job.posted}</span>
                       </div>
-                      <h3 style={{ fontSize:22, fontWeight:700, color:"#fff", margin:0, lineHeight:1.2 }}>{job.title}</h3>
+                      <h3 style={{ fontWeight:700, color:"#fff", margin:0, lineHeight:1.2 }}>{job.title}</h3>
                       <div style={{ display:"flex", gap:20, flexWrap:"wrap" }}>
                         {[job.location, job.department, job.salary].map((m,mi) => (
                           <span key={mi} style={{ fontSize:13, color:"#888", display:"flex", alignItems:"center", gap:6 }}>
@@ -370,7 +352,7 @@ export default function CareerPage() {
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>
                 {applying ? `Applying for: ${applying}` : "General Application"}
               </p>
-              <h2 className="serif" style={{ fontSize:56, fontWeight:700, color:"#111", margin:"0 0 16px" }}>
+              <h2 style={{ fontWeight:700, color:"#111", margin:"0 0 16px" }}>
                 {applying ? <><span className="gradient-text">Let's Talk.</span></> : <>Don't See Your Role?<br /><span className="gradient-text">Apply Anyway.</span></>}
               </h2>
               <p style={{ fontSize:15, color:"#666", lineHeight:1.8, margin:0 }}>
@@ -381,7 +363,7 @@ export default function CareerPage() {
             {submitted ? (
               <div className="form-card" style={{ textAlign:"center" }}>
                 <div style={{ width:80, height:80, borderRadius:"50%", background:"rgba(127,191,47,.1)", border:"2px solid #7fbf2f", display:"grid", placeItems:"center", fontSize:36, margin:"0 auto 24px" }}>✓</div>
-                <h3 className="serif" style={{ fontSize:40, fontWeight:700, color:"#111", margin:"0 0 16px" }}>Application Received!</h3>
+                <h3 style={{ fontWeight:700, color:"#111", margin:"0 0 16px" }}>Application Received!</h3>
                 <p style={{ fontSize:15, color:"#666", lineHeight:1.8, maxWidth:440, margin:"0 auto 32px" }}>We'll review your application and be in touch within 5–7 business days if there's a match.</p>
                 <button onClick={() => { setSubmitted(false); setApplying(null); }} style={{ background:"transparent", border:"1.5px solid rgba(0,0,0,.12)", borderRadius:100, padding:"12px 28px", fontSize:14, fontWeight:600, color:"#555", cursor:"pointer" }}>Submit Another</button>
               </div>

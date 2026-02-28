@@ -1,26 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import PageHero from "@/components/PageHero";
 
-const SHARED_STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
-  * { box-sizing:border-box; }
-  body { font-family:'DM Sans',sans-serif; background:#faf9f7; color:#1a1a1a; margin:0; }
-  .serif { font-family:'Cormorant Garamond',Georgia,serif; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;} }
-  @keyframes shimmer { 0%{background-position:-200% center;}100%{background-position:200% center;} }
-  @keyframes spin-slow { to{transform:rotate(360deg);} }
-  @keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
-  .afu{animation:fadeUp .9s cubic-bezier(.23,1,.32,1) both;}
-  .d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}
-  .gradient-text {
-    background:linear-gradient(135deg,#7fbf2f 0%,#a8e04a 50%,#5a9c1a 100%);
-    background-size:200% auto;
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    background-clip:text;animation:shimmer 4s linear infinite;
-  }
-  .orb{border-radius:50%;filter:blur(70px);position:absolute;pointer-events:none;}
-  input, textarea, select { outline:none; font-family:'DM Sans',sans-serif; }
+const LOCAL_STYLES = `
+  input, textarea, select { outline:none; font-family:var(--font-dm-sans),sans-serif; }
   input:focus, textarea:focus, select:focus {
     border-color:#7fbf2f !important;
     box-shadow:0 0 0 3px rgba(127,191,47,.12) !important;
@@ -36,7 +20,6 @@ const SHARED_STYLES = `
   .service-opt { transition:all .25s ease; cursor:pointer; }
 
   .contact-hero { padding:120px 48px 80px; }
-  .contact-hero-title { font-size:88px; }
   .contact-section-cards { padding:60px 48px 0; }
   .contact-section-main { padding:60px 48px 100px; }
   .contact-section-faq { padding:80px 48px; }
@@ -49,7 +32,6 @@ const SHARED_STYLES = `
 
   @media (max-width: 1024px) {
     .contact-hero { padding:100px 32px 64px; }
-    .contact-hero-title { font-size:64px; }
     .contact-section-cards,
     .contact-section-main,
     .contact-section-faq { padding:60px 32px 80px; }
@@ -60,7 +42,6 @@ const SHARED_STYLES = `
 
   @media (max-width: 768px) {
     .contact-hero { padding:96px 24px 56px; }
-    .contact-hero-title { font-size:48px; }
     .contact-section-cards,
     .contact-section-main,
     .contact-section-faq { padding:48px 24px 64px; }
@@ -71,32 +52,19 @@ const SHARED_STYLES = `
 
   @media (max-width: 480px) {
     .contact-hero { padding:80px 20px 48px; }
-    .contact-hero-title { font-size:36px; }
     .contact-section-cards,
     .contact-section-main,
     .contact-section-faq { padding:40px 20px 56px; }
     .contact-form-card { padding:32px 20px; border-radius:24px; }
   }
 
-  .contact-h2-responsive { font-size: 44px; }
-  .contact-h2-faq { font-size: 52px; }
   .page-container { width: 100%; max-width: 1400px; margin: 0 auto; }
-
-  @media (max-width: 768px) {
-    .contact-h2-responsive { font-size: 36px !important; }
-    .contact-h2-faq { font-size: 40px !important; }
-  }
-
-  @media (max-width: 480px) {
-    .contact-h2-responsive { font-size: 32px !important; }
-    .contact-h2-faq { font-size: 32px !important; }
-  }
 `;
 
 const contactInfo = [
-  { icon: "📍", title: "Studio Location", detail: "Rawalpindi, Punjab, Pakistan", sub: "Available in-person by appointment" },
+  { icon: "📍", title: "Studio Location", detail: "Pakistan", sub: "Available in-person by appointment" },
   { icon: "✉️", title: "Email Us", detail: "hello@ammardesignz.com", sub: "Response within 24 hours" },
-  { icon: "📱", title: "WhatsApp", detail: "+92 300 0000000", sub: "Mon–Sat, 10am – 8pm PKT" },
+  { icon: "📱", title: "WhatsApp", detail: "+92 300 0000000", sub: "Mon–Thu, 10am – 8pm PKT" },
   { icon: "📸", title: "Instagram", detail: "@ammardesignz", sub: "Follow for latest work" },
 ];
 
@@ -115,27 +83,18 @@ export default function ContactPage() {
 
   return (
     <>
-      <style>{SHARED_STYLES}</style>
+      <style>{LOCAL_STYLES}</style>
       <div style={{ overflowX: "hidden" }}>
 
         {/* ── HERO ── */}
-        <section className="contact-hero" style={{ position:"relative", overflow:"hidden", background:"linear-gradient(160deg,#fdfcfa,#f4f9ec 60%,#fdfcfa)" }}>
-          <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.08)", top:-80, right:-80 }} />
-          <div style={{ position:"absolute", right:"5%", top:"50%", transform:"translateY(-50%)", width:440, height:440, borderRadius:"50%", border:"1px dashed rgba(127,191,47,.18)", animation:"spin-slow 30s linear infinite", pointerEvents:"none" }} />
-
-          <div className="page-container" style={{ position:"relative", zIndex:1 }}>
-            <div className="afu" style={{ display:"inline-flex", alignItems:"center", gap:10, marginBottom:24 }}>
-              <span style={{ width:32, height:1, background:"#7fbf2f", display:"block" }} />
-              <span style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f" }}>Get In Touch</span>
-            </div>
-            <h1 className="serif afu d1 contact-hero-title" style={{ fontSize:88, fontWeight:700, lineHeight:.9, margin:"0 0 28px", color:"#111", maxWidth:700 }}>
-              Let's Make<br />Something <span className="gradient-text">Great.</span>
-            </h1>
-            <p className="afu d2" style={{ fontSize:17, lineHeight:1.85, color:"#666", maxWidth:520, margin:0 }}>
-              Whether you have a project in mind, a question about our courses, or just want to say hello — we'd love to hear from you.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          pillText="Get In Touch"
+          title={<>Let's Make<br />Something <span className="gradient-text">Great.</span></>}
+          description="Whether you have a project in mind, a question about our courses, or just want to say hello — we'd love to hear from you."
+          imageSrc="/images/DSC02345.JPG"
+          ctaPrimary={{ text: "Start a Project", href: "#contact-form" }}
+          ctaSecondary={{ text: "Email Us", href: "mailto:hello@ammardesignz.com" }}
+        />
 
         {/* ── CONTACT CARDS ── */}
         <section className="contact-section-cards" style={{ background:"#faf9f7" }}>
@@ -152,7 +111,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── MAIN FORM + MAP ── */}
-        <section className="contact-section-main" style={{ background:"#faf9f7" }}>
+        <section id="contact-form" className="contact-section-main" style={{ background:"#faf9f7" }}>
           <div className="page-container contact-main-grid">
 
             {/* FORM */}
@@ -160,7 +119,7 @@ export default function ContactPage() {
               {submitted ? (
                 <div style={{ display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", minHeight:400, textAlign:"center", gap:24 }}>
                   <div style={{ width:80, height:80, borderRadius:"50%", background:"rgba(127,191,47,.1)", border:"2px solid #7fbf2f", display:"grid", placeItems:"center", fontSize:36, animation:"pulse 2s ease-in-out infinite" }}>✓</div>
-                  <h3 className="serif" style={{ fontSize:40, fontWeight:700, color:"#111", margin:0, lineHeight:1.1 }}>Message Received!</h3>
+                  <h2 style={{ fontWeight:700, color:"#111", margin:0, lineHeight:1.1 }}>Message Received!</h2>
                   <p style={{ fontSize:15, color:"#666", lineHeight:1.8, margin:0, maxWidth:380 }}>Thank you for reaching out. We'll review your project details and get back to you within 24 hours.</p>
                   <button onClick={() => setSubmitted(false)} style={{ background:"transparent", border:"1.5px solid rgba(0,0,0,.12)", borderRadius:100, padding:"12px 28px", fontSize:14, fontWeight:600, color:"#555", cursor:"pointer" }}>Send Another Message</button>
                 </div>
@@ -168,7 +127,7 @@ export default function ContactPage() {
                 <>
                   <div style={{ marginBottom:40 }}>
                     <p style={{ fontSize:11, fontWeight:600, letterSpacing:".25em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 10px" }}>Project Brief</p>
-                    <h2 className="serif contact-h2-responsive" style={{ fontWeight:700, color:"#111", margin:0, lineHeight:1.1 }}>Tell Us About<br />Your Project</h2>
+                    <h2 style={{ fontWeight:700, color:"#111", margin:0, lineHeight:1.1 }}>Tell Us About<br />Your Project</h2>
                   </div>
 
                   <div style={{ display:"flex", flexDirection:"column", gap:20 }}>
@@ -210,20 +169,6 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    {/* Budget */}
-                    <div>
-                      <label style={{ fontSize:12, fontWeight:600, color:"#888", letterSpacing:".08em", textTransform:"uppercase", display:"block", marginBottom:12 }}>Budget Range</label>
-                      <div style={{ display:"flex", flexWrap:"wrap", gap:8 }}>
-                        {budgets.map(b => (
-                          <button key={b} type="button" className={`service-opt${selectedBudget===b?" selected":""}`}
-                            onClick={() => setSelectedBudget(b)}
-                            style={{ borderRadius:100, padding:"9px 18px", fontSize:13, fontWeight:500, color:selectedBudget===b?"#1a1a1a":"#666", background:selectedBudget===b?"rgba(127,191,47,.1)":"transparent", border:"1.5px solid", borderColor:selectedBudget===b?"#7fbf2f":"rgba(0,0,0,.1)" }}>
-                            {b}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
                     {/* Timeline */}
                     <div>
                       <label style={{ fontSize:12, fontWeight:600, color:"#888", letterSpacing:".08em", textTransform:"uppercase", display:"block", marginBottom:8 }}>Project Timeline</label>
@@ -259,8 +204,8 @@ export default function ContactPage() {
               <div style={{ flex:1, borderRadius:32, overflow:"hidden", background:"linear-gradient(135deg,#1a2a0a,#0a1a05)", border:"1px solid rgba(127,191,47,.2)", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", minHeight:280, gap:16 }}>
                 <span style={{ fontSize:48 }}>📍</span>
                 <div style={{ textAlign:"center" }}>
-                  <p className="serif" style={{ fontSize:24, fontWeight:700, color:"#fff", margin:"0 0 6px" }}>Rawalpindi Studio</p>
-                  <p style={{ fontSize:14, color:"#888", margin:0 }}>Punjab, Pakistan</p>
+                  <h3 style={{ fontWeight:700, color:"#fff", margin:"0 0 6px" }}>The Studio</h3>
+                  <p style={{ fontSize:14, color:"#888", margin:0 }}>Pakistan</p>
                 </div>
                 <a href="https://maps.google.com" target="_blank" rel="noreferrer" style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(127,191,47,.15)", border:"1px solid rgba(127,191,47,.3)", color:"#7fbf2f", borderRadius:100, padding:"10px 20px", fontSize:13, fontWeight:600, textDecoration:"none", marginTop:8 }}>
                   Open in Maps →
@@ -272,9 +217,8 @@ export default function ContactPage() {
                 <p style={{ fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>Studio Hours</p>
                 <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
                   {[
-                    { day:"Monday – Friday", hours:"10:00am – 7:00pm" },
-                    { day:"Saturday", hours:"11:00am – 5:00pm" },
-                    { day:"Sunday", hours:"Closed" },
+                    { day:"Monday – Thursday", hours:"10:00am – 7:00pm" },
+                    { day:"Friday – Sunday", hours:"Closed" },
                   ].map((h,i) => (
                     <div key={i} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingBottom:12, borderBottom:i<2?"1px solid rgba(0,0,0,.05)":"none" }}>
                       <span style={{ fontSize:14, color:"#555", fontWeight:500 }}>{h.day}</span>
@@ -314,7 +258,7 @@ export default function ContactPage() {
           <div className="page-container contact-faq-grid" style={{ position:"relative", zIndex:1 }}>
             <div>
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Quick Answers</p>
-              <h2 className="serif contact-h2-faq" style={{ fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Before You<br /><span className="gradient-text">Reach Out</span></h2>
+              <h2 style={{ fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Before You<br /><span className="gradient-text">Reach Out</span></h2>
               <p style={{ fontSize:15, lineHeight:1.85, color:"#888", margin:0 }}>A few things clients often want to know before getting in touch. Still have questions? The form is right above.</p>
             </div>
             <div style={{ display:"flex", flexDirection:"column", gap:20 }}>

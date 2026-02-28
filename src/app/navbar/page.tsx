@@ -54,8 +54,6 @@ export default function Navbar() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
-
         :root {
           --green: #7fbf2f;
           --green-dark: #5a9c1a;
@@ -110,7 +108,7 @@ export default function Navbar() {
 
         /* ── Logo ── */
         .nav-logo {
-          font-family: 'Cormorant Garamond', serif;
+          font-family: var(--font-cormorant), serif;
           font-weight: 700;
           font-size: 22px;
           color: #111;
@@ -181,7 +179,7 @@ export default function Navbar() {
         /* ── Individual link ── */
         .nav-link {
           position: relative; z-index: 1;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), sans-serif;
           font-size: 13.5px;
           font-weight: 500;
           color: #555;
@@ -209,7 +207,7 @@ export default function Navbar() {
 
         /* ── Institute CTA button ── */
         .nav-cta {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), sans-serif;
           font-size: 13px;
           font-weight: 700;
           color: #000 !important;
@@ -253,7 +251,7 @@ export default function Navbar() {
 
         /* ── Quote button ── */
         .nav-quote {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), sans-serif;
           font-size: 13px;
           font-weight: 600;
           color: #555;
@@ -364,7 +362,7 @@ export default function Navbar() {
         }
 
         .mobile-link {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), sans-serif;
           font-size: 16px;
           font-weight: 500;
           color: #444;
@@ -404,7 +402,7 @@ export default function Navbar() {
           display: flex;
           align-items: center;
           gap: 12px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), sans-serif;
           font-size: 13px;
           color: #777;
         }
@@ -568,7 +566,7 @@ export default function Navbar() {
               <div className="mobile-contact-row">
                 <div className="mobile-contact-item">
                   <span className="mobile-contact-icon">📍</span>
-                  <span>Rawalpindi, Punjab, Pakistan</span>
+                  <span>The Studio, Creative Hub</span>
                 </div>
                 <div className="mobile-contact-item">
                   <span className="mobile-contact-icon">✉️</span>

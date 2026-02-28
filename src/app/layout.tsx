@@ -1,19 +1,36 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Footer from "./footer/page";
 import Navbar from "./navbar/page";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
+  weight: ["300", "400", "600", "700"],
+  variable: "--font-cormorant",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmSans = DM_Sans({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const powerGrotesk = localFont({
+  src: [
+    { path: "../../public/TTF/PowerGrotesk-Light.ttf", weight: "300", style: "normal" },
+    { path: "../../public/TTF/PowerGrotesk-Regular.ttf", weight: "400", style: "normal" },
+    { path: "../../public/TTF/PowerGrotesk-Medium.ttf", weight: "500", style: "normal" },
+    { path: "../../public/TTF/PowerGrotesk-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../../public/TTF/PowerGrotesk-Black.ttf", weight: "900", style: "normal" },
+    { path: "../../public/TTF/PowerGrotesk-Italic.ttf", weight: "400", style: "italic" },
+  ],
+  variable: "--font-power-grotesk",
 });
 
 export const metadata: Metadata = {
@@ -30,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#111111] text-[#1f2933]`}
+        className={`${powerGrotesk.variable} ${cormorant.variable} ${dmSans.variable} antialiased bg-[#fdfcfa] text-[#1f2933] font-sans`}
       >
         <div className="min-h-screen flex flex-col">
           <Navbar />
