@@ -72,43 +72,43 @@ const LOCAL_STYLES = `
 
 const services = [
   {
-    id: "calligraphy", icon: "✦", label: "Arabic Calligraphy", sub: "Classical scripts. Digital precision.",
-    heroDesc: "We craft authentic Arabic calligraphy — digitally rendered for logos, wedding suites, signage, packaging and cultural projects. Rooted in classical scripts with a contemporary eye.",
-    longDesc: "Every letterform we produce is drawn from a deep study of traditional Arabic scripts — Naskh, Thuluth, Diwani and Ruq'ah — then translated into pristine digital artwork ready for print, screen or large-format installation. Whether you need a single logo mark or an elaborate architectural installation, our calligraphy carries the weight of tradition and the precision of modern craft.",
-    features: ["Logo & Brand Calligraphy", "Wedding & Event Suites", "Quranic Verses & Plaques", "Cultural & Architectural Artwork", "Bilingual Compositions", "Custom Arabic Typefaces"],
+    id: "calligraphy", icon: "✦", label: "Custom Calligraphic Logos", sub: "Bespoke Arabic wordmarks and logotypes.",
+    heroDesc: "Bespoke Arabic wordmarks and logotypes designed to reflect brand personality, cultural depth, and market positioning. Ideal for luxury brands, Islamic institutions, personal branding, and heritage-driven businesses.",
+    longDesc: "Our script-based identities and compositions are built with reverence, balance, and artistic integrity. We create high-resolution, vector-based calligraphy prepared for everything from digital screens to architectural applications.",
+    features: ["Script-Based Brand Identities", "Quranic & Islamic Art Compositions", "Large-Scale & Print-Ready Artwork"],
     deliverables: "AI · EPS · SVG · PNG — print & screen ready at all sizes",
     gallery: ["/images/DSC02341.JPG", "/images/DSC02342.JPG", "/images/DSC02343.JPG"],
   },
   {
-    id: "brand", icon: "◈", label: "Brand Identity", sub: "Strategy meets visual storytelling.",
-    heroDesc: "From naming to logo systems, we build brand identities that hold together across every touchpoint — delivered with a complete brand manual.",
-    longDesc: "A brand is more than a logo. It's a system — a collection of decisions about colour, type, voice and visual language that work together to create a recognisable, trustworthy presence. We begin every brand project with deep research and strategy before touching a single design tool, ensuring the visual identity is genuinely aligned with your values and goals.",
-    features: ["Logo & Brand Mark Design", "Typography System", "Colour Palette & Usage Guide", "Brand Guidelines Manual", "Business Stationery Suite", "Social Media Kit"],
+    id: "brand", icon: "◈", label: "Brand Identity", sub: "Designing Brands That Think, Speak, and Lead.",
+    heroDesc: "At Ammar Designz, Brand Identity is built on clarity, strategy, and long-term vision. We don’t simply design logos — we construct cohesive visual systems that define how your brand looks, communicates, and positions itself in the market.",
+    longDesc: "Every identity is developed through research, competitive analysis, and intentional design decisions to ensure it is distinctive, scalable, and built for real-world application.",
+    features: ["Brand Strategy & Positioning", "Logo & Visual System Development", "Typography & Color Direction", "Brand Guidelines", "Brand Applications"],
     deliverables: "Full brand manual (PDF) · all logo formats · editable source files",
     gallery: ["/images/DSC02344.JPG", "/images/DSC02345.JPG", "/images/DSC02346.JPG"],
   },
   {
-    id: "social", icon: "◉", label: "Social Media", sub: "Scroll-stopping visual content.",
-    heroDesc: "Consistent, brand-aligned templates and campaign visuals for Instagram, Facebook, YouTube and LinkedIn — designed to stop the scroll and convert.",
-    longDesc: "Social media design lives or dies on the first 0.3 seconds. We design posts, stories, reels thumbnails and campaign kits that arrest attention without sacrificing brand consistency. Every deliverable comes as an editable template so your team can move fast while staying on-brand.",
-    features: ["Post & Story Templates", "Reels & YouTube Thumbnails", "Profile & Cover Art", "Campaign Visual Kits", "Monthly Content Packs", "Animated Story Templates"],
+    id: "social", icon: "◉", label: "Social Media Design & Management", sub: "Strategic Visual Communication for the Digital World.",
+    heroDesc: "At Ammar Designz, social media is treated as a living extension of your brand — not just a content feed. We combine strategic planning, visual consistency, and audience psychology to create content that captures attention and builds long-term engagement.",
+    longDesc: "From aesthetic cohesion to performance-driven execution, every post is designed with intention. We handle platform-specific content planning, visual direction, and growth roadmaps.",
+    features: ["Social Media Strategy", "Creative Content Design", "Content Planning & Calendar", "Performance-Oriented Campaign Design", "Account Management"],
     deliverables: "Editable Canva / Figma templates + exported production-ready assets",
     gallery: ["/images/DSC02347.JPG", "/images/DSC02348.JPG", "/images/DSC02349.JPG"],
   },
   {
-    id: "print", icon: "◇", label: "Print Media", sub: "From concept to press-ready art.",
-    heroDesc: "Professional print design for businesses, events and publishers — every file prepared to exact printing specifications so what you see is what gets printed.",
-    longDesc: "There is something irreplaceable about a beautifully printed piece held in the hand. We design for print with rigorous attention to bleed, colour profiles, paper stock and finishing — ensuring every project looks as exceptional off-press as it does on screen. From a business card to a 200-page book, the standard never drops.",
-    features: ["Business Cards & Stationery", "Brochures & Catalogues", "Banners & Signage", "Book & Magazine Layouts", "Packaging Design", "Event & Promotional Materials"],
+    id: "print", icon: "◇", label: "Print Media Design", sub: "Timeless Design, Crafted for the Physical World.",
+    heroDesc: "At Ammar Designz, print design is approached with precision, structure, and material awareness. We create visually powerful designs that translate flawlessly from screen to paper — ensuring color accuracy, layout balance, and production-ready execution.",
+    longDesc: "Print is not just about ink on paper. It is about presence, texture, and lasting impression. From corporate stationery to large format billboards, we ensure every project looks exceptional off-press.",
+    features: ["Corporate Stationery", "Brochures & Company Profiles", "Packaging Design", "Posters & Marketing Collateral", "Large Format & Production-Ready Files"],
     deliverables: "Press-ready PDFs · CMYK · crop marks · print specifications sheet",
     gallery: ["/images/DSC02350.JPG", "/images/DSC02351.JPG", "/images/DSC02352.JPG"],
   },
   {
-    id: "digital", icon: "⬡", label: "Digital & UI", sub: "Beautiful, functional interfaces.",
-    heroDesc: "Visual UI design for websites, apps and dashboards — high-fidelity Figma prototypes and handoff-ready design systems built collaboratively with your dev team.",
-    longDesc: "We bring the same rigour and aesthetic intent to digital interfaces that we apply to print and brand. Working in Figma, we produce pixel-perfect designs grounded in user-centred thinking — from wireframes to polished prototypes — and deliver fully documented component libraries ready for developer handoff.",
-    features: ["Website UI Design", "Landing Page Design", "Mobile App Screens", "Figma Component Libraries", "Custom Icon Sets", "Design System Documentation"],
-    deliverables: "Figma source file · component library · developer handoff package",
+    id: "design-dev", icon: "⬡", label: "Design & Development Department", sub: "Building Scalable, High-Performance Digital Experiences.",
+    heroDesc: "From custom websites to complex web applications, we bridge the gap between stunning design and robust engineering. Our development team builds solutions that are fast, secure, and built for growth.",
+    longDesc: "We don't just use templates; we engineer digital products. Whether it's a corporate website, an e-commerce platform, or a custom web application, we ensure pixel-perfect implementation of designs backed by clean, maintainable code. We specialize in modern tech stacks like Next.js, React, and Node.js to deliver seamless user experiences.",
+    features: ["Custom Website Development", "E-Commerce Solutions", "Web Application Development", "CMS Integration", "Performance Optimization", "SEO & Analytics Setup"],
+    deliverables: "Deployed live site · Source code repository · Admin dashboard access · Documentation",
     gallery: ["/images/DSC02353.JPG", "/images/DSC02354.JPG", "/images/DSC02355.JPG"],
   },
 ];
@@ -123,7 +123,7 @@ const process = [
 const packages = [
   { name: "Starter", price: "Rs. 8,000", tagline: "For small businesses getting started.", featured: false, features: ["Logo design (2 concepts)", "Business card design", "Social profile artwork", "3 revision rounds", "All source files included"] },
   { name: "Brand Pro", price: "Rs. 22,000", tagline: "Full brand identity for growing businesses.", featured: true, features: ["Logo & brand mark system", "Colour & typography guide", "10-page brand manual", "Stationery suite", "Social media kit", "5 revision rounds", "All source files included"] },
-  { name: "Studio", price: "Custom", tagline: "Comprehensive creative partnership.", featured: false, features: ["Everything in Brand Pro", "Arabic calligraphy logo", "Print campaign design", "Monthly social content", "Unlimited revisions", "Priority support", "Direct CEO access"] },
+  { name: "Studio", price: "Custom", tagline: "Comprehensive creative partnership.", featured: false, features: ["Everything in Brand Pro", "Digital Calligraphy logo", "Print campaign design", "Monthly social content", "Unlimited revisions", "Priority support", "Direct CEO access"] },
 ];
 
 export default function ServicesPage() {
@@ -243,70 +243,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ══ 5. ALL SERVICES OVERVIEW ════════════════════ */}
-      <section className="responsive-padding section-padding-responsive" style={{ background:"#0d0d0d", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
-        <div className="orb" style={{ width:600, height:600, background:"rgba(127,191,47,.06)", top:-120, right:-120 }} />
-        <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.04)", bottom:-100, left:-100 }} />
-        <div className="page-container" style={{ position:"relative", zIndex:1 }}>
-          <div style={{ textAlign:"center", marginBottom:64 }}>
-            <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Everything We Do</p>
-            <h2 style={{ fontWeight:700, color:"#fff", lineHeight:1 }}>The Full <span className="gradient-text">Service Range.</span></h2>
-          </div>
-          <div className="services-overview-grid" style={{ display:"grid", gap:16 }}>
-            {services.map((s,i) => (
-              <button key={i} className="svc-overview-card"
-                onClick={() => { setActive(s.id); window.scrollTo({ top:0, behavior:"smooth" }); }}>
-                <div style={{ width:50, height:50, borderRadius:15, background:"rgba(127,191,47,.1)", border:"1px solid rgba(127,191,47,.2)", display:"grid", placeItems:"center", fontSize:22, color:"#7fbf2f", marginBottom:18 }}>{s.icon}</div>
-                <h6 style={{ color:"#fff", marginBottom: 8 }}>{s.label}</h6>
-                <p style={{ fontSize:12, color:"#777", margin:"0 0 14px", lineHeight:1.6 }}>{s.sub}</p>
-                <span style={{ fontSize:18, color:"#7fbf2f" }}>→</span>
-              </button>
-            ))}
-          </div>
-          {/* Gallery row */}
-          <div className="services-overview-gallery" style={{ display:"grid", gap:16, marginTop:24 }}>
-            {["/images/DSC02341.JPG", "/images/DSC02344.JPG", "/images/DSC02347.JPG", "/images/DSC02350.JPG"].map((img,i) => (
-              <div key={i} className="gal-item" style={{ aspectRatio: i===0||i===2 ? "4/3" : "1" }}>
-                <img src={img} alt="" /><div className="gal-overlay" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+   
 
-      {/* ══ 6. PACKAGES ════════════════════════════════ */}
-      <section className="responsive-padding section-padding-responsive" style={{ background:"#faf9f7", padding:"100px 48px" }}>
-        <div className="page-container">
-          <div style={{ textAlign:"center", marginBottom:72 }}>
-            <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Packages</p>
-            <h2 style={{ color:"#fff" }}>Transparent <span className="gradient-text">Pricing.</span></h2>
-          </div>
-          <div className="services-packages-grid" style={{ display:"grid", gap:24 }}>
-            {packages.map((pkg,i) => (
-              <div key={i} className={`pkg pkg-card${pkg.featured?" featured":""}`}
-                style={{ background:pkg.featured?"linear-gradient(160deg,#1a2a08,#0d1a04)":"#fff", border:"1px solid", borderColor:pkg.featured?"rgba(127,191,47,.45)":"rgba(0,0,0,.07)", borderRadius:36, boxShadow:pkg.featured?"0 16px 60px rgba(127,191,47,.18)":"0 4px 28px rgba(0,0,0,.06)", position:"relative" }}>
-                {pkg.featured && (
-                  <div style={{ position:"absolute", top:22, right:22, background:"#7fbf2f", borderRadius:100, padding:"5px 16px", fontSize:10, fontWeight:800, color:"#000", letterSpacing:".16em", textTransform:"uppercase" }}>Most Popular</div>
-                )}
-                <p style={{ fontSize:11, fontWeight:700, letterSpacing:".22em", textTransform:"uppercase", color:pkg.featured?"#7fbf2f":"#aaa", margin:"0 0 10px" }}>{pkg.name}</p>
-                <h3 className="h2" style={{ color:pkg.featured?"#fff":"#111", marginBottom: 6 }}>{pkg.price}</h3>
-                <p style={{ fontSize:14, color:pkg.featured?"#888":"#777", margin:"0 0 32px", lineHeight:1.7 }}>{pkg.tagline}</p>
-                <div style={{ display:"flex", flexDirection:"column", gap:12, marginBottom:36 }}>
-                  {pkg.features.map((f,fi) => (
-                    <div key={fi} style={{ display:"flex", alignItems:"flex-start", gap:12 }}>
-                      <span style={{ color:"#7fbf2f", fontSize:14, flexShrink:0, marginTop:2 }}>✓</span>
-                      <span style={{ fontSize:14, color:pkg.featured?"#ccc":"#555", lineHeight:1.4 }}>{f}</span>
-                    </div>
-                  ))}
-                </div>
-                <Link href="/contact" style={{ display:"block", textAlign:"center", borderRadius:100, padding:"14px 24px", fontSize:14, fontWeight:700, textDecoration:"none", background:pkg.featured?"#7fbf2f":"transparent", color:pkg.featured?"#000":"#7fbf2f", border:pkg.featured?"none":"1.5px solid rgba(127,191,47,.4)", transition:"all .3s" }}>
-                  {pkg.featured ? "Get Started →" : pkg.name === "Studio" ? "Let's Talk →" : "Get Started →"}
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+   
 
       {/* ══ 7. BOTTOM CTA ═══════════════════════════════ */}
       <section className="responsive-padding section-padding-responsive" style={{ background:"#060606", padding:"110px 48px", position:"relative", overflow:"hidden" }}>

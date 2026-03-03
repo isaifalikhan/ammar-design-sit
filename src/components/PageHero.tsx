@@ -37,6 +37,7 @@ interface PageHeroProps {
   description?: string;
   tags?: string[];
   imageSrc?: string;
+  bgImage?: string;
   stats?: { val: number; suf: string; label: string }[];
   ctaPrimary?: { text: string; href?: string; onClick?: () => void };
   ctaSecondary?: { text: string; href?: string; onClick?: () => void };
@@ -49,14 +50,20 @@ export default function PageHero({
   description,
   tags,
   imageSrc = "/images/DSC02340.JPG",
+  bgImage,
   stats,
   ctaPrimary = { text: "Explore Services", href: "/services" },
   ctaSecondary = { text: "View Work", href: "/portfolio" }
 }: PageHeroProps) {
+  const hasBg = !!bgImage;
+  const textColor = hasBg ? '#fff' : '#111';
+  const subTextColor = hasBg ? 'rgba(255,255,255,0.9)' : '#555';
+  const descColor = hasBg ? 'rgba(255,255,255,0.8)' : '#666';
+
   const renderCta = (cta: { text: string; href?: string; onClick?: () => void }, isPrimary: boolean) => {
     const style = isPrimary
       ? { display: 'inline-flex', alignItems: 'center', gap: 14, background: '#1a1a1a', color: '#fff', borderRadius: 100, padding: '14px 28px', fontSize: 14, fontWeight: 600, textDecoration: 'none', letterSpacing: '.02em', boxShadow: '0 20px 50px rgba(0,0,0,.2)', transition: 'all .3s', border: 'none', cursor: 'pointer' }
-      : { fontSize: 14, fontWeight: 500, color: '#444', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8, background: 'transparent', border: 'none', cursor: 'pointer', padding: 0 };
+      : { fontSize: 14, fontWeight: 500, color: hasBg ? '#fff' : '#444', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8, background: 'transparent', border: 'none', cursor: 'pointer', padding: 0 };
 
     const content = (
       <>
@@ -67,7 +74,7 @@ export default function PageHero({
           </>
         ) : (
           <>
-            <span style={{ width: 32, height: 32, borderRadius: '50%', border: '1.5px solid #ccc', display: 'grid', placeItems: 'center', fontSize: 14 }}>▶</span>
+            <span style={{ width: 32, height: 32, borderRadius: '50%', border: hasBg ? '1.5px solid #fff' : '1.5px solid #ccc', display: 'grid', placeItems: 'center', fontSize: 14 }}>▶</span>
             {cta.text}
           </>
         )}
@@ -90,18 +97,43 @@ export default function PageHero({
   };
 
   return (
-    <section className="hero-grain home-hero-section" style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(160deg, #fdfcfa 0%, #f4f9ec 50%, #fdfcfa 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+    <section className="hero-grain home-hero-section" style={{ 
+      marginTop: '60px', 
+      position: 'relative', 
+      overflow: 'hidden', 
+      background: hasBg ? `url("${bgImage}") center/cover no-repeat` : 'linear-gradient(160deg, #fdfcfa 0%, #f4f9ec 50%, #fdfcfa 100%)', 
+      minHeight: '100vh', 
+      display: 'flex', 
+      alignItems: 'center' 
+    }}>
+      {hasBg && <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 1 }} />}
+
       {/* Background orbs */}
-      <div className="orb" style={{ width: 600, height: 600, background: 'rgba(127,191,47,.08)', top: -100, right: -150 }} />
-      <div className="orb" style={{ width: 400, height: 400, background: 'rgba(127,191,47,.05)', bottom: -80, left: -80 }} />
+      {!hasBg && (
+        <>
+          <div className="orb" style={{ width: 600, height: 600, background: 'rgba(127,191,47,.08)', top: -100, right: -150 }} />
+          <div className="orb" style={{ width: 400, height: 400, background: 'rgba(127,191,47,.05)', bottom: -80, left: -80 }} />
+        </>
+      )}
 
       {/* Decorative ring */}
-      <div style={{ position: 'absolute', right: '5%', top: '50%', transform: 'translateY(-50%)', width: 520, height: 520, borderRadius: '50%', border: '1px dashed rgba(127,191,47,.2)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', right: '6.5%', top: '50%', transform: 'translateY(-50%)', width: 480, height: 480, borderRadius: '50%', border: '1px solid rgba(127,191,47,.08)', pointerEvents: 'none' }} />
+      {!hasBg && (
+        <>
+          <div style={{ position: 'absolute', right: '5%', top: '50%', transform: 'translateY(-50%)', width: 520, height: 520, borderRadius: '50%', border: '1px dashed rgba(127,191,47,.2)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', right: '6.5%', top: '50%', transform: 'translateY(-50%)', width: 480, height: 480, borderRadius: '50%', border: '1px solid rgba(127,191,47,.08)', pointerEvents: 'none' }} />
+        </>
+      )}
 
-      <div className="page-container home-hero-grid" style={{ position: 'relative', zIndex: 2, width: '100%', padding: '80px 48px', display: 'grid', gap: 64, alignItems: 'center' }}>
+      <div className="page-container home-hero-grid" style={{ 
+        position: 'relative', 
+        zIndex: 2, 
+        width: '100%', 
+        padding: '80px 48px', 
+        // display: 'grid' is handled by class home-hero-grid
+        // gap: 64 is handled by class home-hero-grid
+      }}>
         {/* LEFT */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: hasBg ? 600 : undefined }}>
           {/* Pill badge */}
           {pillText && (
             <div className="anim-fade-up" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(127,191,47,.1)', border: '1px solid rgba(127,191,47,.25)', borderRadius: 100, padding: '6px 16px', width: 'fit-content' }}>
@@ -112,18 +144,18 @@ export default function PageHero({
 
           {/* Headline */}
           <div className="anim-fade-up delay-1">
-            <h1 className="home-hero-title" style={{ color: '#111' }}>
+            <h1 className="home-hero-title" style={{ color: textColor, lineHeight: 0.9 }}>
               {title}
             </h1>
             {subtitle && (
-              <p style={{ fontSize: 22, fontWeight: 300, color: '#555', marginTop: 12, fontStyle: 'italic' }}>
+              <p style={{ fontSize: 22, fontWeight: 300, color: subTextColor, marginTop: 12, lineHeight: 1.1 }}>
                 {subtitle}
               </p>
             )}
           </div>
 
           {description && (
-            <p className="anim-fade-up delay-2" style={{ fontSize: 15, lineHeight: 1.8, color: '#666', maxWidth: 480, margin: 0 }}>
+            <p className="anim-fade-up delay-2" style={{ fontSize: 15, lineHeight: 1.8, color: descColor, maxWidth: 480, margin: 0 }}>
               {description}
             </p>
           )}
@@ -132,7 +164,7 @@ export default function PageHero({
           {tags && tags.length > 0 && (
             <div className="anim-fade-up delay-3" style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {tags.map(t => (
-                <span key={t} style={{ fontSize: 11, fontWeight: 500, color: '#666', background: 'rgba(0,0,0,.04)', border: '1px solid rgba(0,0,0,.08)', borderRadius: 100, padding: '5px 14px', letterSpacing: '.04em' }}>
+                <span key={t} style={{ fontSize: 11, fontWeight: 500, color: hasBg ? '#fff' : '#666', background: hasBg ? 'rgba(255,255,255,.1)' : 'rgba(0,0,0,.04)', border: hasBg ? '1px solid rgba(255,255,255,.2)' : '1px solid rgba(0,0,0,.08)', borderRadius: 100, padding: '5px 14px', letterSpacing: '.04em' }}>
                   {t}
                 </span>
               ))}
@@ -147,45 +179,47 @@ export default function PageHero({
 
           {/* Stats */}
           {stats && stats.length > 0 && (
-            <div className="anim-fade-up delay-4 home-hero-stats" style={{ display: 'flex', flexWrap: 'wrap', gap: 48, marginTop: 24, paddingTop: 24, borderTop: '1px solid rgba(0,0,0,.08)' }}>
+            <div className="anim-fade-up delay-4 home-hero-stats" style={{ display: 'flex', flexWrap: 'wrap', gap: 48, marginTop: 24, paddingTop: 24, borderTop: hasBg ? '1px solid rgba(255,255,255,.2)' : '1px solid rgba(0,0,0,.08)' }}>
               {stats.map(s => (
                 <div key={s.label}>
-                  <p style={{ fontSize: 40, fontWeight: 700, color: '#111', margin: 0, lineHeight: 1 }}>
+                  <p style={{ fontSize: 40, fontWeight: 700, color: textColor, margin: 0, lineHeight: 1 }}>
                     <CountUp end={s.val} suffix={s.suf} />
                   </p>
-                  <p style={{ fontSize: 12, color: '#999', margin: '4px 0 0', letterSpacing: '.05em', textTransform: 'uppercase' }}>{s.label}</p>
+                  <p style={{ fontSize: 12, color: subTextColor, margin: '4px 0 0', letterSpacing: '.05em', textTransform: 'uppercase' }}>{s.label}</p>
                 </div>
               ))}
             </div>
           )}
         </div>
 
-        {/* RIGHT — floating image */}
-        <div className="anim-fade-in delay-2" style={{ position: 'relative', display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <div className="float home-hero-image" style={{ position: 'relative', width: '100%', maxWidth: 480 }}>
-            {/* Main image with elegant mask */}
-            <div className="hero-img-inner" style={{ width: '100%', aspectRatio: '0.8', borderRadius: 32, overflow: 'hidden', boxShadow: '0 60px 120px rgba(0,0,0,.18), 0 0 0 1px rgba(127,191,47,.15)' }}>
-              <img src={imageSrc} alt="Hero" style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }} />
-            </div>
-            {/* Floating badge */}
-            <div className="hero-badge-1" style={{ position: 'absolute', bottom: 30, left: -20, background: '#fff', borderRadius: 20, padding: '14px 20px', boxShadow: '0 20px 50px rgba(0,0,0,.14)', display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ width: 40, height: 40, borderRadius: 12, background: 'linear-gradient(135deg, #7fbf2f, #a8e04a)', display: 'grid', placeItems: 'center' }}>
-                <span style={{ fontSize: 20 }}>✦</span>
+        {/* RIGHT — floating image (Only if no background image) */}
+        {!hasBg && (
+          <div className="anim-fade-in delay-2" style={{ position: 'relative', display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <div className="float home-hero-image" style={{ position: 'relative', width: '100%', maxWidth: 480 }}>
+              {/* Main image with elegant mask */}
+              <div className="hero-img-inner" style={{ width: '100%', aspectRatio: '0.8', borderRadius: 32, overflow: 'hidden', boxShadow: '0 60px 120px rgba(0,0,0,.18), 0 0 0 1px rgba(127,191,47,.15)' }}>
+                <img src={imageSrc} alt="Hero" style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }} />
               </div>
-              <div>
-                <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: '#111' }}>Est. 2019</p>
-                <p style={{ margin: 0, fontSize: 11, color: '#888' }}>Premium Studio</p>
+              {/* Floating badge */}
+              <div className="hero-badge-1" style={{ position: 'absolute', bottom: 30, left: -20, background: '#fff', borderRadius: 20, padding: '14px 20px', boxShadow: '0 20px 50px rgba(0,0,0,.14)', display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 12, background: 'linear-gradient(135deg, #7fbf2f, #a8e04a)', display: 'grid', placeItems: 'center' }}>
+                  <span style={{ fontSize: 20 }}>✦</span>
+                </div>
+                <div>
+                  <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: '#111' }}>Est. 2019</p>
+                  <p style={{ margin: 0, fontSize: 11, color: '#888' }}>Premium Studio</p>
+                </div>
               </div>
-            </div>
-            {/* Second floating badge */}
-            <div className="hero-badge-2" style={{ position: 'absolute', top: 20, right: -10, background: '#1a1a1a', borderRadius: 16, padding: '12px 18px', boxShadow: '0 16px 40px rgba(0,0,0,.3)' }}>
-              <p style={{ margin: 0, fontSize: 12, fontWeight: 600, color: '#7fbf2f', letterSpacing: '.1em', textTransform: 'uppercase' }}>5★ Rated</p>
-              <div style={{ display: 'flex', gap: 2, marginTop: 4 }}>
-                {[1,2,3,4,5].map(i => <span key={i} style={{ color: '#7fbf2f', fontSize: 11 }}>★</span>)}
+              {/* Second floating badge */}
+              <div className="hero-badge-2" style={{ position: 'absolute', top: 20, right: -10, background: '#1a1a1a', borderRadius: 16, padding: '12px 18px', boxShadow: '0 16px 40px rgba(0,0,0,.3)' }}>
+                <p style={{ margin: 0, fontSize: 12, fontWeight: 600, color: '#7fbf2f', letterSpacing: '.1em', textTransform: 'uppercase' }}>5★ Rated</p>
+                <div style={{ display: 'flex', gap: 2, marginTop: 4 }}>
+                  {[1,2,3,4,5].map(i => <span key={i} style={{ color: '#7fbf2f', fontSize: 11 }}>★</span>)}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

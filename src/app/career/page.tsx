@@ -8,10 +8,39 @@ const LOCAL_STYLES = `
   .job-card { transition:all .4s cubic-bezier(.23,1,.32,1); cursor:pointer; }
   .job-card:hover { transform:translateY(-6px); box-shadow:0 30px 70px rgba(0,0,0,.12) !important; }
   .job-card.expanded { border-color:rgba(127,191,47,.4) !important; }
-  .perk-card:hover { transform:translateY(-4px); }
-  .perk-card { transition:transform .35s ease; }
-  .perk-card:hover .perk-icon { transform:scale(1.15) rotate(-8deg); }
-  .perk-icon { transition:transform .35s ease; }
+  .perk-card:hover { transform:translateY(-4px); border-color:rgba(127,191,47,.3) !important; }
+  .perk-card { transition:all .35s ease; }
+  
+  /* AI Icon Animations */
+  @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
+  @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 0.5; } 100% { transform: scale(1.2); opacity: 0; } }
+  
+  .ai-icon-box {
+    width: 64px; height: 64px; 
+    background: rgba(127,191,47,0.06); 
+    border: 1px solid rgba(127,191,47,0.12);
+    border-radius: 16px;
+    display: grid; place-items: center;
+    margin-bottom: 24px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .perk-card:hover .ai-icon-box {
+    background: rgba(127,191,47,0.12);
+    border-color: rgba(127,191,47,0.3);
+    box-shadow: 0 0 20px rgba(127,191,47,0.15);
+  }
+
+  .ai-icon { color: #7fbf2f; transition: all 0.4s ease; }
+  .perk-card:hover .ai-icon { transform: scale(1.1); color: #5a9c1a; }
+  
+  /* Motion variants */
+  .motion-float { animation: float 3s ease-in-out infinite; }
+  .motion-spin { animation: spin-slow 10s linear infinite; }
+  
   input:focus, textarea:focus, select:focus {
     border-color:#7fbf2f !important;
     box-shadow:0 0 0 3px rgba(127,191,47,.12) !important;
@@ -66,72 +95,7 @@ const LOCAL_STYLES = `
 `;
 
 const openings = [
-  {
-    title: "Senior Graphic Designer",
-    type: "Full-Time",
-    location: "The Studio",
-    department: "Design",
-    salary: "Rs. 40,000 – 60,000/mo",
-    posted: "2 days ago",
-    urgent: true,
-    desc: "We're looking for a senior designer who can lead visual projects independently, mentor junior team members, and bring fresh creative ideas to client briefs across brand, print, and digital.",
-    requirements: [
-      "3+ years of professional graphic design experience",
-      "Expert in Adobe Illustrator, Photoshop & InDesign",
-      "Strong portfolio across brand and print projects",
-      "Ability to handle multiple projects simultaneously",
-      "Strong communication and client-facing skills",
-    ],
-    niceToHave: [
-      "Experience with Arabic / bilingual design",
-      "Motion graphics or video editing skills",
-      "Figma / UI design experience",
-    ],
-  },
-  {
-    title: "Arabic Calligraphy Artist",
-    type: "Full-Time",
-    location: "The Studio",
-    department: "Calligraphy",
-    salary: "Rs. 35,000 – 55,000/mo",
-    posted: "5 days ago",
-    urgent: false,
-    desc: "Join our calligraphy team to create stunning digital and traditional Arabic scripts for clients across brand, publishing, cultural, and architectural projects.",
-    requirements: [
-      "Formal training or 2+ years in Arabic calligraphy",
-      "Proficiency in at least 3 classical scripts (Naskh, Thuluth, Diwani)",
-      "Digital calligraphy skills (iPad / Procreate)",
-      "Eye for composition and negative space",
-      "Attention to detail and cultural sensitivity",
-    ],
-    niceToHave: [
-      "Experience with logo calligraphy",
-      "Knowledge of Ruq'ah or Kufic scripts",
-      "Adobe Illustrator for tracing",
-    ],
-  },
-  {
-    title: "Social Media & Content Designer",
-    type: "Full-Time",
-    location: "The Studio",
-    department: "Design",
-    salary: "Rs. 28,000 – 42,000/mo",
-    posted: "1 week ago",
-    urgent: false,
-    desc: "Design scroll-stopping social content for our studio clients — Instagram posts, Reels thumbnails, stories, and ad creatives — while managing consistency with brand guidelines.",
-    requirements: [
-      "1–2 years of social media design experience",
-      "Canva and Adobe Creative Suite skills",
-      "Understanding of visual trends across Instagram & Facebook",
-      "Ability to maintain brand consistency across assets",
-      "Fast turnaround without sacrificing quality",
-    ],
-    niceToHave: [
-      "Motion / animation skills",
-      "Copywriting ability",
-      "Experience with Reels / short-form video design",
-    ],
-  },
+
   {
     title: "Social Media Designer Junior",
     type: "Full-Time",
@@ -152,36 +116,46 @@ const openings = [
       "Basic animation knowledge",
     ],
   },
-  {
-    title: "Design Intern",
-    type: "Internship",
-    location: "The Studio",
-    department: "Design",
-    salary: "Paid – Rs. 10,000 – 15,000/mo",
-    posted: "3 days ago",
-    urgent: true,
-    desc: "A 3-month hands-on internship ideal for students or fresh graduates who want to build real portfolio work inside a professional creative studio.",
-    requirements: [
-      "Currently studying or recently graduated in design",
-      "Basic knowledge of Adobe Illustrator or Photoshop",
-      "Eagerness to learn and take feedback well",
-      "Punctual, reliable and team-oriented",
-    ],
-    niceToHave: [
-      "Any personal design projects or coursework",
-      "Interest in Arabic calligraphy",
-      "Social media awareness",
-    ],
-  },
+
 ];
 
 const perks = [
-  { icon: "💰", title: "Competitive Pay", desc: "Market-rate salaries reviewed every 6 months based on performance and growth." },
-  { icon: "📚", title: "Free Courses", desc: "All studio courses are free for team members. Learn calligraphy, branding, and more." },
-  { icon: "🎨", title: "Creative Freedom", desc: "We encourage experiments, personal projects, and bringing bold ideas to the table." },
-  { icon: "🤝", title: "Mentorship", desc: "Direct mentorship from Ammar and senior team members on every project." },
-  { icon: "⏰", title: "Flexible Hours", desc: "Core hours with flexibility around your schedule — results matter more than rigid hours." },
-  { icon: "🏆", title: "Portfolio Growth", desc: "Work on diverse, high-quality client projects that genuinely elevate your portfolio." },
+  { 
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>, 
+    title: "Competitive Pay", 
+    desc: "Market-rate salaries reviewed every 6 months based on performance and growth.",
+    anim: "motion-float"
+  },
+  { 
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>, 
+    title: "Free Courses", 
+    desc: "All studio courses are free for team members. Learn calligraphy, branding, and more.",
+    anim: "motion-float"
+  },
+  { 
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>, 
+    title: "Creative Freedom", 
+    desc: "We encourage experiments, personal projects, and bringing bold ideas to the table.",
+    anim: "motion-spin"
+  },
+  { 
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>, 
+    title: "Mentorship", 
+    desc: "Direct mentorship from Ammar and senior team members on every project.",
+    anim: "motion-float"
+  },
+  { 
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>, 
+    title: "Flexible Hours", 
+    desc: "Core hours with flexibility around your schedule — results matter more than rigid hours.",
+    anim: "motion-float"
+  },
+  { 
+    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>, 
+    title: "Portfolio Growth", 
+    desc: "Work on diverse, high-quality client projects that genuinely elevate your portfolio.",
+    anim: "motion-float"
+  },
 ];
 
 const values = [
@@ -217,7 +191,7 @@ export default function CareerPage() {
         />
 
         {/* ── VALUES ── */}
-        <section className="section-padding" style={{ background:"#fff", borderBottom:"1px solid rgba(0,0,0,.06)" }}>
+        {/* <section className="section-padding" style={{ background:"#fff", borderBottom:"1px solid rgba(0,0,0,.06)" }}>
           <div className="page-container">
             <div className="career-values-grid" style={{ gap:16 }}>
               {values.map((v,i) => (
@@ -229,7 +203,7 @@ export default function CareerPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* ── PERKS ── */}
         <section className="section-padding" style={{ background:"#faf9f7" }}>
@@ -243,7 +217,11 @@ export default function CareerPage() {
             <div className="career-perks-grid" style={{ gap:24 }}>
               {perks.map((p,i) => (
                 <div key={i} className="perk-card" style={{ background:"#fff", border:"1px solid rgba(0,0,0,.06)", borderRadius:28, padding:"36px 32px", boxShadow:"0 4px 24px rgba(0,0,0,.05)", cursor:"default" }}>
-                  <span className="perk-icon" style={{ fontSize:36, display:"block", marginBottom:20 }}>{p.icon}</span>
+                  <div className="ai-icon-box">
+                    <div className={`ai-icon ${p.anim}`}>
+                      {p.icon}
+                    </div>
+                  </div>
                   <h4 style={{ fontWeight:700, color:"#111", margin:"0 0 10px" }}>{p.title}</h4>
                   <p style={{ fontSize:14, color:"#666", lineHeight:1.75, margin:0 }}>{p.desc}</p>
                 </div>

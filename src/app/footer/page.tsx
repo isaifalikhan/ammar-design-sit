@@ -11,7 +11,7 @@ const links = {
     { label: "Testimonials", href: "/testimonials" },
   ],
   Services: [
-    { label: "Arabic Calligraphy", href: "/services" },
+    { label: "Digital Calligraphy", href: "/services" },
     { label: "Brand Identity", href: "/services" },
     { label: "Social Media Design", href: "/services" },
     { label: "Print Media", href: "/services" },
@@ -240,9 +240,7 @@ export default function Footer() {
                 Get a Free Quote
                 <span style={{ width: 30, height: 30, borderRadius: '50%', background: 'rgba(0,0,0,.15)', display: 'grid', placeItems: 'center', fontSize: 15 }}>→</span>
               </Link>
-              <Link href="/portfolio" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, border: '1px solid rgba(255,255,255,.14)', color: '#fff', borderRadius: 100, padding: '14px 28px', fontSize: 14, fontWeight: 500, textDecoration: 'none', transition: 'all .3s' }}>
-                View Portfolio
-              </Link>
+            
             </div>
           </div>
         </div>
@@ -262,7 +260,7 @@ export default function Footer() {
               </div>
 
               <p style={{ fontSize: 14, lineHeight: 1.85, color: '#666', margin: 0, maxWidth: 300 }}>
-                A creative studio specialising in Arabic calligraphy, brand identity, graphic design, print production, and hands-on design education.
+                A creative studio specialising in Digital Calligraphy, brand identity, graphic design, print production, and hands-on design education.
               </p>
 
               {/* Contact details */}

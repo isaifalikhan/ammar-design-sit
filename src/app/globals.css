@@ -31,63 +31,79 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-power-grotesk);
+  --font-sans: var(--font-poppins);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-power-grotesk), sans-serif;
+  font-family: var(--font-poppins), sans-serif;
   overflow-x: hidden;
+  font-style: normal !important;
+}
+
+/* Remove italics globally */
+i, em, address, cite, dfn, var {
+  font-style: normal !important;
+}
+
+.italic {
+  font-style: normal !important;
 }
 
 /* Standardized Headings */
 h1, .h1 {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-power-grotesk), sans-serif;
   font-size: var(--font-h1-desktop);
-  line-height: 1.1;
-  font-weight: 700;
+  line-height: 1.0;
+  font-weight: 800;
   margin: 0;
+  font-style: normal !important;
 }
 
 h2, .h2 {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-power-grotesk), sans-serif;
   font-size: var(--font-h2-desktop);
-  line-height: 1.1;
-  font-weight: 700;
+  line-height: 1.0;
+  font-weight: 800;
   margin: 0;
+  font-style: normal !important;
 }
 
 h3, .h3 {
   font-family: var(--font-power-grotesk), sans-serif;
   font-size: var(--font-h3-desktop);
-  line-height: 1.2;
-  font-weight: 600;
+  line-height: 1.1;
+  font-weight: 800;
   margin: 0;
+  font-style: normal !important;
 }
 
 h4, .h4 {
   font-family: var(--font-power-grotesk), sans-serif;
   font-size: var(--font-h4-desktop);
-  line-height: 1.3;
-  font-weight: 600;
+  line-height: 1.2;
+  font-weight: 800;
   margin: 0;
+  font-style: normal !important;
 }
 
 h5, .h5 {
   font-family: var(--font-power-grotesk), sans-serif;
   font-size: var(--font-h5-desktop);
-  line-height: 1.4;
-  font-weight: 600;
+  line-height: 1.3;
+  font-weight: 800;
   margin: 0;
+  font-style: normal !important;
 }
 
 h6, .h6 {
   font-family: var(--font-power-grotesk), sans-serif;
   font-size: var(--font-h6-desktop);
-  line-height: 1.4;
-  font-weight: 600;
+  line-height: 1.3;
+  font-weight: 800;
   margin: 0;
+  font-style: normal !important;
 }
 
 /* Responsive Headings */

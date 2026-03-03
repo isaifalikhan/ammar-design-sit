@@ -66,7 +66,7 @@ const LOCAL_STYLES = `
 
 const courses = [
   {
-    title: "Digital Arabic Calligraphy",
+    title: "Digital Digital Calligraphy",
     tag: "Recorded",
     tagColor: "#7fbf2f",
     level: "Beginner",
@@ -124,7 +124,7 @@ const courses = [
 ];
 
 const mentors = [
-  { name: "Hafiz Muhammad Ammar", role: "CEO & Lead Instructor", specialty: "Arabic Calligraphy & Brand Identity", courses: "2 Courses", img: "/Team/Hafiz Muhammad Ammar Khan.png" },
+  { name: "Hafiz Muhammad Ammar", role: "CEO & Lead Instructor", specialty: "Digital Calligraphy & Brand Identity", courses: "2 Courses", img: "/Team/Hafiz Muhammad Ammar Khan.png" },
   { name: "Imran Khan", role: "Creative Design Head", specialty: "Graphic Design & Strategy", courses: "1 Course", img: "/Team/Imran Khan.png" },
   { name: "Ahtisham Arshad", role: "Brand Identity Designer", specialty: "Logo Design & Typography", courses: "Workshops", img: "/Team/Ahtisham Arshad.png" },
 ];
@@ -175,7 +175,7 @@ export default function CoursesPage() {
         <PageHero
           pillText="Ammar Designz Courses"
           title={<>Where Craft<br />Becomes <span className="gradient-text">Career.</span></>}
-          description="Pakistan's premier design education platform — offering hands-on courses in Arabic calligraphy, graphic design, and brand identity, taught by working professionals."
+          description="Pakistan's premier design education platform — offering hands-on courses in Digital Calligraphy, graphic design, and brand identity, taught by working professionals."
           imageSrc="/images/DSC02369.JPG"
           stats={[
             { val: 740, suf: "+", label: "Students Enrolled" },

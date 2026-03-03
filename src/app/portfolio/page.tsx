@@ -159,19 +159,7 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        {/* ── CTA ── */}
-        <section className="section-padding" style={{ background:"#0a0a0a", position:"relative", overflow:"hidden" }}>
-          <div className="orb" style={{ width:600, height:600, background:"rgba(127,191,47,.06)", top:"50%", left:"50%", transform:"translate(-50%,-50%)" }} />
-          <div style={{ maxWidth:800, margin:"0 auto", textAlign:"center", position:"relative", zIndex:1 }}>
-            <h2 style={{ fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>
-              Your Project<br /><span className="gradient-text">Could Be Next.</span>
-            </h2>
-            <p style={{ fontSize:16, color:"#888", lineHeight:1.8, margin:"0 0 40px" }}>Let's create something that earns its place in a portfolio like this.</p>
-            <Link href="/contact" style={{ display:"inline-flex", alignItems:"center", gap:12, background:"#7fbf2f", color:"#000", borderRadius:100, padding:"16px 36px", fontSize:15, fontWeight:700, textDecoration:"none", boxShadow:"0 20px 50px rgba(127,191,47,.3)" }}>
-              Start Your Project <span style={{ fontSize:18 }}>→</span>
-            </Link>
-          </div>
-        </section>
+      
 
       </div>
     </>

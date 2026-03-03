@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import localFont from "next/font/local";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import Footer from "./footer/page";
 import Navbar from "./navbar/page";
@@ -11,6 +11,13 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "600", "700"],
   variable: "--font-cormorant",
+  display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -27,6 +34,7 @@ const powerGrotesk = localFont({
     { path: "../../public/TTF/PowerGrotesk-Regular.ttf", weight: "400", style: "normal" },
     { path: "../../public/TTF/PowerGrotesk-Medium.ttf", weight: "500", style: "normal" },
     { path: "../../public/TTF/PowerGrotesk-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../../public/TTF/PowerGrotesk-UltraBold.ttf", weight: "800", style: "normal" },
     { path: "../../public/TTF/PowerGrotesk-Black.ttf", weight: "900", style: "normal" },
     { path: "../../public/TTF/PowerGrotesk-Italic.ttf", weight: "400", style: "italic" },
   ],
@@ -47,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${powerGrotesk.variable} ${cormorant.variable} ${dmSans.variable} antialiased bg-[#fdfcfa] text-[#1f2933] font-sans`}
+        className={`${poppins.variable} ${cormorant.variable} ${dmSans.variable} ${powerGrotesk.variable} antialiased bg-[#fdfcfa] text-[#1f2933] font-sans`}
       >
         <div className="min-h-screen flex flex-col">
           <Navbar />

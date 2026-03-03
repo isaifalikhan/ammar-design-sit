@@ -8,7 +8,7 @@ import PageHero from "@/components/PageHero";
 
 /* ─── Courses ────────────────────────────────────────────────────── */
 const courses = [
-  { id: 1, label: "Digital Arabic Calligraphy", tag: "Recorded", description: "Master the ancient art of Arabic lettering with modern digital tools. Build confidence and professional-grade skills.", fee: "Rs. 5,000", image: "/images/DSC02365.JPG" },
+  { id: 1, label: "Digital Digital Calligraphy", tag: "Recorded", description: "Master the ancient art of Arabic lettering with modern digital tools. Build confidence and professional-grade skills.", fee: "Rs. 5,000", image: "/images/DSC02365.JPG" },
   { id: 2, label: "Graphic Designing", tag: "Recorded", description: "Create visually compelling design systems using industry-standard tools. From concept to polished execution.", fee: "Rs. 5,000", image: "/images/DSC02366.JPG" },
   { id: 3, label: "Bilingual Brand Identity", tag: "Live", description: "Craft cohesive brand identities that speak across Arabic and Latin scripts—elegant, strategic, timeless.", fee: "Rs. 5,000", image: "/images/DSC02367.JPG" },
   { id: 4, label: "Print Media Mastery", tag: "Live", description: "Turn ideas into print-ready artwork. Packaging, posters, brochures—designed to leave a lasting impression.", fee: "Rs. 5,000", image: "/images/DSC02368.JPG" },
@@ -16,7 +16,7 @@ const courses = [
 ];
 
 const services = [
-  { icon: "/Quill Pen.png", title: "Arabic Calligraphy", desc: "Timeless scripts, digitally mastered" },
+  { icon: "/Quill Pen.png", title: "Digital Calligraphy", desc: "Timeless scripts, digitally mastered" },
   { icon: "/Trademark.png", title: "Brand Identity", desc: "Logos, systems & visual language" },
   { icon: "/Art Therapist.png", title: "Social Media", desc: "Scroll-stopping visual content" },
   { icon: "/Shredder.png", title: "Print Media", desc: "From concept to press-ready art" },
@@ -54,10 +54,10 @@ export default function Home() {
           title={<>We Speak<br /><span className="gradient-text">Design.</span></>}
           subtitle="You'll love the translation."
           description="Ammar Designz brings ideas to life through expert calligraphy, brand identity, editorial design, and print production — crafted with intention and delivered with precision."
-          tags={['Graphic Design', 'UI/UX', 'Arabic Calligraphy', 'Brand Identity', 'Print Media']}
-          imageSrc="/images/DSC02340.JPG"
+          tags={['Graphic Design', 'UI/UX', 'Digital Calligraphy', 'Brand Identity', 'Print Media']}
+          bgImage="/images/HeroImage.JPG"
           stats={[
-            { val: 200, suf: '+', label: 'Projects Done' },
+            { val: 1500, suf: '+', label: 'Projects Done' },
             { val: 5, suf: '+', label: 'Years of Craft' },
             { val: 150, suf: '+', label: 'Happy Clients' },
           ]}
@@ -115,49 +115,26 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Gallery strip */}
-            <div className="home-gallery-grid" style={{ display: 'grid', gap: 16, marginTop: 24 }}>
-              {['/images/DSC02371.JPG', '/images/DSC02372.JPG', '/images/DSC02373.JPG', '/images/DSC02374.JPG'].map((img, i) => (
-                <div key={i} style={{ borderRadius: 20, overflow: 'hidden', aspectRatio: i === 0 ? '4/3' : i === 2 ? '4/3' : '1', position: 'relative' }} className="card-hover">
-                  <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,.4), transparent)' }} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════
-            WHO WE ARE — Brief Intro
-        ══════════════════════════════════════════ */}
-        <section className="home-about-section" style={{ background: '#faf9f7', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
-          <div className="orb" style={{ width: 500, height: 500, background: 'rgba(127,191,47,.06)', top: 50, left: -150 }} />
-
-          <div className="page-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
-            {/* Header */}
-            <div style={{ marginBottom: 40 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 16, justifyContent: 'center' }}>
-                <span style={{ width: 24, height: 1, background: '#7fbf2f', display: 'block' }} />
-                <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.28em', textTransform: 'uppercase', color: '#7fbf2f' }}>The Studio</span>
-                <span style={{ width: 24, height: 1, background: '#7fbf2f', display: 'block' }} />
+            {/* Gallery strip - Infinite Marquee */}
+            <div style={{ marginTop: 48, overflow: 'hidden', width: '100%', position: 'relative' }}>
+              <div className="marquee-track" style={{ display: 'flex', gap: 16 }}>
+                {[...Array(3)].map((_, loopI) => (
+                  <div key={loopI} style={{ display: 'flex', gap: 16 }}>
+                    {['/images/DSC02371.JPG', '/images/DSC02372.JPG', '/images/DSC02373.JPG', '/images/DSC02374.JPG', '/images/DSC02375.JPG', '/images/DSC02376.JPG'].map((img, i) => (
+                      <div key={`${loopI}-${i}`} style={{ borderRadius: 20, overflow: 'hidden', height: 280, width: 360, position: 'relative', flexShrink: 0 }} className="card-hover">
+                        <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,.4), transparent)' }} />
+                      </div>
+                    ))}
+                  </div>
+                ))}
               </div>
-              <h2 style={{ color: '#111' }}>
-                A Studio United<br />by <span className="gradient-text">Purpose & Art</span>
-              </h2>
             </div>
-
-            <p style={{ fontSize: 18, lineHeight: 1.8, color: '#555', marginBottom: 48 }}>
-              Led by Hafiz Muhammad Ammar, our team combines traditional artistry with modern design thinking. We believe every pixel and every letterform should have a soul and a purpose.
-            </p>
-
-            <Link href="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: 14, background: '#1a1a1a', color: '#fff', borderRadius: 100, padding: '16px 32px', fontSize: 14, fontWeight: 600, textDecoration: 'none', letterSpacing: '.02em', boxShadow: '0 20px 50px rgba(0,0,0,.15)', transition: 'all .3s' }}>
-              Meet The Team
-              <span style={{ width: 34, height: 34, borderRadius: '50%', background: '#7fbf2f', display: 'grid', placeItems: 'center', fontSize: 16 }}>→</span>
-            </Link>
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════
+ 
+        {/* ═════════   ═════════════════════════════════
             COURSES
         ══════════════════════════════════════════ */}
         <section className="home-courses-section" style={{ background: '#060606', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>

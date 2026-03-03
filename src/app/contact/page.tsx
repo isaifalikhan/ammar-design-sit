@@ -68,7 +68,7 @@ const contactInfo = [
   { icon: "📸", title: "Instagram", detail: "@ammardesignz", sub: "Follow for latest work" },
 ];
 
-const services = ["Arabic Calligraphy", "Brand Identity", "Social Media Design", "Print Media", "Digital / UI Design", "Courses & Workshops", "Other"];
+const services = ["Digital Calligraphy", "Brand Identity", "Social Media Design", "Print Media", "Digital / UI Design", "Courses & Workshops", "Other"];
 
 const budgets = ["Under Rs. 10,000", "Rs. 10,000 – 30,000", "Rs. 30,000 – 75,000", "Rs. 75,000+", "Let's Discuss"];
 
@@ -87,14 +87,14 @@ export default function ContactPage() {
       <div style={{ overflowX: "hidden" }}>
 
         {/* ── HERO ── */}
-        <PageHero
+        {/* <PageHero
           pillText="Get In Touch"
           title={<>Let's Make<br />Something <span className="gradient-text">Great.</span></>}
           description="Whether you have a project in mind, a question about our courses, or just want to say hello — we'd love to hear from you."
           imageSrc="/images/DSC02345.JPG"
           ctaPrimary={{ text: "Start a Project", href: "#contact-form" }}
           ctaSecondary={{ text: "Email Us", href: "mailto:hello@ammardesignz.com" }}
-        />
+        /> */}
 
         {/* ── CONTACT CARDS ── */}
         <section className="contact-section-cards" style={{ background:"#faf9f7" }}>
@@ -207,7 +207,7 @@ export default function ContactPage() {
                   <h3 style={{ fontWeight:700, color:"#fff", margin:"0 0 6px" }}>The Studio</h3>
                   <p style={{ fontSize:14, color:"#888", margin:0 }}>Pakistan</p>
                 </div>
-                <a href="https://maps.google.com" target="_blank" rel="noreferrer" style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(127,191,47,.15)", border:"1px solid rgba(127,191,47,.3)", color:"#7fbf2f", borderRadius:100, padding:"10px 20px", fontSize:13, fontWeight:600, textDecoration:"none", marginTop:8 }}>
+                <a href="https://maps.app.goo.gl/bZsvEPkLAm1J67dg9" target="_blank" rel="noreferrer" style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(127,191,47,.15)", border:"1px solid rgba(127,191,47,.3)", color:"#7fbf2f", borderRadius:100, padding:"10px 20px", fontSize:13, fontWeight:600, textDecoration:"none", marginTop:8 }}>
                   Open in Maps →
                 </a>
               </div>
@@ -233,11 +233,13 @@ export default function ContactPage() {
                 <p style={{ fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>Follow Our Work</p>
                 <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
                   {[
-                    { label:"Instagram", handle:"@ammardesignz", icon:"📸" },
-                    { label:"Facebook", handle:"Ammar Designz Studio", icon:"👍" },
-                    { label:"YouTube", handle:"Ammar Designz", icon:"▶" },
+                    { label:"Instagram", handle:"@ammardesignz", icon:"📸", url: "https://www.instagram.com/ammardesignz" },
+                    { label:"Facebook", handle:"Ammar Designz Studio", icon:"👍", url: "https://www.facebook.com/AmmarDesignzStudio" },
+                    { label:"YouTube", handle:"Ammar Designz", icon:"▶", url: "https://www.youtube.com/@ammardesignz" },
+                    { label:"LinkedIn", handle:"Ammar Designz", icon:"💼", url: "https://www.linkedin.com/company/ammardesignz" },
+                    { label:"Behance", handle:"Ammar Designz", icon:"🎨", url: "https://www.behance.net/ammardesignz" },
                   ].map((s,i) => (
-                    <a key={i} href="#" className="social-link" style={{ display:"flex", alignItems:"center", gap:14, borderRadius:14, padding:"12px 16px", border:"1px solid rgba(255,255,255,.07)", background:"rgba(255,255,255,.03)", textDecoration:"none", color:"#ddd" }}>
+                    <a key={i} href={s.url} target="_blank" rel="noreferrer" className="social-link" style={{ display:"flex", alignItems:"center", gap:14, borderRadius:14, padding:"12px 16px", border:"1px solid rgba(255,255,255,.07)", background:"rgba(255,255,255,.03)", textDecoration:"none", color:"#ddd" }}>
                       <span style={{ fontSize:20 }}>{s.icon}</span>
                       <div>
                         <p style={{ fontSize:12, fontWeight:700, color:"#fff", margin:0 }}>{s.label}</p>
