@@ -76,12 +76,12 @@ const services = [
     heroDesc: "Bespoke Arabic wordmarks and logotypes designed to reflect brand personality, cultural depth, and market positioning. Ideal for luxury brands, Islamic institutions, personal branding, and heritage-driven businesses.",
     longDesc: "Our script-based identities and compositions are built with reverence, balance, and artistic integrity. We create high-resolution, vector-based calligraphy prepared for everything from digital screens to architectural applications.",
     features: ["Script-Based Brand Identities", "Quranic & Islamic Art Compositions", "Large-Scale & Print-Ready Artwork"],
-    deliverables: "AI · EPS · SVG · PNG — print & screen ready at all sizes",
+    deliverables: "AI · EPS · SVG · PNG print & screen ready at all sizes",
     gallery: ["/images/DSC02341.JPG", "/images/DSC02342.JPG", "/images/DSC02343.JPG"],
   },
   {
     id: "brand", icon: "◈", label: "Brand Identity", sub: "Designing Brands That Think, Speak, and Lead.",
-    heroDesc: "At Ammar Designz, Brand Identity is built on clarity, strategy, and long-term vision. We don’t simply design logos — we construct cohesive visual systems that define how your brand looks, communicates, and positions itself in the market.",
+    heroDesc: "At Ammar Designz, Brand Identity is built on clarity, strategy, and long-term vision. We don’t simply design logos we construct cohesive visual systems that define how your brand looks, communicates, and positions itself in the market.",
     longDesc: "Every identity is developed through research, competitive analysis, and intentional design decisions to ensure it is distinctive, scalable, and built for real-world application.",
     features: ["Brand Strategy & Positioning", "Logo & Visual System Development", "Typography & Color Direction", "Brand Guidelines", "Brand Applications"],
     deliverables: "Full brand manual (PDF) · all logo formats · editable source files",
@@ -89,7 +89,7 @@ const services = [
   },
   {
     id: "social", icon: "◉", label: "Social Media Design & Management", sub: "Strategic Visual Communication for the Digital World.",
-    heroDesc: "At Ammar Designz, social media is treated as a living extension of your brand — not just a content feed. We combine strategic planning, visual consistency, and audience psychology to create content that captures attention and builds long-term engagement.",
+    heroDesc: "At Ammar Designz, social media is treated as a living extension of your brand not just a content feed. We combine strategic planning, visual consistency, and audience psychology to create content that captures attention and builds long-term engagement.",
     longDesc: "From aesthetic cohesion to performance-driven execution, every post is designed with intention. We handle platform-specific content planning, visual direction, and growth roadmaps.",
     features: ["Social Media Strategy", "Creative Content Design", "Content Planning & Calendar", "Performance-Oriented Campaign Design", "Account Management"],
     deliverables: "Editable Canva / Figma templates + exported production-ready assets",
@@ -97,7 +97,7 @@ const services = [
   },
   {
     id: "print", icon: "◇", label: "Print Media Design", sub: "Timeless Design, Crafted for the Physical World.",
-    heroDesc: "At Ammar Designz, print design is approached with precision, structure, and material awareness. We create visually powerful designs that translate flawlessly from screen to paper — ensuring color accuracy, layout balance, and production-ready execution.",
+    heroDesc: "At Ammar Designz, print design is approached with precision, structure, and material awareness. We create visually powerful designs that translate flawlessly from screen to paper ensuring color accuracy, layout balance, and production-ready execution.",
     longDesc: "Print is not just about ink on paper. It is about presence, texture, and lasting impression. From corporate stationery to large format billboards, we ensure every project looks exceptional off-press.",
     features: ["Corporate Stationery", "Brochures & Company Profiles", "Packaging Design", "Posters & Marketing Collateral", "Large Format & Production-Ready Files"],
     deliverables: "Press-ready PDFs · CMYK · crop marks · print specifications sheet",
@@ -117,7 +117,7 @@ const process = [
   { n: "01", title: "Discovery", desc: "We learn your brand, audience, goals and constraints through a detailed brief session." },
   { n: "02", title: "Concept", desc: "Two to three distinct creative directions are developed and presented for your review." },
   { n: "03", title: "Refine", desc: "You choose a direction. We iterate through structured rounds until every detail is right." },
-  { n: "04", title: "Deliver", desc: "Final files in all formats — organised, named and documented — ready to use immediately." },
+  { n: "04", title: "Deliver", desc: "Final files in all formats organised, named and documented ready to use immediately." },
 ];
 
 const packages = [
@@ -138,7 +138,7 @@ export default function ServicesPage() {
           <PageHero
             pillText="What We Offer"
             title={<>Services That<br /><span className="gradient-text">Speak Volumes.</span></>}
-            description="From a single calligraphy mark to a complete brand overhaul — every service is delivered with the same obsessive attention to craft."
+            description="From a single calligraphy mark to a complete brand overhaul every service is delivered with the same obsessive attention to craft."
             imageSrc="/images/DSC02341.JPG"
             ctaPrimary={{ text: "Start a Project", href: "/contact" }}
             ctaSecondary={{ text: "View Portfolio", href: "/portfolio" }}

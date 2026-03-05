@@ -147,7 +147,7 @@ const perks = [
   { 
     icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>, 
     title: "Flexible Hours", 
-    desc: "Core hours with flexibility around your schedule — results matter more than rigid hours.",
+    desc: "Core hours with flexibility around your schedule results matter more than rigid hours.",
     anim: "motion-float"
   },
   { 
@@ -160,7 +160,7 @@ const perks = [
 
 const values = [
   { icon: "✦", title: "Craft First", desc: "We prioritise quality over speed. Every detail matters." },
-  { icon: "◈", title: "Honest Feedback", desc: "Open, respectful critique — we make each other better." },
+  { icon: "◈", title: "Honest Feedback", desc: "Open, respectful critique we make each other better." },
   { icon: "◉", title: "Keep Learning", desc: "Curious, always growing. We invest in your education." },
   { icon: "◇", title: "Own Your Work", desc: "Every team member has ownership and accountability." },
 ];
@@ -184,7 +184,7 @@ export default function CareerPage() {
         <PageHero
           pillText={`${openings.length} Positions Open`}
           title={<>Build Your<br />Career at <span className="gradient-text">Ammar Designz.</span></>}
-          description="Join a studio where craft is taken seriously, creativity is celebrated, and every team member grows. We're building something special — come be part of it."
+          description="Join a studio where craft is taken seriously, creativity is celebrated, and every team member grows. We're building something special come be part of it."
           imageSrc="/images/DSC02344.JPG"
           ctaPrimary={{ text: "See Open Roles", href: "#openings" }}
           ctaSecondary={{ text: "General Application", href: "#apply" }}
@@ -334,7 +334,7 @@ export default function CareerPage() {
                 {applying ? <><span className="gradient-text">Let's Talk.</span></> : <>Don't See Your Role?<br /><span className="gradient-text">Apply Anyway.</span></>}
               </h2>
               <p style={{ fontSize:15, color:"#666", lineHeight:1.8, margin:0 }}>
-                We review every application carefully. If we see a fit — now or in the future — we'll reach out.
+                We review every application carefully. If we see a fit now or in the future we'll reach out.
               </p>
             </div>
 

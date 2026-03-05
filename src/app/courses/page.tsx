@@ -76,7 +76,7 @@ const courses = [
     rating: "4.9",
     fee: "Rs. 5,000",
     img: "/images/DSC02365.JPG",
-    desc: "Learn classical Arabic scripts — Naskh, Thuluth & Diwani — using iPad and Procreate. Create calligraphy logos, compositions, and brand marks.",
+    desc: "Learn classical Arabic scripts Naskh, Thuluth & Diwani using iPad and Procreate. Create calligraphy logos, compositions, and brand marks.",
     skills: ["Naskh & Thuluth scripts", "Digital tools mastery", "Logo calligraphy", "Brand compositions"],
   },
   {
@@ -130,7 +130,7 @@ const mentors = [
 ];
 
 const whyUs = [
-  { icon: "🏛️", title: "Studio-Based Learning", desc: "Every lesson is built from real client work — not generic theory from a textbook." },
+  { icon: "🏛️", title: "Studio-Based Learning", desc: "Every lesson is built from real client work not generic theory from a textbook." },
   { icon: "🎓", title: "Verified Certificate", desc: "A studio-issued certificate that carries weight in the Pakistani design industry." },
   { icon: "♾️", title: "Lifetime Access", desc: "Recorded courses stay yours forever. Rewatch lessons at any pace." },
   { icon: "👥", title: "Private Community", desc: "Access to a student WhatsApp group for peer feedback and networking." },
@@ -152,7 +152,7 @@ const faqs = [
   { q: "Are the courses 100% online?", a: "Yes. All recorded courses are fully online. The Bilingual Brand Identity live sessions are also accessible remotely via Zoom, with recordings available within 24 hours." },
   { q: "What if I fall behind in a live cohort?", a: "No stress. All live sessions are recorded and uploaded within 24 hours. You can catch up at your own pace without missing any content." },
   { q: "Do I get a refund if the course isn't right for me?", a: "We offer a 7-day money-back guarantee on all courses. If you're not satisfied in the first week, contact us and we'll refund your fee in full." },
-  { q: "Can I enrol in multiple courses at once?", a: "Absolutely. You can enrol in as many courses as you like simultaneously. We offer a bundled discount — contact us for details." },
+  { q: "Can I enrol in multiple courses at once?", a: "Absolutely. You can enrol in as many courses as you like simultaneously. We offer a bundled discount contact us for details." },
   { q: "Is the certificate recognised?", a: "Our certificate is studio-verified and recognised by design employers and freelance clients across Pakistan. It carries genuine industry credibility." },
 ];
 
@@ -175,7 +175,7 @@ export default function CoursesPage() {
         <PageHero
           pillText="Ammar Designz Courses"
           title={<>Where Craft<br />Becomes <span className="gradient-text">Career.</span></>}
-          description="Pakistan's premier design education platform — offering hands-on courses in Digital Calligraphy, graphic design, and brand identity, taught by working professionals."
+          description="Pakistan's premier design education platform offering hands-on courses in Digital Calligraphy, graphic design, and brand identity, taught by working professionals."
           imageSrc="/images/DSC02369.JPG"
           stats={[
             { val: 740, suf: "+", label: "Students Enrolled" },
@@ -271,13 +271,13 @@ export default function CoursesPage() {
                 <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>The Difference</p>
                 <h2 style={{ fontWeight:700, color:"#fff", margin:"0 0 24px", lineHeight:1.05 }}>Why Choose <span className="gradient-text">Us?</span></h2>
                 <p style={{ fontSize:16, lineHeight:1.9, color:"#888", margin:"0 0 40px" }}>
-                  Most design courses teach software. We teach design thinking — grounded in real studio experience, cultural depth, and the kind of feedback that actually makes you better.
+                  Most design courses teach software. We teach design thinking grounded in real studio experience, cultural depth, and the kind of feedback that actually makes you better.
                 </p>
                 <div style={{ background:"rgba(127,191,47,.06)", border:"1px solid rgba(127,191,47,.15)", borderRadius:24, padding:"28px 32px" }}>
                   <p style={{ fontSize:24, fontStyle:"italic", color:"#ccc", lineHeight:1.6, margin:0 }}>
-                    "Talent is everywhere. What's rare is guidance — a mentor who's walked the exact path you want to walk."
+                    "Talent is everywhere. What's rare is guidance a mentor who's walked the exact path you want to walk."
                   </p>
-                  <p style={{ fontSize:13, color:"#7fbf2f", margin:"16px 0 0", fontWeight:600 }}>— Hafiz Muhammad Ammar, Founder</p>
+                  <p style={{ fontSize:13, color:"#7fbf2f", margin:"16px 0 0", fontWeight:600 }}>Hafiz Muhammad Ammar, Founder</p>
                 </div>
               </div>
               <div className="inst-why-features">

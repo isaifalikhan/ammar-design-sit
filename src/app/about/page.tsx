@@ -4,7 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 const values = [
-  { icon: "✦", title: "Precision", desc: "Every pixel, every letterform — crafted with obsessive attention to detail and purpose." },
+  { icon: "✦", title: "Precision", desc: "Every pixel, every letterform crafted with obsessive attention to detail and purpose." },
   { icon: "◈", title: "Authenticity", desc: "We draw from deep cultural roots in Arabic art to inform work that feels genuine, not trendy." },
   { icon: "◉", title: "Collaboration", desc: "Your vision is the foundation. We listen first, then translate ideas into visual language." },
   { icon: "◇", title: "Growth", desc: "Through teaching and mentoring, we believe design knowledge should be shared and elevated." },
@@ -13,9 +13,9 @@ const values = [
 const milestones = [
   { year: "2019", title: "Studio Founded", desc: "Ammar Designz was born from a passion for calligraphy and a vision to bridge art and brand." },
   { year: "2020", title: "First 50 Clients", desc: "Word-of-mouth growth across the region and beyond as the studio's reputation for quality spread." },
-  { year: "2021", title: "Education Launch", desc: "Launched the first recorded Digital Calligraphy course — now with hundreds of enrolled students." },
+  { year: "2021", title: "Education Launch", desc: "Launched the first recorded Digital Calligraphy course now with hundreds of enrolled students." },
   { year: "2022", title: "Team Expansion", desc: "Brought on dedicated designers and a video editor to handle growing demand for full-service branding." },
-  { year: "2023", title: "1500+ Projects", desc: "Crossed a major milestone — 1500 completed projects spanning calligraphy, brand, print, and digital." },
+  { year: "2023", title: "1500+ Projects", desc: "Crossed a major milestone 1500 completed projects spanning calligraphy, brand, print, and digital." },
   { year: "2024", title: "Premium Studio", desc: "Moved into a dedicated creative space and launched the Bilingual Brand Identity programme." },
 ];
 
@@ -38,8 +38,8 @@ export default function About() {
         {/* ── HERO ── */}
         <PageHero
           pillText="Our Story"
-          title={<>Art Rooted<br />in <span className="gradient-text">Purpose</span></>}
-          description="Founded in 2019, Ammar Designz is a creative studio where Digital Calligraphy tradition meets contemporary brand thinking. We don't just design — we translate culture into craft."
+          title={<>The story of our design studio Creativity and  <span className="gradient-text">  industry</span></>}
+          description="Founded in 2019, Ammar Designz is a creative studio where Digital Calligraphy tradition meets contemporary brand thinking. We don't just design we translate culture into craft."
           bgImage="/images/AboutHero.JPG"
           stats={[
             { val: 1500, suf: "+", label: "Projects Delivered" },
@@ -56,15 +56,11 @@ export default function About() {
           <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.05)", top:0, left:-150 }} />
           <div className="page-container about-founder-grid" style={{ alignItems:"center", position:"relative", zIndex:1 }}>
             <div style={{ position:"relative" }}>
-              <div style={{ borderRadius:"40% 60% 55% 45% / 45% 40% 60% 55%", overflow:"hidden", boxShadow:"0 50px 100px rgba(0,0,0,.16)" }}>
+              <div style={{ borderRadius:"25% ", overflow:"hidden", boxShadow:"0 50px 100px rgba(0,0,0,.16)" }}>
                 <img src="/team/Hafiz Muhammad Ammar Khan.png" alt="Hafiz Muhammad Ammar" style={{ width:"100%", display:"block" }} />
               </div>
-              <div style={{ position:"absolute", bottom:-20, right:-32, background:"#7fbf2f", borderRadius:20, padding:"18px 24px", boxShadow:"0 20px 50px rgba(127,191,47,.35)" }}>
-                <p style={{ margin:0, fontSize:28, fontWeight:700, color:"#fff" }}>2019</p>
-                <p style={{ margin:0, fontSize:11, color:"rgba(255,255,255,.8)", letterSpacing:".15em", textTransform:"uppercase" }}>Est. Rawalpindi</p>
-              </div>
-              {/* Decorative corner */}
-              <div style={{ position:"absolute", top:-20, left:-20, width:80, height:80, borderRadius:"50%", border:"2px dashed rgba(127,191,47,.3)" }} />
+             
+        
             </div>
             <div style={{ display:"flex", flexDirection:"column", gap:24 }}>
               <div>
@@ -73,14 +69,11 @@ export default function About() {
                 <p style={{ fontSize:14, color:"#999", margin:0, letterSpacing:".1em", textTransform:"uppercase" }}>Creative Director & CEO</p>
               </div>
               <p style={{ fontSize:15, lineHeight:1.9, color:"#555", margin:0 }}>
-                What started as a personal obsession with the fluid geometry of Arabic script grew into a full creative studio. Ammar spent years studying traditional calligraphy before discovering how powerfully it could anchor a modern brand identity.
+                Founded by Ammar Khan, Ammar Designz is a forward-thinking creative studio driven by strategy, design intelligence, and refined visual execution. With over 15 years of experience in graphic design, branding, and visual storytelling, Ammar has collaborated with diverse clients to build impactful identities that stand strong in competitive markets.
+
               </p>
-              <p style={{ fontSize:15, lineHeight:1.9, color:"#555", margin:0 }}>
-                Today, he leads a team of five creatives, each bringing their own discipline — from graphic design to video editing — unified by a commitment to work that is precise, purposeful, and enduring.
-              </p>
-              <blockquote style={{ fontSize:24, fontStyle:"normal", color:"#333", margin:0, paddingLeft:24, borderLeft:"3px solid #7fbf2f", lineHeight:1.5 }}>
-                "Every letterform has a soul. Our job is to find it and put it to work."
-              </blockquote>
+           
+             
             </div>
           </div>
         </section>

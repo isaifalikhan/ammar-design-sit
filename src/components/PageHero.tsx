@@ -106,7 +106,33 @@ export default function PageHero({
       display: 'flex', 
       alignItems: 'center' 
     }}>
-      {hasBg && <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 1 }} />}
+      {hasBg && (
+        <>
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.88) 26%, rgba(0,0,0,0.6) 48%, rgba(0,0,0,0.18) 66%, rgba(0,0,0,0) 78%)',
+              zIndex: 1,
+              pointerEvents: 'none'
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              width: '42%',
+              backdropFilter: 'blur(1.5px)',
+              WebkitBackdropFilter: 'blur(1.5px)',
+              background: 'linear-gradient(90deg, rgba(0,0,0,0.16) 0%, rgba(0,0,0,0.08) 60%, rgba(0,0,0,0) 100%)',
+              zIndex: 1,
+              pointerEvents: 'none'
+            }}
+          />
+        </>
+      )}
 
       {/* Background orbs */}
       {!hasBg && (
@@ -192,7 +218,7 @@ export default function PageHero({
           )}
         </div>
 
-        {/* RIGHT — floating image (Only if no background image) */}
+        {/* RIGHT floating image (Only if no background image) */}
         {!hasBg && (
           <div className="anim-fade-in delay-2" style={{ position: 'relative', display: 'flex', justifyContent: 'center', width: '100%' }}>
             <div className="float home-hero-image" style={{ position: 'relative', width: '100%', maxWidth: 480 }}>

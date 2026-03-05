@@ -90,7 +90,7 @@ export default function ContactPage() {
         {/* <PageHero
           pillText="Get In Touch"
           title={<>Let's Make<br />Something <span className="gradient-text">Great.</span></>}
-          description="Whether you have a project in mind, a question about our courses, or just want to say hello — we'd love to hear from you."
+          description="Whether you have a project in mind, a question about our courses, or just want to say hello we'd love to hear from you."
           imageSrc="/images/DSC02345.JPG"
           ctaPrimary={{ text: "Start a Project", href: "#contact-form" }}
           ctaSecondary={{ text: "Email Us", href: "mailto:hello@ammardesignz.com" }}
@@ -178,7 +178,7 @@ export default function ContactPage() {
                         <option>Within 2 weeks</option>
                         <option>Within 1 month</option>
                         <option>1–3 months</option>
-                        <option>No rush — quality first</option>
+                        <option>No rush quality first</option>
                       </select>
                     </div>
 
@@ -266,7 +266,7 @@ export default function ContactPage() {
             <div style={{ display:"flex", flexDirection:"column", gap:20 }}>
               {[
                 { q:"How fast is your turnaround?", a:"Typical projects take 5–14 business days. Rush orders are available at a premium." },
-                { q:"Do you work with international clients?", a:"Yes. We work with clients across Pakistan, UAE, Saudi Arabia, UK, and beyond — fully remote." },
+                { q:"Do you work with international clients?", a:"Yes. We work with clients across Pakistan, UAE, Saudi Arabia, UK, and beyond fully remote." },
                 { q:"What if I don't like the first draft?", a:"Every project includes structured revision rounds. We don't stop until you're genuinely happy." },
               ].map((f,i) => (
                 <div key={i} style={{ background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.07)", borderRadius:20, padding:"24px 28px" }}>

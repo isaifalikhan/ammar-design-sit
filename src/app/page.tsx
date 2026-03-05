@@ -53,7 +53,7 @@ export default function Home() {
           pillText="The Creative Studio"
           title={<>We Speak<br /><span className="gradient-text">Design.</span></>}
           subtitle="You'll love the translation."
-          description="Ammar Designz brings ideas to life through expert calligraphy, brand identity, editorial design, and print production — crafted with intention and delivered with precision."
+          description="Ammar Designz brings ideas to life through expert calligraphy, brand identity, editorial design, and print production crafted with intention and delivered with precision."
           tags={['Graphic Design', 'UI/UX', 'Digital Calligraphy', 'Brand Identity', 'Print Media']}
           bgImage="/images/HeroImage.JPG"
           stats={[
@@ -267,7 +267,7 @@ export default function Home() {
 
           <div className="page-container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="home-contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 64, background: '#fff', borderRadius: 48, overflow: 'hidden', boxShadow: '0 8px 60px rgba(0,0,0,.08)', border: '1px solid rgba(0,0,0,.04)' }}>
-              {/* Left — Form */}
+              {/* Left Form */}
               <div style={{ padding: '64px 56px' }}>
                 <div style={{ marginBottom: 48 }}>
                   <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
@@ -299,7 +299,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right — Image + overlay info */}
+              {/* Right Image + overlay info */}
               <div style={{ position: 'relative', overflow: 'hidden' }}>
                 <img src="/images/DSC02370.JPG" alt="Studio" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.2) 60%, transparent 100%)' }} />
