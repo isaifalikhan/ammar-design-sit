@@ -395,6 +395,29 @@ export default function CoursesPage() {
                       <option>Google Search</option>
                       <option>Other</option>
                     </select>
+                    <div style={{ borderRadius:18, border:"1.5px solid #e5e5e5", background:"#fcfcfc", padding:"16px 16px 18px" }}>
+                      <p style={{ fontSize:11, fontWeight:800, letterSpacing:".18em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 10px" }}>Payment Methods</p>
+                      <div style={{ display:"grid", gap:12 }}>
+                        <div style={{ display:"flex", alignItems:"flex-start", gap:12, borderRadius:14, border:"1px solid rgba(0,0,0,.06)", background:"#fff", padding:"14px 16px" }}>
+                          <span style={{ fontSize:20 }}>📱</span>
+                          <div>
+                            <p style={{ fontSize:12, fontWeight:700, color:"#111", margin:0 }}>Easypaisa (Dummy)</p>
+                            <p style={{ fontSize:12, color:"#666", margin:"4px 0 0" }}>Account Title: Ammar Designz</p>
+                            <p style={{ fontSize:12, color:"#666", margin:0 }}>Mobile No: 03XX-1234567</p>
+                          </div>
+                        </div>
+                        <div style={{ display:"flex", alignItems:"flex-start", gap:12, borderRadius:14, border:"1px solid rgba(0,0,0,.06)", background:"#fff", padding:"14px 16px" }}>
+                          <span style={{ fontSize:20 }}>🏦</span>
+                          <div>
+                            <p style={{ fontSize:12, fontWeight:700, color:"#111", margin:0 }}>Bank Transfer (Dummy)</p>
+                            <p style={{ fontSize:12, color:"#666", margin:"4px 0 0" }}>Bank: Demo Bank</p>
+                            <p style={{ fontSize:12, color:"#666", margin:0 }}>Account Title: Ammar Designz</p>
+                            <p style={{ fontSize:12, color:"#666", margin:0 }}>Account No: 0000-0000000</p>
+                            <p style={{ fontSize:12, color:"#666", margin:0 }}>IBAN: PK00 DEMO 0000 0000 0000 0000</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <button onClick={() => setSubmitted(true)}
                       style={{ height:56, borderRadius:100, background:"#7fbf2f", color:"#000", fontSize:15, fontWeight:700, border:"none", cursor:"pointer", boxShadow:"0 14px 40px rgba(127,191,47,.3)", transition:"all .3s" }}>
                       Complete Enrolment →
