@@ -81,13 +81,50 @@ function GoogleReviewsLoading() {
 }
 
 function GoogleReviewsError({ message }: { message: string }) {
+  const isApiDisabled = /403|has not been used|is disabled|Enable it by visiting/i.test(message);
+  const enableApiUrl = "https://console.cloud.google.com/apis/library/places-backend.googleapis.com";
+
   return (
     <section className="section-padding" style={{ background: "#faf9f7" }}>
       <div className="page-container">
-        <div style={{ textAlign: "center", padding: "48px 24px", background: "#fff", border: "1px solid rgba(0,0,0,.08)", borderRadius: 24 }}>
-          <p style={{ fontSize: 14, color: "#888", marginBottom: 8 }}>Google Reviews</p>
-          <p style={{ fontSize: 16, color: "#333", margin: 0 }}>{message}</p>
-          <p style={{ fontSize: 13, color: "#999", marginTop: 16 }}>You can still find us on Google to read reviews.</p>
+        <div style={{ textAlign: "center", padding: "48px 32px", background: "#fff", border: "1px solid rgba(0,0,0,.08)", borderRadius: 24, maxWidth: 520, margin: "0 auto" }}>
+          <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".2em", textTransform: "uppercase", color: "#7fbf2f", margin: "0 0 12px" }}>Google Reviews</p>
+          {isApiDisabled ? (
+            <>
+              <p style={{ fontSize: 17, color: "#333", margin: 0, lineHeight: 1.5 }}>
+                Places API (New) isn’t enabled for your Google Cloud project yet.
+              </p>
+              <p style={{ fontSize: 14, color: "#666", marginTop: 16 }}>
+                Enable it once, then reviews will load here automatically.
+              </p>
+              <a
+                href={enableApiUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  marginTop: 24,
+                  padding: "12px 24px",
+                  background: "#7fbf2f",
+                  color: "#000",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  borderRadius: 100,
+                  textDecoration: "none",
+                  boxShadow: "0 4px 14px rgba(127,191,47,.3)",
+                }}
+              >
+                Enable Places API (New) →
+              </a>
+            </>
+          ) : (
+            <>
+              <p style={{ fontSize: 16, color: "#333", margin: 0 }}>{message}</p>
+              <p style={{ fontSize: 13, color: "#999", marginTop: 16 }}>You can still find us on Google to read reviews.</p>
+            </>
+          )}
         </div>
       </div>
     </section>

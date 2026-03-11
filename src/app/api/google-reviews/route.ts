@@ -26,20 +26,21 @@ export async function GET() {
     return NextResponse.json(data);
   } catch (err) {
     const message = err instanceof Error ? err.message : "Failed to load reviews";
+    const isDev = process.env.NODE_ENV === "development";
     if (message.includes("403") || message.includes("API key")) {
       return NextResponse.json(
-        { error: "Reviews are temporarily unavailable." },
+        { error: isDev ? message : "Reviews are temporarily unavailable." },
         { status: 503 }
       );
     }
     if (message.includes("timeout") || message.includes("abort")) {
       return NextResponse.json(
-        { error: "Request timed out. Please try again later." },
+        { error: isDev ? message : "Request timed out. Please try again later." },
         { status: 504 }
       );
     }
     return NextResponse.json(
-      { error: "Could not load reviews. Please try again later." },
+      { error: isDev ? message : "Could not load reviews. Please try again later." },
       { status: 502 }
     );
   }
