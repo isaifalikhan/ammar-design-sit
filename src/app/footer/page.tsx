@@ -7,7 +7,7 @@ const links = {
   Studio: [
     { label: "About Us", href: "/about" },
     { label: "Our Team", href: "/team" },
-    { label: "Portfolio", href: "/portfolio" },
+    { label: "Students work", href: "/portfolio" },
     { label: "Testimonials", href: "/testimonials" },
   ],
   Services: [
@@ -223,7 +223,7 @@ export default function Footer() {
         <div style={{ position: 'absolute', bottom: 0, right: '10%', width: 320, height: 320, borderRadius: '50%', background: 'rgba(127,191,47,.04)', filter: 'blur(80px)', pointerEvents: 'none' }} />
 
         {/* ── CTA Banner ── */}
-        <div className="cta-padding" style={{ borderBottom: '1px solid rgba(255,255,255,.06)' }}>
+        {/* <div className="cta-padding" style={{ borderBottom: '1px solid rgba(255,255,255,.06)' }}>
           <div className="page-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 40, flexWrap: 'wrap' }}>
             <div style={{ maxWidth: 560 }}>
               <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.28em', textTransform: 'uppercase', color: '#7fbf2f', margin: '0 0 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -243,7 +243,7 @@ export default function Footer() {
             
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* ── Main Footer Body ── */}
         <div className="page-container footer-padding">

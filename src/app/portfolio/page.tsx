@@ -16,28 +16,28 @@ const LOCAL_STYLES = `
   .testimonial-card:hover { transform:translateY(-4px); box-shadow:0 24px 60px rgba(0,0,0,.1) !important; }
   .testimonial-card { transition:all .35s ease; }
 
-  .portfolio-masonry { column-count:3; column-gap:20px; }
-  .portfolio-stats-grid { display:grid; grid-template-columns:repeat(4,1fr); }
-  .portfolio-testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .student-work-masonry { column-count:3; column-gap:20px; }
+  .student-work-stats-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+  .student-work-testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
   .section-padding { padding: 100px 48px; }
   .hero-padding { padding: 120px 48px 80px; }
   .stats-card { text-align:center; padding:32px 24px; border-right:1px solid rgba(255,255,255,.06); }
   .stats-card:last-child { border-right:none; }
 
   @media (max-width: 1024px) {
-    .portfolio-masonry { column-count:2; }
-    .portfolio-stats-grid { grid-template-columns:repeat(2,1fr) !important; }
-    .portfolio-testimonials-grid { grid-template-columns:repeat(2,1fr) !important; }
+    .student-work-masonry { column-count:2; }
+    .student-work-stats-grid { grid-template-columns:repeat(2,1fr) !important; }
+    .student-work-testimonials-grid { grid-template-columns:repeat(2,1fr) !important; }
     .stats-card:nth-child(2n) { border-right:none; }
     .stats-card { border-bottom:1px solid rgba(255,255,255,.06); }
     .stats-card:nth-last-child(-n+2) { border-bottom:none; }
   }
 
   @media (max-width: 768px) {
-    .portfolio-masonry { column-count:1; display: flex; flex-direction: column; gap: 24px; }
+    .student-work-masonry { column-count:1; display: flex; flex-direction: column; gap: 24px; }
     .port-card { margin-bottom: 0 !important; width: 100%; }
-    .portfolio-stats-grid { grid-template-columns:1fr !important; }
-    .portfolio-testimonials-grid { grid-template-columns:1fr !important; }
+    .student-work-stats-grid { grid-template-columns:1fr !important; }
+    .student-work-testimonials-grid { grid-template-columns:1fr !important; }
     .section-padding { padding: 60px 24px !important; }
     .hero-padding { padding: 80px 24px 60px !important; }
     .stats-card { border-right:none !important; border-bottom:1px solid rgba(255,255,255,.06); }
@@ -65,7 +65,7 @@ const testimonials = [
   { name: "Yusuf Ibrahim", company: "TechSaudi", text: "Professional, precise, and endlessly creative. The UI work was delivered on time and far exceeded our design expectations.", stars: 5 },
 ];
 
-export default function PortfolioPage() {
+export default function workPage() {
   const [activeFilter, setActiveFilter] = useState("All");
   const filtered = activeFilter === "All" ? projects : projects.filter(p => p.category === activeFilter);
 
@@ -76,9 +76,10 @@ export default function PortfolioPage() {
 
         {/* ── HERO ── */}
         <PageHero
-          pillText="Our Work"
-          title={<>200+ Projects.<br /><span className="gradient-text">One Standard.</span></>}
-          description="Every project is an opportunity to push craft further. Browse our work across calligraphy, brand identity, print, social media, and digital design."
+          pillText="Students work"
+          title={<>200+ Students Projects.<br /><span className="gradient-text">One Standard of Excellence.</span></>}
+          description="Every project reflects learning in action. Explore the work created by our students across digital Arabic calligraphy, brand identity, social media design, and modern visual design.
+"
           imageSrc="/images/DSC02340.JPG"
           stats={[
             { val: 200, suf: "+", label: "Projects Delivered" },
@@ -87,7 +88,7 @@ export default function PortfolioPage() {
             { val: 5, suf: "★", label: "Average Rating" }
           ]}
           ctaPrimary={{ text: "Start a Project", href: "/contact" }}
-          ctaSecondary={{ text: "Our Services", href: "/services" }}
+          ctaSecondary={{ text: "Explore Student Projects", href: "/services" }}
         />
 
         {/* ── FILTER + GRID ── */}
@@ -105,7 +106,7 @@ export default function PortfolioPage() {
             </div>
 
             {/* Masonry-style grid */}
-            <div className="portfolio-masonry" style={{ gap:20 }}>
+            <div className="student-work-masonry" style={{ gap:20 }}>
               {filtered.map((p,i) => (
                 <div key={i} className="port-card" style={{ breakInside:"avoid", marginBottom:20, borderRadius:24, overflow:"hidden", position:"relative", background:"#e8e8e8" }}>
                   <div style={{ position:"relative", overflow:"hidden" }}>
@@ -137,7 +138,7 @@ export default function PortfolioPage() {
               <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Client Voices</p>
               <h2 style={{ fontWeight:700, color:"#111", margin:0 }}>What Clients <span className="gradient-text">Say</span></h2>
             </div>
-            <div className="portfolio-testimonials-grid" style={{ gap:24 }}>
+            <div className="student-work-testimonials-grid" style={{ gap:24 }}>
               {testimonials.map((t,i) => (
                 <div key={i} className="testimonial-card" style={{ background:"#fff", border:"1px solid rgba(0,0,0,.06)", borderRadius:28, padding:"36px 32px", boxShadow:"0 4px 24px rgba(0,0,0,.06)" }}>
                   <div style={{ display:"flex", gap:3, marginBottom:24 }}>

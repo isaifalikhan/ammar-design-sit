@@ -5,14 +5,15 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import PageHero from "@/components/PageHero";
+import GoogleReviews from "@/components/GoogleReviews";
 
 /* ─── Courses ────────────────────────────────────────────────────── */
 const courses = [
-  { id: 1, label: "Digital Digital Calligraphy", tag: "Recorded", description: "Master the ancient art of Arabic lettering with modern digital tools. Build confidence and professional-grade skills.", fee: "Rs. 5,000", image: "/images/DSC02365.JPG" },
-  { id: 2, label: "Graphic Designing", tag: "Recorded", description: "Create visually compelling design systems using industry-standard tools. From concept to polished execution.", fee: "Rs. 5,000", image: "/images/DSC02366.JPG" },
-  { id: 3, label: "Bilingual Brand Identity", tag: "Live", description: "Craft cohesive brand identities that speak across Arabic and Latin scripts—elegant, strategic, timeless.", fee: "Rs. 5,000", image: "/images/DSC02367.JPG" },
-  { id: 4, label: "Print Media Mastery", tag: "Live", description: "Turn ideas into print-ready artwork. Packaging, posters, brochures—designed to leave a lasting impression.", fee: "Rs. 5,000", image: "/images/DSC02368.JPG" },
-  { id: 5, label: "Social Media Design", tag: "Upcoming", description: "Design scroll-stopping visuals and brand-consistent templates for every social platform.", fee: "Rs. 5,000", image: "/images/DSC02369.JPG" },
+  { id: 1, slug: "digital-calligraphy", label: "Digital Digital Calligraphy", tag: "Recorded", description: "Master the ancient art of Arabic lettering with modern digital tools. Build confidence and professional-grade skills.", fee: "Rs. 5,000", image: "/images/DSC02365.JPG" },
+  { id: 2, slug: "graphic-designing", label: "Graphic Designing", tag: "Recorded", description: "Create visually compelling design systems using industry-standard tools. From concept to polished execution.", fee: "Rs. 5,000", image: "/images/DSC02366.JPG" },
+  { id: 3, slug: "bilingual-brand-identity", label: "Bilingual Brand Identity", tag: "Live", description: "Craft cohesive brand identities that speak across Arabic and Latin scripts—elegant, strategic, timeless.", fee: "Rs. 5,000", image: "/images/DSC02367.JPG" },
+  { id: 4, slug: "print-media-mastery", label: "Print Media Mastery", tag: "Live", description: "Turn ideas into print-ready artwork. Packaging, posters, brochures—designed to leave a lasting impression.", fee: "Rs. 5,000", image: "/images/DSC02368.JPG" },
+  { id: 5, slug: "social-media-design", label: "Social Media Design", tag: "Upcoming", description: "Design scroll-stopping visuals and brand-consistent templates for every social platform.", fee: "Rs. 5,000", image: "/images/DSC02369.JPG" },
 ];
 
 const services = [
@@ -50,19 +51,19 @@ export default function Home() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0px' }}>
 
         <PageHero
-          pillText="The Creative Studio"
-          title={<>We Speak<br /><span className="gradient-text">Design.</span></>}
-          subtitle="You'll love the translation."
-          description="Ammar Designz brings ideas to life through expert calligraphy, brand identity, editorial design, and print production crafted with intention and delivered with precision."
-          tags={['Graphic Design', 'UI/UX', 'Digital Calligraphy', 'Brand Identity', 'Print Media']}
+          pillText="THE DESIGN INSTITUTE"
+          title={<>We Teach<br /><span className="gradient-text">Design.</span></>}
+          subtitle="You’ll master the craft."
+          description="Ammar Designz Institute empowers the next generation of designers through professional training in digital calligraphy, graphic design, brand identity, and creative tools. Learn the art, master the process, and build a career through practical education guided by industry experience."
+          tags={['Graphic Design', 'UI/UX Design', 'Digital Calligraphy', 'Brand Identity','Illustration', 'Print Media','Creative Tools']}
           bgImage="/images/HeroImage.JPG"
           stats={[
-            { val: 1500, suf: '+', label: 'Projects Done' },
-            { val: 5, suf: '+', label: 'Years of Craft' },
+            { val: 10000, suf: '+', label: 'Students Trained' },
+            { val: 7, suf: '+', label: 'Years of Teaching' },
             { val: 150, suf: '+', label: 'Happy Clients' },
           ]}
-          ctaPrimary={{ text: "Explore Services", href: "/services" }}
-          ctaSecondary={{ text: "View Work", href: "/portfolio" }}
+          // ctaPrimary={{ text: "Explore Services", href: "/services" }}
+          ctaSecondary={{ text: "View Students Work", href: "/portfolio" }}
         />
 
         {/* ══════════════════════════════════════════
@@ -79,13 +80,13 @@ export default function Home() {
         {/* ══════════════════════════════════════════
             SERVICES
         ══════════════════════════════════════════ */}
-        <section className="home-services-section" style={{ background: '#0d0d0d', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
+ {/* /**        <section className="home-services-section" style={{ background: '#0d0d0d', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
           <div className="orb" style={{ width: 500, height: 500, background: 'rgba(127,191,47,.07)', top: -100, right: -100 }} />
           <div className="orb" style={{ width: 400, height: 400, background: 'rgba(127,191,47,.05)', bottom: -80, left: -80 }} />
 
-          <div className="page-container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="page-container" style={{ position: 'relative', zIndex: 1 }}> */}
             {/* Header */}
-            <div className="home-services-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 72 }}>
+            {/* <div className="home-services-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 72 }}>
               <div>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
                   <span style={{ width: 32, height: 1, background: '#7fbf2f', display: 'block' }} />
@@ -98,10 +99,10 @@ export default function Home() {
               <Link href="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, border: '1px solid rgba(255,255,255,.12)', color: '#fff', borderRadius: 100, padding: '12px 24px', fontSize: 13, fontWeight: 500, textDecoration: 'none', transition: 'all .3s' }}>
                 All Services <span style={{ color: '#7fbf2f' }}>→</span>
               </Link>
-            </div>
+            </div> */}
 
             {/* Services grid */}
-            <div className="home-services-grid" style={{ display: 'grid', gap: 16 }}>
+            {/* <div className="home-services-grid" style={{ display: 'grid', gap: 16 }}>
               {services.map((s, i) => (
                 <div key={i} className="service-card card-hover" style={{ background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.07)', borderRadius: 24, padding: '32px 24px', cursor: 'pointer', position: 'relative', overflow: 'hidden' }}>
                   <div style={{ position: 'absolute', top: 0, right: 0, width: 80, height: 80, borderRadius: '0 0 0 80px', background: 'rgba(127,191,47,.05)' }} />
@@ -113,10 +114,10 @@ export default function Home() {
                   <div style={{ marginTop: 20, color: '#7fbf2f', fontSize: 18 }}>→</div>
                 </div>
               ))}
-            </div>
+            </div> */}
 
             {/* Gallery strip - Infinite Marquee */}
-            <div style={{ marginTop: 48, overflow: 'hidden', width: '100%', position: 'relative' }}>
+            {/* <div style={{ marginTop: 48, overflow: 'hidden', width: '100%', position: 'relative' }}>
               <div className="marquee-track" style={{ display: 'flex', gap: 16 }}>
                 {[...Array(3)].map((_, loopI) => (
                   <div key={loopI} style={{ display: 'flex', gap: 16 }}>
@@ -129,11 +130,11 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
+            </div> */}
+          {/* </div>
+        </section> */}
 
- 
+        
         {/* ═════════   ═════════════════════════════════
             COURSES
         ══════════════════════════════════════════ */}
@@ -198,7 +199,7 @@ export default function Home() {
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                           <span style={{ fontSize: 18, fontWeight: 700, color: isActive ? '#7fbf2f' : '#fff' }}>{c.fee}</span>
                           {isActive && (
-                            <span style={{ width: 38, height: 38, borderRadius: '50%', background: '#7fbf2f', display: 'grid', placeItems: 'center', color: '#000', fontSize: 18, fontWeight: 700 }}>→</span>
+                            <Link href={`/checkout?course=${c.slug}`} style={{ width: 38, height: 38, borderRadius: '50%', background: '#7fbf2f', display: 'grid', placeItems: 'center', color: '#000', fontSize: 18, fontWeight: 700, textDecoration: 'none' }}>→</Link>
                           )}
                         </div>
                       </div>
@@ -260,15 +261,20 @@ export default function Home() {
         </section>
 
         {/* ══════════════════════════════════════════
+            GOOGLE REVIEWS
+        ══════════════════════════════════════════ */}
+        <GoogleReviews />
+
+        {/* ══════════════════════════════════════════
             CONTACT / QUOTE
         ══════════════════════════════════════════ */}
-        <section className="home-contact-section" style={{ background: '#faf9f7', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
+        {/* <section className="home-contact-section" style={{ background: '#faf9f7', padding: '100px 48px', position: 'relative', overflow: 'hidden' }}>
           <div className="orb" style={{ width: 500, height: 500, background: 'rgba(127,191,47,.07)', top: -50, right: -100 }} />
 
           <div className="page-container" style={{ position: 'relative', zIndex: 1 }}>
-            <div className="home-contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 64, background: '#fff', borderRadius: 48, overflow: 'hidden', boxShadow: '0 8px 60px rgba(0,0,0,.08)', border: '1px solid rgba(0,0,0,.04)' }}>
+            <div className="home-contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 64, background: '#fff', borderRadius: 48, overflow: 'hidden', boxShadow: '0 8px 60px rgba(0,0,0,.08)', border: '1px solid rgba(0,0,0,.04)' }}> */}
               {/* Left Form */}
-              <div style={{ padding: '64px 56px' }}>
+              {/* <div style={{ padding: '64px 56px' }}>
                 <div style={{ marginBottom: 48 }}>
                   <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
                     <span style={{ width: 24, height: 1, background: '#7fbf2f', display: 'block' }} />
@@ -297,10 +303,10 @@ export default function Home() {
                     <span style={{ width: 32, height: 32, borderRadius: '50%', background: '#7fbf2f', display: 'grid', placeItems: 'center', fontSize: 16 }}>→</span>
                   </button>
                 </div>
-              </div>
+              </div> */}
 
               {/* Right Image + overlay info */}
-              <div style={{ position: 'relative', overflow: 'hidden' }}>
+              {/* <div style={{ position: 'relative', overflow: 'hidden' }}>
                 <img src="/images/DSC02370.JPG" alt="Studio" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.2) 60%, transparent 100%)' }} />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '48px 40px' }}>
@@ -317,10 +323,10 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
+              </div> */}
+            {/* </div>
           </div>
-        </section>
+        </section> */}
 
       </div>
     </>

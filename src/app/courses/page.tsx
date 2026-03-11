@@ -66,6 +66,7 @@ const LOCAL_STYLES = `
 
 const courses = [
   {
+    slug: "digital-calligraphy",
     title: "Digital Digital Calligraphy",
     tag: "Recorded",
     tagColor: "#7fbf2f",
@@ -80,6 +81,7 @@ const courses = [
     skills: ["Naskh & Thuluth scripts", "Digital tools mastery", "Logo calligraphy", "Brand compositions"],
   },
   {
+    slug: "graphic-designing",
     title: "Graphic Designing",
     tag: "Recorded",
     tagColor: "#7fbf2f",
@@ -90,10 +92,11 @@ const courses = [
     rating: "4.8",
     fee: "Rs. 5,000",
     img: "/images/DSC02366.JPG",
-    desc: "A complete graphic design programme covering visual thinking, Adobe Illustrator, Photoshop, typography, colour theory, and portfolio-ready projects.",
+    desc: "A complete graphic design programme covering visual thinking, Adobe Illustrator, Photoshop, typography, colour theory, and Students work-ready projects.",
     skills: ["Adobe Illustrator", "Typography", "Colour theory", "Print & digital design"],
   },
   {
+    slug: "bilingual-brand-identity",
     title: "Bilingual Brand Identity",
     tag: "Live",
     tagColor: "#f59e0b",
@@ -108,6 +111,7 @@ const courses = [
     skills: ["Bilingual brand systems", "Brand guidelines", "Arabic + Latin pairing", "Client presentation"],
   },
   {
+    slug: "social-media-design",
     title: "Social Media Design",
     tag: "Upcoming",
     tagColor: "#64748b",
@@ -126,7 +130,7 @@ const courses = [
 const mentors = [
   { name: "Hafiz Muhammad Ammar", role: "CEO & Lead Instructor", specialty: "Digital Calligraphy & Brand Identity", courses: "2 Courses", img: "/Team/Hafiz Muhammad Ammar Khan.png" },
   { name: "Imran Khan", role: "Creative Design Head", specialty: "Graphic Design & Strategy", courses: "1 Course", img: "/Team/Imran Khan.png" },
-  { name: "Ahtisham Arshad", role: "Brand Identity Designer", specialty: "Logo Design & Typography", courses: "Workshops", img: "/Team/Ahtisham Arshad.png" },
+  { name: "Saif Ali", role: "Website Developer", specialty: "Web Development & Front-end", courses: "—", img: "/Team/saif.jpeg" },
 ];
 
 const whyUs = [
@@ -183,7 +187,7 @@ export default function CoursesPage() {
             { val: 4, suf: "", label: "Courses Available" }
           ]}
           ctaPrimary={{ text: "Explore Courses", href: "#courses" }}
-          ctaSecondary={{ text: "Enrol Now", onClick: () => setEnrollForm(true) }}
+          ctaSecondary={{ text: "Enrol Now", href: "/checkout" }}
         />
 
         {/* ── MARQUEE ── */}
@@ -249,10 +253,10 @@ export default function CoursesPage() {
                         <span style={{ fontSize:11, color:"#aaa", display:"block", marginBottom:2 }}>Course Fee</span>
                         <span style={{ fontSize:32, fontWeight:700, color:"#7fbf2f" }}>{c.fee}</span>
                       </div>
-                      <button onClick={() => { setSelectedCourse(c.title); setEnrollForm(true); }} className="enroll-btn"
-                        style={{ display:"inline-flex", alignItems:"center", gap:10, background:"#7fbf2f", color:"#000", borderRadius:100, padding:"12px 24px", fontSize:13, fontWeight:700, border:"none", cursor:"pointer", boxShadow:"0 10px 28px rgba(127,191,47,.3)" }}>
+                      <Link href={`/checkout?course=${c.slug}`} className="enroll-btn"
+                        style={{ display:"inline-flex", alignItems:"center", gap:10, background:"#7fbf2f", color:"#000", borderRadius:100, padding:"12px 24px", fontSize:13, fontWeight:700, border:"none", cursor:"pointer", boxShadow:"0 10px 28px rgba(127,191,47,.3)", textDecoration:"none" }}>
                         Enrol Now →
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -316,29 +320,44 @@ export default function CoursesPage() {
         </section>
 
         {/* ── MENTORS ── */}
-        <section className="responsive-padding section-padding-responsive" style={{ background:"#060606", padding:"100px 48px", position:"relative", overflow:"hidden" }}>
-          <div className="orb" style={{ width:500, height:500, background:"rgba(127,191,47,.06)", top:-80, left:"50%", transform:"translateX(-50%)" }} />
+        <section className="responsive-padding section-padding-responsive" style={{ background:"linear-gradient(180deg, #060606 0%, #0c0c0c 50%, #060606 100%)", padding:"120px 48px", position:"relative", overflow:"hidden" }}>
+          <div className="orb" style={{ width:600, height:600, background:"rgba(127,191,47,.07)", top:-100, left:"50%", transform:"translateX(-50%)", opacity:0.9 }} />
+          <div className="orb" style={{ width:320, height:320, background:"rgba(127,191,47,.04)", bottom:-60, right:"5%", opacity:0.6 }} />
           <div className="page-container" style={{ position:"relative", zIndex:1 }}>
-            <div style={{ textAlign:"center", marginBottom:72 }}>
-              <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Learn From the Best</p>
-              <h2 style={{ fontWeight:700, color:"#fff", margin:0 }}>Your <span className="gradient-text">Mentors</span></h2>
+            <div style={{ textAlign:"center", marginBottom:80 }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:12, marginBottom:20 }}>
+                <span style={{ width:36, height:1, background:"linear-gradient(90deg, transparent, #7fbf2f)", display:"block" }} />
+                <span style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f" }}>Learn From the Best</span>
+                <span style={{ width:36, height:1, background:"linear-gradient(90deg, #7fbf2f, transparent)", display:"block" }} />
+              </div>
+              <h2 style={{ fontWeight:700, color:"#fff", margin:0, fontSize:"clamp(32px, 4vw, 48px)", letterSpacing:"-0.02em" }}>Your <span className="gradient-text">Mentors</span></h2>
+              <p style={{ fontSize:15, color:"rgba(255,255,255,.5)", marginTop:16, maxWidth:460, marginLeft:"auto", marginRight:"auto" }}>Industry practitioners who teach what they do every day.</p>
             </div>
-            <div className="inst-mentors-grid">
+            <div className="inst-mentors-grid" style={{ display:"grid", gridTemplateColumns:"repeat(3, 1fr)", gap:32, maxWidth:1100, margin:"0 auto" }}>
               {mentors.map((m,i) => (
-                <div key={i} className="mentor-card" style={{ background:"rgba(255,255,255,.03)", border:"1px solid rgba(255,255,255,.07)", borderRadius:32, overflow:"hidden", boxShadow:"0 4px 20px rgba(0,0,0,.2)", cursor:"pointer" }}>
-                  <div style={{ aspectRatio:"4/5", overflow:"hidden" }}>
-                    <img src={m.img} alt={m.name} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} />
+                <div key={i} className="mentor-card" style={{ background:"linear-gradient(145deg, rgba(255,255,255,.045) 0%, rgba(255,255,255,.015) 100%)", border:"1px solid rgba(255,255,255,.08)", borderRadius:32, overflow:"hidden", boxShadow:"0 24px 48px rgba(0,0,0,.25), 0 0 0 1px rgba(127,191,47,.06)", cursor:"pointer", transition:"all .45s cubic-bezier(.23,1,.32,1)" }}>
+                  <div style={{ position:"relative", aspectRatio:"4/5", overflow:"hidden" }}>
+                    <img src={m.img} alt={m.name} className="mentor-img" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", transition:"transform .6s ease" }} />
+                    <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 45%)", pointerEvents:"none" }} />
+                    <div style={{ position:"absolute", bottom:20, left:24, right:24 }}>
+                      <span style={{ fontSize:10, fontWeight:700, letterSpacing:".22em", textTransform:"uppercase", color:"#7fbf2f", textShadow:"0 1px 3px rgba(0,0,0,.4)" }}>{m.role}</span>
+                    </div>
                   </div>
-                  <div style={{ padding:"24px 28px" }}>
-                    <p style={{ fontSize:10, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 6px" }}>{m.role}</p>
-                    <h4 style={{ fontWeight:700, color:"#fff", margin:"0 0 8px", lineHeight:1.2 }}>{m.name}</h4>
-                    <p style={{ fontSize:13, color:"#888", margin:"0 0 16px" }}>{m.specialty}</p>
-                    <span style={{ fontSize:11, fontWeight:600, color:"#5a9c1a", background:"rgba(127,191,47,.1)", border:"1px solid rgba(127,191,47,.2)", borderRadius:100, padding:"5px 14px" }}>{m.courses}</span>
+                  <div style={{ padding:"28px 28px 32px" }}>
+                    <h4 style={{ fontWeight:700, color:"#fff", margin:"0 0 10px", lineHeight:1.2, fontSize:20 }}>{m.name}</h4>
+                    <p style={{ fontSize:13, color:"rgba(255,255,255,.65)", lineHeight:1.65, margin:"0 0 18px" }}>{m.specialty}</p>
+                    <span style={{ display:"inline-block", fontSize:11, fontWeight:600, color:"#0a0a0a", background:"linear-gradient(135deg, #7fbf2f, #a8e04a)", borderRadius:100, padding:"6px 16px", boxShadow:"0 4px 14px rgba(127,191,47,.35)" }}>{m.courses}</span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+          <style>{`
+            .mentor-card:hover { transform: translateY(-10px); box-shadow: 0 36px 72px rgba(0,0,0,.3), 0 0 0 1px rgba(127,191,47,.18); border-color: rgba(127,191,47,.2); }
+            .mentor-card:hover .mentor-img { transform: scale(1.06); filter: grayscale(0); }
+            .mentor-card .mentor-img { filter: grayscale(0.15); }
+            @media (max-width: 900px) { .inst-mentors-grid { grid-template-columns: 1fr !important; max-width: 380px; margin: 0 auto !important; } }
+          `}</style>
         </section>
 
         {/* ── FAQ ── */}
@@ -385,7 +404,7 @@ export default function CoursesPage() {
                     <select value={selectedCourse} onChange={e => setSelectedCourse(e.target.value)}
                       style={{ height:52, borderRadius:14, border:"1.5px solid #e5e5e5", background:"#fafafa", padding:"0 18px", fontSize:14, color:"#555", transition:"all .25s", appearance:"none" }}>
                       <option value="">Select Course *</option>
-                      {courses.map(c => <option key={c.title}>{c.title}</option>)}
+                      {courses.map(c => <option key={c.title} value={c.slug}>{c.title}</option>)}
                     </select>
                     <select style={{ height:52, borderRadius:14, border:"1.5px solid #e5e5e5", background:"#fafafa", padding:"0 18px", fontSize:14, color:"#555", transition:"all .25s", appearance:"none" }}>
                       <option value="">How did you hear about us?</option>
@@ -422,6 +441,11 @@ export default function CoursesPage() {
                       style={{ height:56, borderRadius:100, background:"#7fbf2f", color:"#000", fontSize:15, fontWeight:700, border:"none", cursor:"pointer", boxShadow:"0 14px 40px rgba(127,191,47,.3)", transition:"all .3s" }}>
                       Complete Enrolment →
                     </button>
+                    {selectedCourse && (
+                      <Link href={`/checkout?course=${selectedCourse}`} style={{ textAlign:"center", fontSize:13, color:"#7fbf2f", fontWeight:600, textDecoration:"none" }}>
+                        Or continue to full checkout page →
+                      </Link>
+                    )}
                   </div>
                 </>
               )}
@@ -441,10 +465,10 @@ export default function CoursesPage() {
               Join 740+ students who've chosen to invest in their design career with Ammar Designz.
             </p>
             <div style={{ display:"flex", justifyContent:"center", gap:16, flexWrap:"wrap" }}>
-              <button onClick={() => setEnrollForm(true)} className="enroll-btn"
-                style={{ display:"inline-flex", alignItems:"center", gap:12, background:"#7fbf2f", color:"#000", borderRadius:100, padding:"16px 36px", fontSize:15, fontWeight:700, border:"none", cursor:"pointer", boxShadow:"0 20px 50px rgba(127,191,47,.3)" }}>
+              <Link href="/checkout" className="enroll-btn"
+                style={{ display:"inline-flex", alignItems:"center", gap:12, background:"#7fbf2f", color:"#000", borderRadius:100, padding:"16px 36px", fontSize:15, fontWeight:700, border:"none", cursor:"pointer", boxShadow:"0 20px 50px rgba(127,191,47,.3)", textDecoration:"none" }}>
                 Enrol Today <span style={{ fontSize:18 }}>→</span>
-              </button>
+              </Link>
               <Link href="/contact" style={{ display:"inline-flex", alignItems:"center", border:"1px solid rgba(255,255,255,.14)", color:"#fff", borderRadius:100, padding:"16px 36px", fontSize:15, fontWeight:500, textDecoration:"none" }}>
                 Ask a Question
               </Link>

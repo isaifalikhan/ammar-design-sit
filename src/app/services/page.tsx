@@ -141,7 +141,7 @@ export default function ServicesPage() {
             description="From a single calligraphy mark to a complete brand overhaul every service is delivered with the same obsessive attention to craft."
             imageSrc="/images/DSC02341.JPG"
             ctaPrimary={{ text: "Start a Project", href: "/contact" }}
-            ctaSecondary={{ text: "View Portfolio", href: "/portfolio" }}
+            ctaSecondary={{ text: "View Students work", href: "/portfolio" }}
           />
 
           {/* ══ SERVICE TABS ══════════════════════════════════════ */}
@@ -263,7 +263,7 @@ export default function ServicesPage() {
               Book a Free Call <span style={{ width:32, height:32, borderRadius:"50%", background:"rgba(0,0,0,.14)", display:"grid", placeItems:"center", fontSize:16 }}>→</span>
             </Link>
             <Link href="/portfolio" className="btn-outline-white" style={{ padding:"15px 32px", fontSize:15 }}>
-              View Our Portfolio
+              View Our Students work
             </Link>
           </div>
         </div>

@@ -230,7 +230,7 @@ export default function ContactPage() {
 
               {/* Social links */}
               <div style={{ background:"#0d0d0d", borderRadius:28, padding:"28px 32px" }}>
-                <p style={{ fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>Follow Our Work</p>
+                <p style={{ fontSize:11, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 20px" }}>Follow Students work</p>
                 <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
                   {[
                     { label:"Instagram", handle:"@ammardesignz", icon:"📸", url: "https://www.instagram.com/ammardesignz" },

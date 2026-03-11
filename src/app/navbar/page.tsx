@@ -7,10 +7,10 @@ import { usePathname } from "next/navigation";
 const NAV_LINKS: { label: string; href: string; highlight?: boolean }[] = [
   { label: "Home",      href: "/" },
   { label: "About",     href: "/about" },
-  { label: "Services",  href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
+  // { label: "Services",  href: "/services" },
+  { label: "Students work", href: "/portfolio" },
   { label: "Courses",   href: "/courses" },
-  { label: "Career",    href: "/career" },
+  // { label: "Career",    href: "/career" },
   { label: "Contact",   href: "/contact" },
 ];
 

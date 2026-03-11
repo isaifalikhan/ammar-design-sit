@@ -44,7 +44,7 @@ interface PageHeroProps {
 }
 
 export default function PageHero({
-  pillText = "The Creative Studio",
+  pillText = "THE DESIGN INSTITUTE",
   title,
   subtitle,
   description,
@@ -52,8 +52,8 @@ export default function PageHero({
   imageSrc = "/images/DSC02340.JPG",
   bgImage,
   stats,
-  ctaPrimary = { text: "Explore Services", href: "/services" },
-  ctaSecondary = { text: "View Work", href: "/portfolio" }
+  ctaPrimary,
+  ctaSecondary = { text: "View Students Work", href: "/portfolio" }
 }: PageHeroProps) {
   const hasBg = !!bgImage;
   const textColor = hasBg ? '#fff' : '#111';
