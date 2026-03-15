@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import PageHero from "@/components/PageHero";
 import GoogleReviews from "@/components/GoogleReviews";
+import { STUDENT_WORK_IMAGES } from "@/lib/student-work-images";
 
 /* ─── Courses ────────────────────────────────────────────────────── */
 const courses = [
@@ -34,6 +35,7 @@ const testimonials = [
 export default function Home() {
   const [courseIndex, setCourseIndex] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   useEffect(() => {
     const id = setInterval(() => setCourseIndex(p => (p + 1) % courses.length), 5500);
@@ -76,6 +78,54 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        {/* ══════════════════════════════════════════
+            STUDENT WORK MARQUEE
+        ══════════════════════════════════════════ */}
+        <section style={{ background: 'linear-gradient(180deg, #faf9f7 0%, #f5f4f2 100%)', padding: '80px 0 100px', overflow: 'hidden' }}>
+          <div className="page-container" style={{ marginBottom: 48 }}>
+            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                  <span style={{ width: 28, height: 1, background: '#7fbf2f', display: 'block' }} />
+                  <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.28em', textTransform: 'uppercase', color: '#7fbf2f' }}>From Our Students</span>
+                </div>
+                <h2 style={{ color: '#111', margin: 0, fontSize: 'clamp(28px, 3.5vw, 40px)', letterSpacing: '-0.02em' }}>
+                  Student <span className="gradient-text">Work</span>
+                </h2>
+                <p style={{ fontSize: 14, color: '#666', marginTop: 10, maxWidth: 380 }}>Calligraphy, brand identity, and design projects created at Ammar Designz.</p>
+              </div>
+              <Link href="/portfolio" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#7fbf2f', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                See all work <span style={{ fontSize: 18 }}>→</span>
+              </Link>
+            </div>
+          </div>
+          <div className="student-work-marquee-wrap" style={{ overflow: 'hidden', marginTop: 8 }}>
+            <div className="student-work-marquee-track" style={{ display: 'flex', gap: 20, width: 'max-content', animation: 'student-work-marquee 90s linear infinite' }}>
+              {[...STUDENT_WORK_IMAGES, ...STUDENT_WORK_IMAGES].map((src, i) => (
+                <button key={i} type="button" className="card-hover" onClick={() => setLightboxImage(src)} style={{ flexShrink: 0, width: 280, height: 200, borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,.08)', border: '1px solid rgba(0,0,0,.06)', padding: 0, cursor: 'pointer', background: 'none' }}>
+                  <img src={src} alt="Student work" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                </button>
+              ))}
+            </div>
+          </div>
+          {lightboxImage && (
+            <div role="dialog" aria-modal="true" aria-label="View image" style={{ position: 'fixed', inset: 0, zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24, background: 'rgba(0,0,0,.85)', cursor: 'pointer' }} onClick={() => setLightboxImage(null)}>
+              <button type="button" onClick={() => setLightboxImage(null)} aria-label="Close" style={{ position: 'absolute', top: 20, right: 20, width: 44, height: 44, borderRadius: '50%', border: 'none', background: 'rgba(255,255,255,.15)', color: '#fff', fontSize: 24, cursor: 'pointer', display: 'grid', placeItems: 'center' }}>×</button>
+              <img src={lightboxImage} alt="Student work" style={{ maxWidth: '100%', maxHeight: '90vh', width: 'auto', height: 'auto', objectFit: 'contain', borderRadius: 12, boxShadow: '0 24px 80px rgba(0,0,0,.5)' }} onClick={(e) => e.stopPropagation()} />
+            </div>
+          )}
+          <style>{`
+            @keyframes student-work-marquee {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .student-work-marquee-wrap:hover .student-work-marquee-track { animation-play-state: paused; }
+            @media (max-width: 768px) {
+              .student-work-marquee-track div { width: 240px !important; height: 170px !important; }
+            }
+          `}</style>
+        </section>
 
         {/* ══════════════════════════════════════════
             SERVICES

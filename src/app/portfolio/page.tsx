@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import PageHero from "@/components/PageHero";
 
 const LOCAL_STYLES = `
@@ -17,6 +17,13 @@ const LOCAL_STYLES = `
   .testimonial-card { transition:all .35s ease; }
 
   .student-work-masonry { column-count:3; column-gap:20px; }
+  .student-work-gallery { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:20px; }
+  .student-work-card { aspect-ratio:1; border-radius:20px; overflow:hidden; background:#e8e8e8; opacity:0; transform:translateY(32px); transition:opacity 0.6s ease, transform 0.6s cubic-bezier(.23,1,.32,1); }
+  .student-work-card.revealed { opacity:1; transform:translateY(0); }
+  .student-work-gallery-header { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.5s cubic-bezier(.23,1,.32,1); }
+  .student-work-gallery-header.revealed { opacity:1; transform:translateY(0); }
+  .student-work-masonry .port-card { opacity:0; transform:translateY(28px); transition:opacity 0.55s ease, transform 0.55s cubic-bezier(.23,1,.32,1); }
+  .student-work-masonry .port-card.revealed { opacity:1; transform:translateY(0); }
   .student-work-stats-grid { display:grid; grid-template-columns:repeat(4,1fr); }
   .student-work-testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
   .section-padding { padding: 100px 48px; }
@@ -26,6 +33,7 @@ const LOCAL_STYLES = `
 
   @media (max-width: 1024px) {
     .student-work-masonry { column-count:2; }
+    .student-work-gallery { grid-template-columns:repeat(2, 1fr); gap:16px; }
     .student-work-stats-grid { grid-template-columns:repeat(2,1fr) !important; }
     .student-work-testimonials-grid { grid-template-columns:repeat(2,1fr) !important; }
     .stats-card:nth-child(2n) { border-right:none; }
@@ -35,6 +43,8 @@ const LOCAL_STYLES = `
 
   @media (max-width: 768px) {
     .student-work-masonry { column-count:1; display: flex; flex-direction: column; gap: 24px; }
+    .student-work-gallery { grid-template-columns:1fr; gap:20px; }
+    .student-work-card { aspect-ratio:4/3; }
     .port-card { margin-bottom: 0 !important; width: 100%; }
     .student-work-stats-grid { grid-template-columns:1fr !important; }
     .student-work-testimonials-grid { grid-template-columns:1fr !important; }
@@ -44,6 +54,8 @@ const LOCAL_STYLES = `
     .stats-card:last-child { border-bottom:none; }
   }
 `;
+
+import { STUDENT_WORK_IMAGES } from "@/lib/student-work-images";
 
 const categories = ["All", "Calligraphy", "Brand Identity", "Social Media", "Print", "Digital"];
 
@@ -69,6 +81,27 @@ export default function workPage() {
   const [activeFilter, setActiveFilter] = useState("All");
   const filtered = activeFilter === "All" ? projects : projects.filter(p => p.category === activeFilter);
 
+  const [galleryRevealed, setGalleryRevealed] = useState(false);
+  const [studioRevealed, setStudioRevealed] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const studioRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.target === galleryRef.current && e.isIntersecting) setGalleryRevealed(true);
+          if (e.target === studioRef.current && e.isIntersecting) setStudioRevealed(true);
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+    if (galleryRef.current) obs.observe(galleryRef.current);
+    if (studioRef.current) obs.observe(studioRef.current);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <>
       <style>{LOCAL_STYLES}</style>
@@ -91,11 +124,53 @@ export default function workPage() {
           ctaSecondary={{ text: "Explore Student Projects", href: "/services" }}
         />
 
-        {/* ── FILTER + GRID ── */}
+        {/* ── STUDENT WORK GALLERY ── */}
         <section className="section-padding" style={{ background:"#faf9f7" }}>
+          <div className="page-container" ref={galleryRef}>
+            <div className={`student-work-gallery-header${galleryRevealed ? " revealed" : ""}`} style={{ textAlign:"center", marginBottom:56 }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:12, marginBottom:16 }}>
+                <span style={{ width:32, height:1, background:"#7fbf2f", display:"block" }} />
+                <span style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f" }}>Gallery</span>
+                <span style={{ width:32, height:1, background:"#7fbf2f", display:"block" }} />
+              </div>
+              <h2 style={{ fontWeight:700, color:"#111", margin:0 }}>Student <span className="gradient-text">Work</span></h2>
+              <p style={{ fontSize:15, color:"#666", marginTop:12, maxWidth:480, marginLeft:"auto", marginRight:"auto" }}>
+                Projects created by our students across calligraphy, brand identity, and graphic design.
+              </p>
+            </div>
+
+            <div className="student-work-gallery">
+              {STUDENT_WORK_IMAGES.map((src, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className={`port-card student-work-card${galleryRevealed ? " revealed" : ""}`}
+                  style={{ position:"relative", overflow:"hidden", transitionDelay: galleryRevealed ? `${Math.min(i * 40, 600)}ms` : "0ms", border:"none", padding:0, cursor:"pointer", textAlign:"left", background:"transparent", font:"inherit" }}
+                  onClick={() => setLightboxImage(src)}
+                >
+                  <img
+                    src={src}
+                    alt={`Student project ${i + 1}`}
+                    className="port-img"
+                    style={{ width:"100%", height:"100%", display:"block", objectFit:"cover" }}
+                  />
+                  <div className="port-overlay" style={{ position:"absolute", inset:0, background:"linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 60%)", opacity:0, display:"flex", alignItems:"flex-end", padding:"20px" }}>
+                    <span style={{ fontSize:11, fontWeight:600, letterSpacing:".12em", textTransform:"uppercase", color:"#7fbf2f" }}>Click to view</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED STUDIO WORK (optional grid) ── */}
+        <section className="section-padding" style={{ background:"#fff", borderTop:"1px solid rgba(0,0,0,.06)" }}>
           <div className="page-container">
-            {/* Filter bar */}
-            <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:52, justifyContent:"center" }}>
+            <div style={{ textAlign:"center", marginBottom:48 }}>
+              <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 12px" }}>Studio Highlights</p>
+              <h2 style={{ fontWeight:700, color:"#111", margin:0 }}>Featured <span className="gradient-text">Projects</span></h2>
+            </div>
+            <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:40, justifyContent:"center" }}>
               {categories.map(c => (
                 <button key={c} className={`filter-btn${activeFilter===c?" active":""}`}
                   onClick={() => setActiveFilter(c)}
@@ -104,11 +179,13 @@ export default function workPage() {
                 </button>
               ))}
             </div>
-
-            {/* Masonry-style grid */}
-            <div className="student-work-masonry" style={{ gap:20 }}>
+            <div ref={studioRef} className="student-work-masonry" style={{ gap:20 }}>
               {filtered.map((p,i) => (
-                <div key={i} className="port-card" style={{ breakInside:"avoid", marginBottom:20, borderRadius:24, overflow:"hidden", position:"relative", background:"#e8e8e8" }}>
+                <div
+                  key={i}
+                  className={`port-card${studioRevealed ? " revealed" : ""}`}
+                  style={{ breakInside:"avoid", marginBottom:20, borderRadius:24, overflow:"hidden", position:"relative", background:"#e8e8e8", transitionDelay: studioRevealed ? `${Math.min(i * 80, 500)}ms` : "0ms" }}
+                >
                   <div style={{ position:"relative", overflow:"hidden" }}>
                     <img src={p.img} alt={p.title} className="port-img" style={{ width:"100%", display:"block", aspectRatio: p.size==="large"?"4/3":"1", objectFit:"cover" }} />
                     <div className="port-overlay" style={{ position:"absolute", inset:0, background:"linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 60%,transparent 100%)", opacity:0, display:"flex", flexDirection:"column", justifyContent:"flex-end", padding:"28px 24px" }}>
@@ -130,6 +207,32 @@ export default function workPage() {
         </section>
 
 
+
+        {/* ── LIGHTBOX ── */}
+        {lightboxImage && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="View image"
+            style={{ position:"fixed", inset:0, zIndex:10000, display:"flex", alignItems:"center", justifyContent:"center", padding:24, background:"rgba(0,0,0,.85)", cursor:"pointer" }}
+            onClick={() => setLightboxImage(null)}
+          >
+            <button
+              type="button"
+              onClick={() => setLightboxImage(null)}
+              style={{ position:"absolute", top:20, right:20, width:44, height:44, borderRadius:"50%", border:"none", background:"rgba(255,255,255,.15)", color:"#fff", fontSize:24, cursor:"pointer", display:"grid", placeItems:"center", lineHeight:1 }}
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <img
+              src={lightboxImage}
+              alt="Student work"
+              style={{ maxWidth:"100%", maxHeight:"90vh", width:"auto", height:"auto", objectFit:"contain", borderRadius:12, boxShadow:"0 24px 80px rgba(0,0,0,.5)" }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        )}
 
         {/* ── TESTIMONIALS ── */}
         <section className="section-padding" style={{ background:"#faf9f7" }}>

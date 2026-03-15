@@ -57,9 +57,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${cormorant.variable} ${dmSans.variable} ${powerGrotesk.variable} antialiased bg-[#fdfcfa] text-[#1f2933] font-sans`}
       >
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col w-full max-w-[100vw] overflow-x-hidden">
           <Navbar />
-          <main className="w-full flex-1 bg-[#f5f5f5]">
+          <main className="w-full flex-1 max-w-full overflow-x-hidden">
             {children}
           </main>
           <Footer />

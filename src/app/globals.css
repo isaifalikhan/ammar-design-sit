@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --content-max-width: 1400px;
 
   /* Typography System */
   --font-h1-desktop: 76px;
@@ -32,6 +33,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-poppins);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -157,8 +163,10 @@ h6, .h6 {
 
 .page-container {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 /* Custom Animations & Utility Classes */
