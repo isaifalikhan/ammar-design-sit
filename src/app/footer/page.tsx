@@ -7,7 +7,7 @@ const links = {
   Studio: [
     { label: "About Us", href: "/about" },
     { label: "Our Team", href: "/team" },
-    { label: "Students work", href: "/portfolio" },
+    { label: "Students work", href: "/student-work" },
     { label: "Testimonials", href: "/testimonials" },
   ],
   Services: [

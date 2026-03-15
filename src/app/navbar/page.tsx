@@ -8,7 +8,7 @@ const NAV_LINKS: { label: string; href: string; highlight?: boolean }[] = [
   { label: "Home",      href: "/" },
   { label: "About",     href: "/about" },
   // { label: "Services",  href: "/services" },
-  { label: "Students work", href: "/#student-work" },
+  { label: "Students work", href: "/student-work" },
   { label: "Courses",   href: "/courses" },
   // { label: "Career",    href: "/career" },
   { label: "Contact",   href: "/contact" },

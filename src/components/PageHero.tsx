@@ -53,7 +53,7 @@ export default function PageHero({
   bgImage,
   stats,
   ctaPrimary,
-  ctaSecondary = { text: "View Students Work", href: "/portfolio" }
+  ctaSecondary = { text: "View Students Work", href: "/student-work" }
 }: PageHeroProps) {
   const hasBg = !!bgImage;
   const textColor = hasBg ? '#fff' : '#111';

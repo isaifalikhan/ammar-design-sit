@@ -141,7 +141,7 @@ export default function ServicesPage() {
             description="From a single calligraphy mark to a complete brand overhaul every service is delivered with the same obsessive attention to craft."
             imageSrc="/images/DSC02341.JPG"
             ctaPrimary={{ text: "Start a Project", href: "/contact" }}
-            ctaSecondary={{ text: "View Students work", href: "/portfolio" }}
+            ctaSecondary={{ text: "View Students work", href: "/student-work" }}
           />
 
           {/* ══ SERVICE TABS ══════════════════════════════════════ */}
@@ -190,7 +190,7 @@ export default function ServicesPage() {
               </div>
               <div style={{ display:"flex", gap:14, flexWrap:"wrap" }}>
                 <Link href="/contact" className="btn-green">Enquire About This Service <span>→</span></Link>
-                <Link href="/portfolio" className="btn-outline-white">See Examples</Link>
+                <Link href="/student-work" className="btn-outline-white">See Examples</Link>
               </div>
             </div>
 
@@ -262,7 +262,7 @@ export default function ServicesPage() {
             <Link href="/contact" className="btn-green" style={{ padding:"16px 38px", fontSize:15 }}>
               Book a Free Call <span style={{ width:32, height:32, borderRadius:"50%", background:"rgba(0,0,0,.14)", display:"grid", placeItems:"center", fontSize:16 }}>→</span>
             </Link>
-            <Link href="/portfolio" className="btn-outline-white" style={{ padding:"15px 32px", fontSize:15 }}>
+            <Link href="/student-work" className="btn-outline-white" style={{ padding:"15px 32px", fontSize:15 }}>
               View Our Students work
             </Link>
           </div>

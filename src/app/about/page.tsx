@@ -43,7 +43,7 @@ export default function About() {
             { val: 3, suf: "", label: "Active Courses" }
           ]}
           ctaPrimary={{ text: "Work With Us", href: "/contact" }}
-          ctaSecondary={{ text: "See Students work", href: "/portfolio" }}
+          ctaSecondary={{ text: "See Students work", href: "/student-work" }}
         />
 
         {/* ── FOUNDER STORY ── */}

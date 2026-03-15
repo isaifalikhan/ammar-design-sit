@@ -77,7 +77,7 @@ const testimonials = [
   { name: "Yusuf Ibrahim", company: "TechSaudi", text: "Professional, precise, and endlessly creative. The UI work was delivered on time and far exceeded our design expectations.", stars: 5 },
 ];
 
-export default function workPage() {
+export default function StudentWorkPage() {
   const [activeFilter, setActiveFilter] = useState("All");
   const filtered = activeFilter === "All" ? projects : projects.filter(p => p.category === activeFilter);
 
@@ -109,7 +109,7 @@ export default function workPage() {
 
         {/* ── HERO ── */}
         <PageHero
-          pillText="Students work"
+          pillText="Student Work"
           title={<>200+ Students Projects.<br /><span className="gradient-text">One Standard of Excellence.</span></>}
           description="Every project reflects learning in action. Explore the work created by our students across digital Arabic calligraphy, brand identity, social media design, and modern visual design.
 "

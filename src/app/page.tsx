@@ -65,7 +65,7 @@ export default function Home() {
             { val: 150, suf: '+', label: 'Happy Clients' },
           ]}
           // ctaPrimary={{ text: "Explore Services", href: "/services" }}
-          ctaSecondary={{ text: "View Students Work", href: "/portfolio" }}
+          ctaSecondary={{ text: "View Students Work", href: "/student-work" }}
         />
 
         {/* ══════════════════════════════════════════
@@ -82,7 +82,7 @@ export default function Home() {
         {/* ══════════════════════════════════════════
             STUDENT WORK MARQUEE
         ══════════════════════════════════════════ */}
-        <section id="student-work" style={{ background: 'linear-gradient(180deg, #faf9f7 0%, #f5f4f2 100%)', padding: '80px 0 100px', overflow: 'hidden' }}>
+        <section style={{ background: 'linear-gradient(180deg, #faf9f7 0%, #f5f4f2 100%)', padding: '80px 0 100px', overflow: 'hidden' }}>
           <div className="page-container" style={{ marginBottom: 48 }}>
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
               <div>
@@ -95,7 +95,7 @@ export default function Home() {
                 </h2>
                 <p style={{ fontSize: 14, color: '#666', marginTop: 10, maxWidth: 380 }}>Calligraphy, brand identity, and design projects created at Ammar Designz.</p>
               </div>
-              <Link href="/portfolio" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#7fbf2f', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+              <Link href="/student-work" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#7fbf2f', textDecoration: 'none', whiteSpace: 'nowrap' }}>
                 See all work <span style={{ fontSize: 18 }}>→</span>
               </Link>
             </div>
