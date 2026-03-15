@@ -82,7 +82,7 @@ export default function Home() {
         {/* ══════════════════════════════════════════
             STUDENT WORK MARQUEE
         ══════════════════════════════════════════ */}
-        <section style={{ background: 'linear-gradient(180deg, #faf9f7 0%, #f5f4f2 100%)', padding: '80px 0 100px', overflow: 'hidden' }}>
+        <section id="student-work" style={{ background: 'linear-gradient(180deg, #faf9f7 0%, #f5f4f2 100%)', padding: '80px 0 100px', overflow: 'hidden' }}>
           <div className="page-container" style={{ marginBottom: 48 }}>
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
               <div>
