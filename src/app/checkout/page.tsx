@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useMemo, useState, Suspense } from "react";
 import { COURSES, getCourseBySlug } from "@/lib/courses-data";
 
 const PAYMENT_METHODS = [
@@ -10,7 +10,7 @@ const PAYMENT_METHODS = [
   { icon: "🏦", title: "Bank Transfer", bank: "Demo Bank", accountTitle: "Ammar Designz", accountNo: "0000-0000000", iban: "PK00 DEMO 0000 0000 0000 0000" },
 ];
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const courseSlug = searchParams.get("course") ?? "";
 
@@ -206,6 +206,26 @@ export default function CheckoutPage() {
         }
       `}</style>
     </div>
+  );
+}
+
+function CheckoutFallback() {
+  return (
+    <div style={{ minHeight: "80vh", background: "#faf9f7", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ textAlign: "center", padding: 48 }}>
+        <div style={{ width: 40, height: 40, border: "3px solid #e5e5e5", borderTopColor: "#7fbf2f", borderRadius: "50%", animation: "spin 0.8s linear infinite", margin: "0 auto 16px" }} />
+        <p style={{ fontSize: 14, color: "#666" }}>Loading checkout...</p>
+      </div>
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<CheckoutFallback />}>
+      <CheckoutContent />
+    </Suspense>
   );
 }
 
