@@ -5,15 +5,15 @@ import type { GoogleReviewsResponse, GoogleReviewItem } from "@/lib/google-revie
 
 type Status = "idle" | "loading" | "success" | "error" | "empty";
 
+const PLACE_ID = "ChIJ_eeSD9qn3zgRcuY93NhbOOU";
+
 export default function GoogleReviews() {
-  const [status, setStatus] = useState<Status>("idle");
+  const [status, setStatus] = useState<Status>("loading");
   const [data, setData] = useState<GoogleReviewsResponse | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
     let cancelled = false;
-    setStatus("loading");
-    setErrorMessage("");
 
     fetch("/api/google-reviews")
       .then((res) => {
@@ -81,8 +81,9 @@ function GoogleReviewsLoading() {
 }
 
 function GoogleReviewsError({ message }: { message: string }) {
-  const isApiDisabled = /403|has not been used|is disabled|Enable it by visiting/i.test(message);
-  const enableApiUrl = "https://console.cloud.google.com/apis/library/places-backend.googleapis.com";
+  const isApiDisabled = /has not been used|is disabled|Enable it by visiting|REQUEST_DENIED|not authorized to use this API/i.test(message);
+  const enableApiUrl = "https://console.cloud.google.com/apis/library/places.googleapis.com";
+  const mapsReviewsUrl = `https://www.google.com/maps/place/?q=place_id:${PLACE_ID}`;
 
   return (
     <section className="section-padding" style={{ background: "#faf9f7" }}>
@@ -92,10 +93,10 @@ function GoogleReviewsError({ message }: { message: string }) {
           {isApiDisabled ? (
             <>
               <p style={{ fontSize: 17, color: "#333", margin: 0, lineHeight: 1.5 }}>
-                Places API (New) isn’t enabled for your Google Cloud project yet.
+                Google Places API isn’t enabled or allowed for your server key.
               </p>
               <p style={{ fontSize: 14, color: "#666", marginTop: 16 }}>
-                Enable it once, then reviews will load here automatically.
+                Enable Places API and make sure the server key has access, then reviews will load here automatically.
               </p>
               <a
                 href={enableApiUrl}
@@ -116,13 +117,57 @@ function GoogleReviewsError({ message }: { message: string }) {
                   boxShadow: "0 4px 14px rgba(127,191,47,.3)",
                 }}
               >
-                Enable Places API (New) →
+                Enable Places API →
               </a>
+              <div style={{ marginTop: 14 }}>
+                <a
+                  href={mapsReviewsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 10,
+                    padding: "12px 24px",
+                    background: "rgba(127,191,47,.1)",
+                    color: "#111",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    borderRadius: 100,
+                    textDecoration: "none",
+                    border: "1px solid rgba(127,191,47,.25)",
+                  }}
+                >
+                  See Complete Reviews →
+                </a>
+              </div>
             </>
           ) : (
             <>
               <p style={{ fontSize: 16, color: "#333", margin: 0 }}>{message}</p>
               <p style={{ fontSize: 13, color: "#999", marginTop: 16 }}>You can still find us on Google to read reviews.</p>
+              <div style={{ marginTop: 14 }}>
+                <a
+                  href={mapsReviewsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 10,
+                    padding: "12px 24px",
+                    background: "#7fbf2f",
+                    color: "#000",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    borderRadius: 100,
+                    textDecoration: "none",
+                    boxShadow: "0 10px 26px rgba(127,191,47,.25)",
+                  }}
+                >
+                  See Complete Reviews →
+                </a>
+              </div>
             </>
           )}
         </div>
@@ -135,6 +180,7 @@ function GoogleReviewsEmpty({ data }: { data: GoogleReviewsResponse | null }) {
   const name = data?.name ?? "Ammar Designz";
   const rating = data?.rating ?? 0;
   const totalRatings = data?.totalRatings ?? 0;
+  const mapsReviewsUrl = `https://www.google.com/maps/place/?q=place_id:${PLACE_ID}`;
 
   return (
     <section className="section-padding" style={{ background: "#faf9f7" }}>
@@ -147,6 +193,28 @@ function GoogleReviewsEmpty({ data }: { data: GoogleReviewsResponse | null }) {
           <p style={{ fontSize: 16, color: "#555", margin: 0 }}>
             {name} has a {rating > 0 ? `${rating}★ rating` : "great"} reputation{totalRatings > 0 ? ` with ${totalRatings} reviews` : ""}. Check us out on Google for more.
           </p>
+          <div style={{ marginTop: 18 }}>
+            <a
+              href={mapsReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+                padding: "12px 24px",
+                background: "#7fbf2f",
+                color: "#000",
+                fontSize: 14,
+                fontWeight: 700,
+                borderRadius: 100,
+                textDecoration: "none",
+                boxShadow: "0 10px 26px rgba(127,191,47,.25)",
+              }}
+            >
+              See Complete Reviews →
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -155,6 +223,7 @@ function GoogleReviewsEmpty({ data }: { data: GoogleReviewsResponse | null }) {
 
 function GoogleReviewsContent({ data }: { data: GoogleReviewsResponse }) {
   const { name, address, rating, totalRatings, reviews } = data;
+  const mapsReviewsUrl = `https://www.google.com/maps/place/?q=place_id:${data.placeId}`;
 
   return (
     <section className="section-padding" style={{ background: "#faf9f7" }}>
@@ -180,20 +249,24 @@ function GoogleReviewsContent({ data }: { data: GoogleReviewsResponse }) {
 
         <div style={{ textAlign: "center", marginTop: 40 }}>
           <a
-            href={`https://search.google.com/local/writereview?placeid=${data.placeId}`}
+            href={mapsReviewsUrl}
             target="_blank"
             rel="noopener noreferrer"
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: 10,
+              padding: "14px 28px",
               fontSize: 14,
-              fontWeight: 600,
-              color: "#7fbf2f",
+              fontWeight: 700,
+              background: "#7fbf2f",
+              color: "#000",
+              borderRadius: 100,
               textDecoration: "none",
+              boxShadow: "0 18px 40px rgba(127,191,47,.28)",
             }}
           >
-            Leave a review on Google →
+            See Complete Reviews →
           </a>
         </div>
       </div>

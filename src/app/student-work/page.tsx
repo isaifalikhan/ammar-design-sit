@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import PageHero from "@/components/PageHero";
+import GoogleReviews from "@/components/GoogleReviews";
 
 const LOCAL_STYLES = `
   .filter-btn { border:none; cursor:pointer; transition:all .3s; font-family:var(--font-dm-sans),sans-serif; }
@@ -69,12 +69,6 @@ const projects = [
   { title: "Dar Al-Kitab Publisher", category: "Print", tag: "Book Cover Series", img: "/images/DSC02362.JPG", size: "large" },
   { title: "Mabrook Events Brand", category: "Brand Identity", tag: "Event Branding", img: "/images/DSC02363.JPG", size: "small" },
   { title: "Cultural City Poster", category: "Print", tag: "Cultural Print", img: "/images/DSC02364.JPG", size: "small" },
-];
-
-const testimonials = [
-  { name: "Ahmad Al-Rashid", company: "Al-Noor Mosque", text: "The calligraphy work was beyond anything I imagined. Every letterform had a presence and dignity that perfectly suited our space.", stars: 5 },
-  { name: "Fatima Khalid", company: "Halal Bites", text: "Our rebrand transformed customer perception overnight. The team's understanding of Arabic visual culture is genuinely unmatched.", stars: 5 },
-  { name: "Yusuf Ibrahim", company: "TechSaudi", text: "Professional, precise, and endlessly creative. The UI work was delivered on time and far exceeded our design expectations.", stars: 5 },
 ];
 
 export default function StudentWorkPage() {
@@ -163,48 +157,7 @@ export default function StudentWorkPage() {
           </div>
         </section>
 
-        {/* ── FEATURED STUDIO WORK (optional grid) ── */}
-        <section className="section-padding" style={{ background:"#fff", borderTop:"1px solid rgba(0,0,0,.06)" }}>
-          <div className="page-container">
-            <div style={{ textAlign:"center", marginBottom:48 }}>
-              <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 12px" }}>Studio Highlights</p>
-              <h2 style={{ fontWeight:700, color:"#111", margin:0 }}>Featured <span className="gradient-text">Projects</span></h2>
-            </div>
-            <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:40, justifyContent:"center" }}>
-              {categories.map(c => (
-                <button key={c} className={`filter-btn${activeFilter===c?" active":""}`}
-                  onClick={() => setActiveFilter(c)}
-                  style={{ borderRadius:100, padding:"10px 22px", fontSize:13, fontWeight:600, color:activeFilter===c?"#000":"#666", background:activeFilter===c?"#7fbf2f":"#fff", border:"1.5px solid", borderColor:activeFilter===c?"#7fbf2f":"rgba(0,0,0,.1)" }}>
-                  {c}
-                </button>
-              ))}
-            </div>
-            <div ref={studioRef} className="student-work-masonry" style={{ gap:20 }}>
-              {filtered.map((p,i) => (
-                <div
-                  key={i}
-                  className={`port-card${studioRevealed ? " revealed" : ""}`}
-                  style={{ breakInside:"avoid", marginBottom:20, borderRadius:24, overflow:"hidden", position:"relative", background:"#e8e8e8", transitionDelay: studioRevealed ? `${Math.min(i * 80, 500)}ms` : "0ms" }}
-                >
-                  <div style={{ position:"relative", overflow:"hidden" }}>
-                    <img src={p.img} alt={p.title} className="port-img" style={{ width:"100%", display:"block", aspectRatio: p.size==="large"?"4/3":"1", objectFit:"cover" }} />
-                    <div className="port-overlay" style={{ position:"absolute", inset:0, background:"linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 60%,transparent 100%)", opacity:0, display:"flex", flexDirection:"column", justifyContent:"flex-end", padding:"28px 24px" }}>
-                      <span style={{ fontSize:10, fontWeight:700, letterSpacing:".2em", textTransform:"uppercase", color:"#7fbf2f", marginBottom:8 }}>{p.tag}</span>
-                      <h3 style={{ fontWeight:700, color:"#fff", margin:"0 0 14px", lineHeight:1.2 }}>{p.title}</h3>
-                      <span style={{ display:"inline-flex", alignItems:"center", gap:8, fontSize:13, fontWeight:600, color:"#fff" }}>
-                        View Project <span style={{ width:28, height:28, borderRadius:"50%", background:"#7fbf2f", display:"grid", placeItems:"center", color:"#000" }}>→</span>
-                      </span>
-                    </div>
-                  </div>
-                  <div style={{ padding:"16px 20px", background:"#fff" }}>
-                    <p style={{ fontSize:10, fontWeight:700, letterSpacing:".18em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 4px" }}>{p.category}</p>
-                    <h4 style={{ fontWeight:600, color:"#111", margin:0 }}>{p.title}</h4>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+     
 
 
 
@@ -234,34 +187,7 @@ export default function StudentWorkPage() {
           </div>
         )}
 
-        {/* ── TESTIMONIALS ── */}
-        <section className="section-padding" style={{ background:"#faf9f7" }}>
-          <div className="page-container">
-            <div style={{ textAlign:"center", marginBottom:72 }}>
-              <p style={{ fontSize:11, fontWeight:600, letterSpacing:".28em", textTransform:"uppercase", color:"#7fbf2f", margin:"0 0 16px" }}>Client Voices</p>
-              <h2 style={{ fontWeight:700, color:"#111", margin:0 }}>What Clients <span className="gradient-text">Say</span></h2>
-            </div>
-            <div className="student-work-testimonials-grid" style={{ gap:24 }}>
-              {testimonials.map((t,i) => (
-                <div key={i} className="testimonial-card" style={{ background:"#fff", border:"1px solid rgba(0,0,0,.06)", borderRadius:28, padding:"36px 32px", boxShadow:"0 4px 24px rgba(0,0,0,.06)" }}>
-                  <div style={{ display:"flex", gap:3, marginBottom:24 }}>
-                    {Array(t.stars).fill(null).map((_,si) => <span key={si} style={{ color:"#7fbf2f", fontSize:16 }}>★</span>)}
-                  </div>
-                  <p style={{ fontFamily: "var(--font-cormorant), serif", fontSize:20, fontStyle:"italic", color:"#333", lineHeight:1.6, margin:"0 0 28px" }}>"{t.text}"</p>
-                  <div style={{ display:"flex", alignItems:"center", gap:14 }}>
-                    <div style={{ width:44, height:44, borderRadius:"50%", background:"linear-gradient(135deg,#7fbf2f,#a8e04a)", display:"grid", placeItems:"center", fontSize:18, fontWeight:700, color:"#fff" }}>
-                      {t.name[0]}
-                    </div>
-                    <div>
-                      <p style={{ fontSize:14, fontWeight:700, color:"#111", margin:0 }}>{t.name}</p>
-                      <p style={{ fontSize:12, color:"#999", margin:0 }}>{t.company}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <GoogleReviews />
 
       
 

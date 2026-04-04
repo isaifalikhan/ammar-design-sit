@@ -27,6 +27,30 @@ export interface GooglePlaceResponse {
   reviews?: GooglePlaceReview[];
 }
 
+export interface GooglePlaceDetailsReview {
+  author_name?: string;
+  author_url?: string;
+  profile_photo_url?: string;
+  rating?: number;
+  text?: string;
+  relative_time_description?: string;
+  time?: number;
+}
+
+export interface GooglePlaceDetailsResult {
+  name?: string;
+  formatted_address?: string;
+  rating?: number;
+  user_ratings_total?: number;
+  reviews?: GooglePlaceDetailsReview[];
+}
+
+export interface GooglePlaceDetailsApiResponse {
+  status?: string;
+  error_message?: string;
+  result?: GooglePlaceDetailsResult;
+}
+
 /** Single review in our API response */
 export interface GoogleReviewItem {
   author: string;
