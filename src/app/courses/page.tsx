@@ -421,18 +421,18 @@ export default function CoursesPage() {
                           <span style={{ fontSize:20 }}>📱</span>
                           <div>
                             <p style={{ fontSize:12, fontWeight:700, color:"#111", margin:0 }}>Easypaisa (Dummy)</p>
-                            <p style={{ fontSize:12, color:"#666", margin:"4px 0 0" }}>Account Title: Ammar Designz</p>
-                            <p style={{ fontSize:12, color:"#666", margin:0 }}>Mobile No: 03XX-1234567</p>
+                            <p style={{ fontSize:12, color:"#666", margin:"4px 0 0" }}>Account Title: Hafiz Muhammad Ammar Khan</p>
+                            <p style={{ fontSize:12, color:"#666", margin:0 }}>Mobile No: 0318-8336761</p>
                           </div>
                         </div>
                         <div style={{ display:"flex", alignItems:"flex-start", gap:12, borderRadius:14, border:"1px solid rgba(0,0,0,.06)", background:"#fff", padding:"14px 16px" }}>
                           <span style={{ fontSize:20 }}>🏦</span>
                           <div>
                             <p style={{ fontSize:12, fontWeight:700, color:"#111", margin:0 }}>Bank Transfer (Dummy)</p>
-                            <p style={{ fontSize:12, color:"#666", margin:"4px 0 0" }}>Bank: Demo Bank</p>
-                            <p style={{ fontSize:12, color:"#666", margin:0 }}>Account Title: Ammar Designz</p>
-                            <p style={{ fontSize:12, color:"#666", margin:0 }}>Account No: 0000-0000000</p>
-                            <p style={{ fontSize:12, color:"#666", margin:0 }}>IBAN: PK00 DEMO 0000 0000 0000 0000</p>
+                            <p style={{ fontSize:12, color:"#666", margin:"4px 0 0" }}>Bank: Bank Alfalah</p>
+                            <p style={{ fontSize:12, color:"#666", margin:0 }}>Account Title: Hafiz Muhammad Ammar Khan</p>
+                            {/* <p style={{ fontSize:12, color:"#666", margin:0 }}>Account No: 0000-0000000</p> */}
+                            <p style={{ fontSize:12, color:"#666", margin:0 }}>IBAN: PK50ALFH5881005002613938</p>
                           </div>
                         </div>
                       </div>
