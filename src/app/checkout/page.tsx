@@ -6,8 +6,8 @@ import { useMemo, useState, Suspense } from "react";
 import { COURSES, getCourseBySlug } from "@/lib/courses-data";
 
 const PAYMENT_METHODS = [
-  { icon: "📱", title: "Easypaisa", accountTitle: "Ammar Designz", detail: "Mobile No: 03XX-1234567" },
-  { icon: "🏦", title: "Bank Transfer", bank: "Demo Bank", accountTitle: "Ammar Designz", accountNo: "0000-0000000", iban: "PK00 DEMO 0000 0000 0000 0000" },
+  { icon: "📱", title: "Easypaisa", accountTitle: "Ammar Designz", detail: "Mobile No: 0318 8336761" },
+  { icon: "🏦", title: "Bank Transfer", bank: "Bank Alfalah ", accountTitle: "Ammar Designz", iban: "PK50ALFH5881005002613938" },
 ];
 
 function CheckoutContent() {

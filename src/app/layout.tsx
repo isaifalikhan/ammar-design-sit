@@ -45,9 +45,7 @@ export const metadata: Metadata = {
   title: "Ammar Designz | Creative Studio",
   description:
     "Ammar Designz Creative Studio brings books to life with expert cover design, interior layout, eBooks, and print-ready formatting.",
-  icons: {
-    icon: "/image.png",
-  },
+  // Favicon: use `src/app/icon.png` + `apple-icon.png` (App Router file convention — more reliable than linking /image.png alone).
 };
 
 export default function RootLayout({

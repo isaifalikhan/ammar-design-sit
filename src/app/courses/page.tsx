@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
+import { COURSES } from "@/lib/courses-data";
+
+const courses = COURSES;
 
 const LOCAL_STYLES = `
   .course-card { transition:all .45s cubic-bezier(.23,1,.32,1); }
@@ -64,72 +67,9 @@ const LOCAL_STYLES = `
   .modal-padding { padding: 52px 48px; }
 `;
 
-const courses = [
-  {
-    slug: "digital-calligraphy",
-    title: "Digital Digital Calligraphy",
-    tag: "Recorded",
-    tagColor: "#7fbf2f",
-    level: "Beginner",
-    weeks: "6 Weeks",
-    lessons: "24 Lessons",
-    students: "340+",
-    rating: "4.9",
-    fee: "Rs. 5,000",
-    img: "/images/DSC02365.JPG",
-    desc: "Learn classical Arabic scripts Naskh, Thuluth & Diwani using iPad and Procreate. Create calligraphy logos, compositions, and brand marks.",
-    skills: ["Naskh & Thuluth scripts", "Digital tools mastery", "Logo calligraphy", "Brand compositions"],
-  },
-  {
-    slug: "graphic-designing",
-    title: "Graphic Designing",
-    tag: "Recorded",
-    tagColor: "#7fbf2f",
-    level: "Beginner – Advanced",
-    weeks: "8 Weeks",
-    lessons: "32 Lessons",
-    students: "280+",
-    rating: "4.8",
-    fee: "Rs. 5,000",
-    img: "/images/DSC02366.JPG",
-    desc: "A complete graphic design programme covering visual thinking, Adobe Illustrator, Photoshop, typography, colour theory, and Students work-ready projects.",
-    skills: ["Adobe Illustrator", "Typography", "Colour theory", "Print & digital design"],
-  },
-  {
-    slug: "bilingual-brand-identity",
-    title: "Bilingual Brand Identity",
-    tag: "Live",
-    tagColor: "#f59e0b",
-    level: "Intermediate",
-    weeks: "10 Weeks",
-    lessons: "Live + Recorded",
-    students: "120+",
-    rating: "5.0",
-    fee: "Rs. 5,000",
-    img: "/images/DSC02367.JPG",
-    desc: "The only Pakistani course teaching brand identity specifically through Arabic and Latin bilingual design. Build complete brand systems for both scripts.",
-    skills: ["Bilingual brand systems", "Brand guidelines", "Arabic + Latin pairing", "Client presentation"],
-  },
-  {
-    slug: "social-media-design",
-    title: "Social Media Design",
-    tag: "Upcoming",
-    tagColor: "#64748b",
-    level: "Beginner",
-    weeks: "4 Weeks",
-    lessons: "16 Lessons",
-    students: "Enrolling soon",
-    rating: "New",
-    fee: "Rs. 5,000",
-    img: "/images/DSC02368.JPG",
-    desc: "Design scroll-stopping content for Instagram, Facebook, and YouTube. Templates, reels thumbnails, campaign kits and more.",
-    skills: ["Canva & Illustrator", "Instagram design", "Reel thumbnails", "Brand templates"],
-  },
-];
-
 const mentors = [
-  { name: "Hafiz Muhammad Ammar", role: "CEO & Lead Instructor", specialty: "Digital Calligraphy & Brand Identity", courses: "2 Courses", img: "/Team/Hafiz Muhammad Ammar Khan.png" },
-  { name: "Imran Khan", role: "Creative Design Head", specialty: "Graphic Design & Strategy", courses: "1 Course", img: "/Team/Imran Khan.png" },
+  { name: "Hafiz Muhammad Ammar", role: "CEO & Lead Instructor", specialty: "Digital Calligraphy & Brand Identity", courses: "1 Course", img: "/Team/Hafiz Muhammad Ammar Khan.png" },
+  { name: "Imran Khan", role: "Creative Design Head", specialty: "Graphic Design & Strategy", courses: "—", img: "/Team/Imran Khan.png" },
   { name: "Saif Ali", role: "Website Developer", specialty: "Web Development & Front-end", courses: "—", img: "/Team/saif.jpeg" },
 ];
 
@@ -153,7 +93,7 @@ const steps = [
 ];
 
 const faqs = [
-  { q: "Are the courses 100% online?", a: "Yes. All recorded courses are fully online. The Bilingual Brand Identity live sessions are also accessible remotely via Zoom, with recordings available within 24 hours." },
+  { q: "Are the courses 100% online?", a: "Yes. Our recorded course is fully online. You learn at your own pace with lifetime access to lessons and downloads." },
   { q: "What if I fall behind in a live cohort?", a: "No stress. All live sessions are recorded and uploaded within 24 hours. You can catch up at your own pace without missing any content." },
   { q: "Do I get a refund if the course isn't right for me?", a: "We offer a 7-day money-back guarantee on all courses. If you're not satisfied in the first week, contact us and we'll refund your fee in full." },
   { q: "Can I enrol in multiple courses at once?", a: "Absolutely. You can enrol in as many courses as you like simultaneously. We offer a bundled discount contact us for details." },
@@ -179,12 +119,12 @@ export default function CoursesPage() {
         <PageHero
           pillText="Ammar Designz Courses"
           title={<>Where Craft<br />Becomes <span className="gradient-text">Career.</span></>}
-          description="Pakistan's premier design education platform offering hands-on courses in Digital Calligraphy, graphic design, and brand identity, taught by working professionals."
+          description="Hands-on Arabic calligraphy in Adobe Illustrator — Wisam & Kufic on PC with a mouse. Professional logos, compositions, and brand visuals, taught by working professionals."
           imageSrc="/images/DSC02369.JPG"
           stats={[
-            { val: 740, suf: "+", label: "Students Enrolled" },
-            { val: 4.9, suf: "★", label: "Average Rating" },
-            { val: 4, suf: "", label: "Courses Available" }
+            { val: 24, suf: "+", label: "Lessons" },
+            { val: 2, suf: " mo", label: "Duration" },
+            { val: 1, suf: "", label: "Course Live Now" }
           ]}
           ctaPrimary={{ text: "Explore Courses", href: "#courses" }}
           ctaSecondary={{ text: "Enrol Now", href: "/checkout" }}
@@ -219,13 +159,16 @@ export default function CoursesPage() {
             </div>
 
             <div className="inst-courses-grid">
+              {filtered.length === 0 && (
+                <p style={{ gridColumn: "1 / -1", textAlign: "center", color: "#888", fontSize: 15, padding: "40px 0" }}>No courses in this category yet.</p>
+              )}
               {filtered.map((c,i) => (
                 <div key={i} className="course-card" style={{ background:"#fff", border:"1px solid rgba(0,0,0,.06)", borderRadius:32, overflow:"hidden", boxShadow:"0 4px 24px rgba(0,0,0,.06)" }}>
                   <div style={{ position:"relative", height:240, overflow:"hidden" }}>
-                    <img src={c.img} alt={c.title} className="course-thumb" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} />
+                    <img src={c.image} alt={c.title} className="course-thumb" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} />
                     <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top,rgba(0,0,0,.5),transparent)" }} />
                     <div style={{ position:"absolute", top:20, left:20, display:"flex", gap:8 }}>
-                      <span style={{ background:c.tagColor, borderRadius:100, padding:"5px 14px", fontSize:10, fontWeight:800, color:c.tag==="Upcoming"?"#fff":"#000", letterSpacing:".15em", textTransform:"uppercase" }}>{c.tag}</span>
+                      <span style={{ background:c.tagColor ?? "#7fbf2f", borderRadius:100, padding:"5px 14px", fontSize:10, fontWeight:800, color:c.tag==="Upcoming"?"#fff":"#000", letterSpacing:".15em", textTransform:"uppercase" }}>{c.tag}</span>
                       <span style={{ background:"rgba(0,0,0,.5)", borderRadius:100, padding:"5px 14px", fontSize:10, fontWeight:600, color:"#fff", letterSpacing:".1em" }}>{c.level}</span>
                     </div>
                     <div style={{ position:"absolute", bottom:16, left:20, right:20, display:"flex", justifyContent:"space-between" }}>
@@ -240,10 +183,13 @@ export default function CoursesPage() {
                       ))}
                     </div>
                     <h3 style={{ fontWeight:700, color:"#111", margin:"0 0 12px", lineHeight:1.15 }}>{c.title}</h3>
-                    <p style={{ fontSize:14, lineHeight:1.8, color:"#666", margin:"0 0 20px" }}>{c.desc}</p>
+                    <p style={{ fontSize:14, lineHeight:1.8, color:"#666", margin:"0 0 12px" }}>{c.description}</p>
+                    {c.tools && (
+                      <p style={{ fontSize:12, fontWeight:600, color:"#888", margin:"0 0 20px" }}>Tools: {c.tools}</p>
+                    )}
 
                     <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:24 }}>
-                      {c.skills.map((s,si) => (
+                      {(c.skills ?? []).map((s,si) => (
                         <span key={si} style={{ fontSize:11, fontWeight:500, color:"#7fbf2f", background:"rgba(127,191,47,.08)", border:"1px solid rgba(127,191,47,.18)", borderRadius:100, padding:"4px 12px" }}>{s}</span>
                       ))}
                     </div>
@@ -262,6 +208,34 @@ export default function CoursesPage() {
                 </div>
               ))}
             </div>
+
+            {courses[0]?.modules && courses[0].modules.length > 0 && (
+              <div style={{ marginTop: 80, maxWidth: 900, marginLeft: "auto", marginRight: "auto" }}>
+                <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: ".28em", textTransform: "uppercase", color: "#7fbf2f", margin: "0 0 16px", textAlign: "center" }}>Curriculum</p>
+                <h3 style={{ fontWeight: 700, color: "#111", margin: "0 0 40px", textAlign: "center", fontSize: "clamp(22px, 2.5vw, 28px)" }}>What You&apos;ll <span className="gradient-text">Learn</span></h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+                  {courses[0].modules.map((mod, mi) => (
+                    <div
+                      key={mi}
+                      style={{
+                        background: "#fff",
+                        border: "1px solid rgba(0,0,0,.06)",
+                        borderRadius: 24,
+                        padding: "28px 32px",
+                        boxShadow: "0 4px 24px rgba(0,0,0,.04)",
+                      }}
+                    >
+                      <h4 style={{ fontWeight: 700, color: "#111", margin: "0 0 16px", fontSize: 16 }}>{mod.title}</h4>
+                      <ul style={{ margin: 0, paddingLeft: 20, color: "#555", fontSize: 14, lineHeight: 1.85 }}>
+                        {mod.items.map((item, ii) => (
+                          <li key={ii} style={{ marginBottom: 6 }}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -431,7 +405,7 @@ export default function CoursesPage() {
                             <p style={{ fontSize:12, fontWeight:700, color:"#111", margin:0 }}>Bank Transfer (Dummy)</p>
                             <p style={{ fontSize:12, color:"#666", margin:"4px 0 0" }}>Bank: Bank Alfalah</p>
                             <p style={{ fontSize:12, color:"#666", margin:0 }}>Account Title: Hafiz Muhammad Ammar Khan</p>
-                            {/* <p style={{ fontSize:12, color:"#666", margin:0 }}>Account No: 0000-0000000</p> */}
+                            {/* <p style={{ fontSize:12, color:"#666", margin:0 }}>Account No: PK50ALFH5881005002613938</p> */}
                             <p style={{ fontSize:12, color:"#666", margin:0 }}>IBAN: PK50ALFH5881005002613938</p>
                           </div>
                         </div>
@@ -462,7 +436,7 @@ export default function CoursesPage() {
               Your Creative<br /><span className="gradient-text">Future Starts Here.</span>
             </h2>
             <p style={{ fontSize:16, color:"#888", lineHeight:1.8, margin:"0 auto 40px", maxWidth:520 }}>
-              Join 740+ students who've chosen to invest in their design career with Ammar Designz.
+              Start with Modern Arabic Calligraphy in Illustrator — Wisam, Kufic, and mouse-based vector workflows.
             </p>
             <div style={{ display:"flex", justifyContent:"center", gap:16, flexWrap:"wrap" }}>
               <Link href="/checkout" className="enroll-btn"

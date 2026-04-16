@@ -6,16 +6,19 @@ import { useEffect, useRef, useState } from "react";
 
 import PageHero from "@/components/PageHero";
 import GoogleReviews from "@/components/GoogleReviews";
+import { COURSES } from "@/lib/courses-data";
 import { STUDENT_WORK_IMAGES } from "@/lib/student-work-images";
 
-/* ─── Courses ────────────────────────────────────────────────────── */
-const courses = [
-  { id: 1, slug: "digital-calligraphy", label: "Digital Digital Calligraphy", tag: "Recorded", description: "Master the ancient art of Arabic lettering with modern digital tools. Build confidence and professional-grade skills.", fee: "Rs. 5,000", image: "/images/DSC02365.JPG" },
-  { id: 2, slug: "graphic-designing", label: "Graphic Designing", tag: "Recorded", description: "Create visually compelling design systems using industry-standard tools. From concept to polished execution.", fee: "Rs. 5,000", image: "/images/DSC02366.JPG" },
-  { id: 3, slug: "bilingual-brand-identity", label: "Bilingual Brand Identity", tag: "Live", description: "Craft cohesive brand identities that speak across Arabic and Latin scripts—elegant, strategic, timeless.", fee: "Rs. 5,000", image: "/images/DSC02367.JPG" },
-  { id: 4, slug: "print-media-mastery", label: "Print Media Mastery", tag: "Live", description: "Turn ideas into print-ready artwork. Packaging, posters, brochures—designed to leave a lasting impression.", fee: "Rs. 5,000", image: "/images/DSC02368.JPG" },
-  { id: 5, slug: "social-media-design", label: "Social Media Design", tag: "Upcoming", description: "Design scroll-stopping visuals and brand-consistent templates for every social platform.", fee: "Rs. 5,000", image: "/images/DSC02369.JPG" },
-];
+/* ─── Courses (from shared data) ─────────────────────────────────── */
+const courses = COURSES.map((c) => ({
+  id: c.id,
+  slug: c.slug,
+  label: c.title,
+  tag: c.tag,
+  description: c.description ?? "",
+  fee: c.fee,
+  image: c.image,
+}));
 
 const services = [
   { icon: "/Quill Pen.png", title: "Digital Calligraphy", desc: "Timeless scripts, digitally mastered" },
